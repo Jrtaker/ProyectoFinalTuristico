@@ -6,13 +6,11 @@
             <file>file:/C:/Users/barva/OneDrive/Documentos/GitHub/ProyectoFinalTuristico/src/main/ProyectoFinal.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/Ana/Documents/NetBeansProjects/ProyectoFinalTuristico/src/main/entidades/Pasaje.java</file>
-            <file>file:/C:/Users/Ana/Documents/NetBeansProjects/ProyectoFinalTuristico/src/main/Vistas/Imagenes/NewJFrame.java</file>
-            <file>file:/C:/Users/Ana/Documents/NetBeansProjects/ProyectoFinalTuristico/src/main/entidades/Alojamiento.java</file>
-            <file>file:/C:/Users/Ana/Documents/NetBeansProjects/ProyectoFinalTuristico/src/main/AccesoDatos/AlojamientoData.java</file>
+            <file>file:/C:/Users/Ana/Documents/NetBeansProjects/ProyectoFinalTuristico/src/main/AccesoDatos/CiudadData.java</file>
+            <file>file:/C:/Users/Ana/Documents/NetBeansProjects/ProyectoFinalTuristico/src/main/ProyectoFinal.java</file>
+            <file>file:/C:/Users/Ana/Documents/NetBeansProjects/ProyectoFinalTuristico/src/main/entidades/Ciudad.java</file>
             <file>file:/C:/Users/Ana/Documents/NetBeansProjects/ProyectoFinalTuristico/src/main/entidades/paquete.java</file>
             <file>file:/C:/Users/Ana/Documents/NetBeansProjects/ProyectoFinalTuristico/src/main/AccesoDatos/ConexionData.java</file>
-            <file>file:/C:/Users/Ana/Documents/NetBeansProjects/ProyectoFinalTuristico/src/main/AccesoDatos/PaqueteData.java</file>
         </group>
     </open-files>
 </project-private>

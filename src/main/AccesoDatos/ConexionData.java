@@ -21,7 +21,8 @@ public class ConexionData {
     private static final String PASSWORD = "";
 
     private static Connection conexion;
-
+    private ConexionData(){};
+    
     public static Connection getConexion() {
         if (conexion == null) {
             try {
@@ -29,6 +30,8 @@ public class ConexionData {
                 conexion = DriverManager
                         .getConnection(URL + DB + "?useLegacyyDatetimeCode=false&serverTimezone=UTC"
                                 + "&user=" + USUARIO + "&password=" + PASSWORD);
+                
+                
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error al conectarse a la BD" + ex.getMessage());
             } catch (ClassNotFoundException ex) {
