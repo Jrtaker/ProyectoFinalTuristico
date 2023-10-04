@@ -4,10 +4,20 @@
  */
 package main.AccesoDatos;
 
+import java.sql.Connection;
+import main.entidades.Alojamiento;
+
 /**
  *
  * @author Ana
  */
 public class AlojamientoData {
     
+    public AlojamientoData(){
+        Connection con = ConexionData.getConexion();
+    }
+    
+    public void agregarAlojamiento(Alojamiento alojamiento){
+        String sql= "INSERT INTO ciudad( nombre, provincia, pais, estado) VALUES (?,?,?,?)";
+    }
 }

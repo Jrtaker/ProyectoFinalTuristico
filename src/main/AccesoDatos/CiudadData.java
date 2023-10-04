@@ -7,7 +7,10 @@ package main.AccesoDatos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import main.entidades.Ciudad;
 
@@ -36,7 +39,55 @@ public class CiudadData {
             JOptionPane.showMessageDialog(null, "Se añadio una nueva Ciudad.");
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se guardo la Ciudad.");
+            JOptionPane.showMessageDialog(null, "Error en (agregarCiudad)"+e.getMessage());
         }
     }
+    
+    public void cambiarCiudad(Ciudad ciudad){
+        String sql = "UPDATE ciudad SET  nombre = ?, provincia = ?, pais = ?, estado = ? WHERE idCiudad=?";
+        
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, ciudad.getNombre());
+            ps.setString(2, ciudad.getProvincia());
+            ps.setString(3, ciudad.getPais());
+            ps.setBoolean(4, true);
+            ps.setInt(5, ciudad.getIdCiudad());
+            ps.executeUpdate();
+            
+            JOptionPane.showConfirmDialog(null, "Cambiado con exito");
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error en (cambiarCiudad)" + e.getMessage());
+        }
+    }
+    
+    public List<Ciudad> listarCiudad() {
+
+        List<Ciudad> ciudades = new ArrayList<>(); 
+        try {
+            String sql = "SELECT * FROM ciudad WHERE estado = 1 ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) { 
+                Ciudad ciudad = new Ciudad();
+
+                ciudad.setIdCiudad(rs.getInt("idCiudad"));
+                ciudad.setNombre(rs.getString("nombre"));
+                ciudad.setProvincia(rs.getString("provincia"));
+                ciudad.setPais(rs.getString("pais"));
+                ciudad.setEstado(true);
+                
+                ciudades.add(ciudad);
+                 
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error en (listarCiudad) " + e.getMessage());
+        }
+        return ciudades;
+    }
+    
+    
 }
