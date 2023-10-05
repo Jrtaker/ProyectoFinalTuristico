@@ -31,24 +31,6 @@ public class EstadiaData {
         }
     }
     
-    /*
-    public void agregarCiudad(Ciudad ciudad) {
-        String sql = "INSERT INTO ciudad( nombre, provincia, pais, estado) VALUES (?,?,?,?)";
-
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, ciudad.getNombre());
-            ps.setString(2, ciudad.getProvincia());
-            ps.setString(3, ciudad.getPais());
-            ps.setBoolean(4, true);
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se añadio una nueva Ciudad.");
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error en (agregarCiudad)"+e.getMessage());
-        }
-    }
-    */
     
     public void borrarEstadia(int idEstadia){
         String sql = "DELETE FROM estadia WHERE idEstadia=?";
@@ -58,6 +40,23 @@ public class EstadiaData {
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en (borrarEstadia) " + ex.getMessage());
+        }
+    }
+    public void modificarEstadia(Estadia estadia){
+        String sql = "UPDATE estadia SET idCiudad=?,servicio=?,importeDiario=?,estado=?,nombre=? WHERE idEstadia=?";
+        
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, estadia.getIdCiudad());
+            ps.setString(2,estadia.getServicio());
+            ps.setDouble(3, estadia.getImporteDiario());
+            ps.setBoolean(4, true);
+            ps.setString(5, estadia.getNombre());
+            ps.executeUpdate();
+            
+            JOptionPane.showConfirmDialog(null, "Se ha modificado una Estadia.");
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error en (modificarEstadia)" + e.getMessage());
         }
     }
 }
