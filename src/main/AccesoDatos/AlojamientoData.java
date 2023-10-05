@@ -10,6 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import main.entidades.Alojamiento;
 import main.entidades.Ciudad;
 
@@ -31,12 +34,12 @@ public class AlojamientoData {
     
     
     //********************* YADHI  SELECT ***********************************
-    public List<Alojamiento> AlojamientosPorCiudad(Ciudad ciudad) {
+    public List<Alojamiento> alojamientosPorCiudad(Ciudad ciudad) {
     List<Alojamiento> alojamientos = new ArrayList<>();
     try {
      
-        String selectQuery = "SELECT * FROM Alojamiento WHERE ciudad_id = ?";
-        PreparedStatement ps = con.prepareStatement(selectQuery);
+        String sql = "SELECT * FROM Alojamiento WHERE idCiudad = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, ciudad.getIdCiudad());
         ResultSet rs = ps.executeQuery();
         
@@ -52,9 +55,20 @@ public class AlojamientoData {
        ps.close();
         
     } catch (SQLException e) {
-        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error en (alojamientosPorCiudad) " + e.getMessage());
     }
     return alojamientos;
 }
 
+  public void borrarAlojamiento (int idAlojamiento){
+      String sql = "DELETE FROM alojamiento WHERE idAlojamiento=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,idAlojamiento);
+            ResultSet rs = ps.executeQuery();
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en (borrarAlojamiento) " + ex.getMessage());
+        }
+  }
 }

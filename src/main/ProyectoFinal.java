@@ -5,6 +5,7 @@
  */
 package main;
 
+import Login.Login;
 import main.AccesoDatos.CiudadData;
 import main.entidades.Ciudad;
 
@@ -19,12 +20,14 @@ public class ProyectoFinal {
      */
     public static void main(String[] args) {
        
+       
+        Login.Login();
         CiudadData ciudad=new CiudadData();
         
         Ciudad probandoMetodo = new Ciudad(2, "Santa Teresa", "Brasil", true, "Rio de Janeiro");
-//        ciudad.agregarCiudad(probandoMetodo);
+       ciudad.agregarCiudad(probandoMetodo);
       
-        ciudad.eliminarCiudad(1);
+        ciudad.borrarCiudad(1);
     }
     
 }

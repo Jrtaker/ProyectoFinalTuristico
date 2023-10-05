@@ -91,23 +91,21 @@ public class CiudadData {
         return ciudades;
     }
     
-    public void eliminarCiudad(int idCiudad) {
-        String sql="UPDATE ciudad SET estado = 0 WHERE idCiudad = ?";
+    public void borrarCiudad(int idCiudad) {
+        String sql="DELETE FROM ciudad WHERE idCiudad=?";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1,idCiudad);
-            int filas= ps.executeUpdate();
-            if(filas==1){
-            JOptionPane.showMessageDialog(null, "Se ha eliminado una Cuidad. ");
-            }else {
-            JOptionPane.showMessageDialog(null, "La Cuidad no se puedo eliminar. ");
-            }
+            ps.close();
+            
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en (eliminarCiudad) " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error en (borrarCiudad) " + ex.getMessage());
         }
         
     
     }
+    
+    
     
 }

@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import main.entidades.Pasaje;
 
 /**
@@ -29,11 +30,11 @@ public class PasajeData {
         
     }
     //********************* yadhi select *****************
-    public List<Pasaje> TipoDePsajes (String tipo) {
+    public List<Pasaje> tipoDePasajes (String tipo) {
     List<Pasaje> pasajes = new ArrayList<>();
     try {
         
-        String selectQuery = "SELECT * FROM Pasaje WHERE tipo = ?";
+        String selectQuery = "SELECT * FROM Pasaje WHERE tipoTransporte = ?";
         PreparedStatement ps = con.prepareStatement(selectQuery);
         ps.setString(1, tipo);
         ResultSet rs = ps.executeQuery();
@@ -41,7 +42,7 @@ public class PasajeData {
         while (rs.next()) {
             Pasaje pasaje = new Pasaje();
             pasaje.setIdPasaje(rs.getInt("idPasaje"));
-            pasaje.setTipoTransporte(rs.getString("tipoTrnsporte"));
+            pasaje.setTipoTransporte(rs.getString("tipoTransporte"));
             pasaje.setImporte(rs.getDouble("importe"));
             //podria ponerse como fechas de inicio y salida para los pasajess (yadhi)
             pasaje.setEstado(rs.getBoolean("estado"));
@@ -52,10 +53,22 @@ public class PasajeData {
         ps.close();
       
     } catch (SQLException e) {
-        e.printStackTrace();
+       JOptionPane.showMessageDialog(null, "Error en (tipoDePasajes) " + e.getMessage());
     }
     return pasajes;
 }
 
+    public void borrarPasaje(int id){
+        String sql="DELETE FROM ciudad WHERE idPasaje=?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,id);
+            ps.close();
+          
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en (borrarCiudad) " + ex.getMessage());
+        }
+    }
     
 }

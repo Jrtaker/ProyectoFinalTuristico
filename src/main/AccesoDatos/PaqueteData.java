@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -47,5 +48,17 @@ public class PaqueteData {
     return paquetin;
 }
 */
+    public void borrarPaquete(int idPaquete){
+    String sql="DELETE FROM ciudad WHERE idPaquete=?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,idPaquete);
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en (borrarPaquete) " + ex.getMessage());
+        }
+    }
     
 }
