@@ -45,7 +45,7 @@ public class CiudadData {
         }
     }
     
-    public void cambiarCiudad(Ciudad ciudad){
+    public void modificarCiudad(Ciudad ciudad){
         String sql = "UPDATE ciudad SET  nombre = ?, provincia = ?, pais = ?, estado = ? WHERE idCiudad=?";
         
         try{
@@ -57,9 +57,9 @@ public class CiudadData {
             ps.setInt(5, ciudad.getIdCiudad());
             ps.executeUpdate();
             
-            JOptionPane.showConfirmDialog(null, "Cambiado con exito");
+            JOptionPane.showMessageDialog(null, "Cambiado con exito");
         }catch(SQLException e){
-            JOptionPane.showMessageDialog(null, "Error en (cambiarCiudad)" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error en (modificarCiudad)" + e.getMessage());
         }
     }
     

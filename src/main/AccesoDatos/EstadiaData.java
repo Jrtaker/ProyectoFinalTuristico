@@ -26,12 +26,16 @@ public class EstadiaData {
             ps.setInt(1, estadia.getIdCiudad());
             ps.setString(2, estadia.getServicio());
             ps.setDouble(3, estadia.getImporteDiario());
+            ps.setBoolean(4, estadia.isEstado());
+            ps.setString(5, estadia.getNombre());
+            JOptionPane.showMessageDialog(null, "Se añadió una nueva estadía");
             
-        } catch (Exception e) {
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en (agregarEstadia)"+ex.getMessage());
         }
     }
     
-    
+
     public void borrarEstadia(int idEstadia){
         String sql = "DELETE FROM estadia WHERE idEstadia=?";
         try {
