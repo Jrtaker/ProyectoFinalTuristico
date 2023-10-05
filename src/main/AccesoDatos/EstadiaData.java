@@ -26,29 +26,14 @@ public class EstadiaData {
             ps.setInt(1, estadia.getIdCiudad());
             ps.setString(2, estadia.getServicio());
             ps.setDouble(3, estadia.getImporteDiario());
+            ps.setBoolean(4, estadia.isEstado());
+            ps.setString(5, estadia.getNombre());
+            JOptionPane.showMessageDialog(null, "Se añadió una nueva estadía");
             
-        } catch (Exception e) {
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en (agregarEstadia)"+ex.getMessage());
         }
     }
-    
-    /*
-    public void agregarCiudad(Ciudad ciudad) {
-        String sql = "INSERT INTO ciudad( nombre, provincia, pais, estado) VALUES (?,?,?,?)";
-
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, ciudad.getNombre());
-            ps.setString(2, ciudad.getProvincia());
-            ps.setString(3, ciudad.getPais());
-            ps.setBoolean(4, true);
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se añadio una nueva Ciudad.");
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error en (agregarCiudad)"+e.getMessage());
-        }
-    }
-    */
     
     public void borrarEstadia(int idEstadia){
         String sql = "DELETE FROM estadia WHERE idEstadia=?";
