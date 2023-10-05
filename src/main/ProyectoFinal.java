@@ -21,10 +21,10 @@ public class ProyectoFinal {
        
         CiudadData ciudad=new CiudadData();
         
-        Ciudad probandoMetodo = new Ciudad("Capital Federal", "Argentina", true, "Buenos Aires");
-        ciudad.agregarCiudad(probandoMetodo);
-        
-        
+        Ciudad probandoMetodo = new Ciudad(2, "Santa Teresa", "Brasil", true, "Rio de Janeiro");
+//        ciudad.agregarCiudad(probandoMetodo);
+      
+        ciudad.eliminarCiudad(1);
     }
     
 }
