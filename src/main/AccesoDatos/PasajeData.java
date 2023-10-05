@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package main.AccesoDatos;
 
 import java.sql.Connection;
@@ -13,10 +10,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import main.entidades.Pasaje;
 
-/**
- *
- * @author Ana
- */
 public class PasajeData {
     
     private Connection con = null;
@@ -24,6 +17,29 @@ public class PasajeData {
     public PasajeData(){
         con = ConexionData.getConexion();
     }
+    
+    //*********************Enzo create*******************
+    public void agregarPasaje (Pasaje pasaje){
+        
+    }
+    /*
+     public void agregarEstadia (Estadia estadia){
+        String sql = "INSERT INTO estadia ( idCiudad, servicio, importeDiario, estado, nombre) VALUES (?,?,?,?,?)";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, estadia.getIdCiudad());
+            ps.setString(2, estadia.getServicio());
+            ps.setDouble(3, estadia.getImporteDiario());
+            ps.setBoolean(4, estadia.isEstado());
+            ps.setString(5, estadia.getNombre());
+            JOptionPane.showMessageDialog(null, "Se añadió una nueva estadía");
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en (agregarEstadia)"+ex.getMessage());
+        }
+    }
+    */
     
     public void GuardarPasaje (Pasaje pasaje ){
         
