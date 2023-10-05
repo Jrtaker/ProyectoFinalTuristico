@@ -24,10 +24,10 @@ public class ProyectoFinal {
         Login.Login();
         CiudadData ciudad=new CiudadData();
         
-        Ciudad probandoMetodo = new Ciudad(2, "Santa Teresa", "Brasil", true, "Rio de Janeiro");
-       ciudad.agregarCiudad(probandoMetodo);
-      
-        ciudad.borrarCiudad(1);
+        Ciudad probandoMetodo = new Ciudad("Santa Teresa", "Brasil", true, "Rio de Janeiro");
+        ciudad.agregarCiudad(probandoMetodo);
+       Ciudad probandoMetodo2 = new Ciudad(2,"Santa Teresa", "Brasil", false, "Rio de Janeiro");
+        ciudad.modificarCiudad(probandoMetodo2);
     }
     
 }
