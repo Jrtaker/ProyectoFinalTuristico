@@ -61,6 +61,7 @@ public class EstadiaData {
             ps.setDouble(3, estadia.getImporteDiario());
             ps.setBoolean(4, true);
             ps.setString(5, estadia.getNombre());
+            
             ps.executeUpdate();
 
             JOptionPane.showConfirmDialog(null, "Se ha modificado una Estadia.");
