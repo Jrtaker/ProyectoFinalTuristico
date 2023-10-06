@@ -107,7 +107,7 @@ public class CiudadData {
                 ciudad.setNombre(rs.getString("nombre"));
                 ciudad.setProvincia(rs.getString("provincia"));
                 ciudad.setPais(rs.getString("pais"));
-                ciudad.setEstado(true);
+                
 
                 ciudades.add(ciudad);
 
