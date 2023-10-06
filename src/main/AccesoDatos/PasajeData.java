@@ -19,22 +19,32 @@ public class PasajeData {
 
     //*********************Enzo create*******************
     public void agregarPasaje(Pasaje pasaje) {
-        String sql = "INSERT INTO pasaje (tipoTransporte, importe, idCiudad, estado) VALUES (?,?,?,?)";
+
+    }
+
+    /*
+     public void agregarEstadia (Estadia estadia){
+        String sql = "INSERT INTO estadia ( idCiudad, servicio, importeDiario, estado, nombre) VALUES (?,?,?,?,?)";
         
-        try{
+        try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, pasaje.getTipoTransporte());
-            ps.setDouble(2, pasaje.getImporte());
-            ps.setInt(3, pasaje.getOrigenCiudad().getIdCiudad());
-            ps.setBoolean(4, pasaje.isEstado());
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se añadio una nueva Ciudad.");
-        }catch (SQLException ex){
+            ps.setInt(1, estadia.getIdCiudad());
+            ps.setString(2, estadia.getServicio());
+            ps.setDouble(3, estadia.getImporteDiario());
+            ps.setBoolean(4, estadia.isEstado());
+            ps.setString(5, estadia.getNombre());
+            JOptionPane.showMessageDialog(null, "Se añadió una nueva estadía");
             
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en (agregarEstadia)"+ex.getMessage());
         }
     }
-    
+     */
+    public void GuardarPasaje(Pasaje pasaje) {
 
+    }
+
+    //********************* yadhi select *****************
     public List<Pasaje> tipoDePasajes(String tipo) {
         List<Pasaje> pasajes = new ArrayList<>();
         try {
@@ -75,7 +85,7 @@ public class PasajeData {
     }
 
     public void modificarPasaje(Pasaje pasaje) {
-        String sql = "UPDATE pasaje SET tipoTransporte= ?, importe=?, idCiudad=?, estado=? WHERE idPasaje=? ";
+        String sql = "UPDATE pasaje SET tipoTransporte= ?, importe=?, idOrigenPasaje=?, estado=? WHERE idPasaje=? ";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
