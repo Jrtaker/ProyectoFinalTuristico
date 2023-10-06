@@ -28,9 +28,10 @@ public class PasajeData {
             ps.setInt(3, pasaje.getOrigenCiudad().getIdCiudad());
             ps.setBoolean(4, pasaje.isEstado());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se añadio una nueva Ciudad.");
-        }catch (SQLException ex){
             
+            JOptionPane.showMessageDialog(null, "Agregado con exito");
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null, "Error en (agregarPasaje) " + e.getMessage());
         }
     }
     
@@ -54,23 +55,50 @@ public class PasajeData {
                 pasajes.add(pasaje);
             }
             ps.close();
-
+            
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error en (tipoDePasajes) " + e.getMessage());
         }
         return pasajes;
     }
+    
+        public List<Pasaje> PasajesTodo(String tipo) {
+        List<Pasaje> pasajes = new ArrayList<>();
+        try {
+
+            String selectQuery = "SELECT * FROM Pasaje";
+            PreparedStatement ps = con.prepareStatement(selectQuery);
+            ps.setString(1, tipo);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Pasaje pasaje = new Pasaje();
+                pasaje.setIdPasaje(rs.getInt("idPasaje"));
+                pasaje.setTipoTransporte(rs.getString("tipoTransporte"));
+                pasaje.setImporte(rs.getDouble("importe"));
+                //podria ponerse como fechas de inicio y salida para los pasajess (yadhi)
+                pasaje.setEstado(rs.getBoolean("estado"));
+                pasajes.add(pasaje);
+            }
+            ps.close();
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error en (pasajesTodo) " + e.getMessage());
+        }
+        return pasajes;
+    }
 
     public void borrarPasaje(int id) {
-        String sql = "DELETE FROM ciudad WHERE idPasaje=?";
+        String sql = "DELETE FROM pasaje WHERE idPasaje=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ps.close();
 
+            JOptionPane.showMessageDialog(null, "Borrado con exito");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en (borrarCiudad) " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error en (borrarPasaje) " + ex.getMessage());
         }
     }
 
@@ -88,7 +116,7 @@ public class PasajeData {
 
             JOptionPane.showMessageDialog(null, "Cambiado con exito");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error en (modificarCiudad)" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error en (modificarPasaje)" + e.getMessage());
         }
     }
 

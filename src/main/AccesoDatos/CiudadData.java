@@ -90,7 +90,95 @@ public class CiudadData {
         }
         return ciudades;
     }
+    
+    
+    public List<Ciudad> listarCiudadSinEstado() {
 
+        List<Ciudad> ciudades = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM ciudad";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Ciudad ciudad = new Ciudad();
+
+                ciudad.setIdCiudad(rs.getInt("idCiudad"));
+                ciudad.setNombre(rs.getString("nombre"));
+                ciudad.setProvincia(rs.getString("provincia"));
+                ciudad.setPais(rs.getString("pais"));
+                ciudad.setEstado(true);
+
+                ciudades.add(ciudad);
+
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error en (listarCiudadSinEstado) " + e.getMessage());
+        }
+        return ciudades;
+    }
+    
+      public List<Ciudad> listarCiudadPorPais(String pais) {
+
+        List<Ciudad> ciudades = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM ciudad WHERE pais=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            ps.setString(1, pais);
+            while (rs.next()) {
+                Ciudad ciudad = new Ciudad();
+
+                ciudad.setIdCiudad(rs.getInt("idCiudad"));
+                ciudad.setNombre(rs.getString("nombre"));
+                ciudad.setProvincia(rs.getString("provincia"));
+                ciudad.setPais(rs.getString("pais"));
+                ciudad.setEstado(true);
+                
+                ciudades.add(ciudad);
+
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error en (listarCiudadPorPais) " + e.getMessage());
+        }
+        return ciudades;
+    }
+
+      
+       public List<Ciudad> listarCiudadPorProvincia(String provincia) {
+
+        List<Ciudad> ciudades = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM ciudad WHERE provincia=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            ps.setString(1, provincia);
+            while (rs.next()) {
+                Ciudad ciudad = new Ciudad();
+                
+                
+                
+                ciudad.setIdCiudad(rs.getInt("idCiudad"));
+                ciudad.setNombre(rs.getString("nombre"));
+                ciudad.setProvincia(rs.getString("provincia"));
+                ciudad.setPais(rs.getString("pais"));
+                ciudad.setEstado(true);
+                
+                ciudades.add(ciudad);
+
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error en (listarCiudadPorProvincia) " + e.getMessage());
+        }
+        return ciudades;
+    }
+       
     public void borrarCiudad(int idCiudad) {
         String sql = "DELETE FROM ciudad WHERE idCiudad=?";
 
@@ -98,7 +186,7 @@ public class CiudadData {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idCiudad);
             ps.close();
-
+            JOptionPane.showMessageDialog(null, "Borrado con exito");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en (borrarCiudad) " + ex.getMessage());
         }

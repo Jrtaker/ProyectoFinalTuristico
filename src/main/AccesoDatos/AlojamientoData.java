@@ -5,13 +5,12 @@
 package main.AccesoDatos;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import main.entidades.Alojamiento;
 import main.entidades.Ciudad;
@@ -29,11 +28,32 @@ public class AlojamientoData {
     
     //*********************ENZO (INSERT)********************************
     public void agregarAlojamiento(Alojamiento alojamiento){
-        String sql= "INSERT INTO ciudad( nombre, provincia, pais, estado) VALUES (?,?,?,?)";
+        String sql= "INSERT INTO alojamiento ( fechaInicio, fechaFin, idEstadia) VALUES (?,?,?)";
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, Date.valueOf(alojamiento.getFechaIn()));
+            ps.setDate(2,Date.valueOf(alojamiento.getFechaOut()));
+            ps.setInt(3, alojamiento.getEstadia().getIdEstadia());
+            ps.close();
+            JOptionPane.showMessageDialog(null, "Agregado con exito");
+            
+        }catch(SQLException e){
+             JOptionPane.showMessageDialog(null, "Error en (agregarAlojamiento) " + e.getMessage());
+        }
     }
     
     
-    //********************* YADHI  SELECT ***********************************
+    public void cambiarAlojamiento(Alojamiento alojamiento){
+        String sql= "UPDATE alojamiento SET fechaInicio=?, fechaFin=?, idEstadia=? WHERE idAlojamiento=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+        } catch (SQLException e) {
+           JOptionPane.showMessageDialog(null, "Error en (cambiarAlojamiento) " + e.getMessage());
+        }
+    }
+    
+    
+  
     public List<Alojamiento> alojamientosPorCiudad(Ciudad ciudad) {
     List<Alojamiento> alojamientos = new ArrayList<>();
     try {
@@ -60,6 +80,7 @@ public class AlojamientoData {
     return alojamientos;
 }
 
+    
   public void borrarAlojamiento (int idAlojamiento){
       String sql = "DELETE FROM alojamiento WHERE idAlojamiento=?";
         try {
@@ -67,6 +88,7 @@ public class AlojamientoData {
             ps.setInt(1,idAlojamiento);
             ResultSet rs = ps.executeQuery();
             ps.close();
+            JOptionPane.showMessageDialog(null, "Borrado con exito");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en (borrarAlojamiento) " + ex.getMessage());
         }

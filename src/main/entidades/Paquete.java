@@ -2,7 +2,7 @@
 package main.entidades;
 
 /* @author Programita  */
-public class paquete {
+public class Paquete {
     
 private int idPaquete;
 private Ciudad origen;
@@ -10,16 +10,16 @@ private Ciudad destino;
 private Alojamiento alojamiento;
 private Pasaje pasaje;
 
-    public paquete(){}
+    public Paquete(){}
 
-    public paquete(Ciudad origen, Ciudad destino, Alojamiento alojamiento, Pasaje pasaje) {
+    public Paquete(Ciudad origen, Ciudad destino, Alojamiento alojamiento, Pasaje pasaje) {
         this.origen = origen;
         this.destino = destino;
         this.alojamiento = alojamiento;
         this.pasaje = pasaje;
     }
 
-    public paquete(int idPaquete, Ciudad origen, Ciudad destino, Alojamiento alojamiento, Pasaje pasaje) {
+    public Paquete(int idPaquete, Ciudad origen, Ciudad destino, Alojamiento alojamiento, Pasaje pasaje) {
         this.idPaquete = idPaquete;
         this.origen = origen;
         this.destino = destino;

@@ -5,6 +5,7 @@
  */
 package main.entidades;
 
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -12,34 +13,24 @@ import java.util.*;
  * @author Joni
  */
 public class Alojamiento {
-    int idAlojamiento;
-    Date fechaIn;
-    Date fechaOut;
-    boolean estado;
-    String servicio;
-    double importeDiario;
-    Ciudad destinoCiudad;
+    private int idAlojamiento;
+    private LocalDate fechaIn;
+    private LocalDate fechaOut;
+    private Estadia estadia;
+    
+    public Alojamiento(){}
 
-    public Alojamiento() {
-    }
-
-    public Alojamiento(int idAlojamiento, Date fechaIn, Date fechaOut, boolean estado, String servicio, double importeDiario, Ciudad destinoCiudad) {
+    public Alojamiento(int idAlojamiento, LocalDate fechaIn, LocalDate fechaOut, Estadia estadia) {
         this.idAlojamiento = idAlojamiento;
         this.fechaIn = fechaIn;
         this.fechaOut = fechaOut;
-        this.estado = estado;
-        this.servicio = servicio;
-        this.importeDiario = importeDiario;
-        this.destinoCiudad = destinoCiudad;
+        this.estadia = estadia;
     }
 
-    public Alojamiento(Date fechaIn, Date fechaOut, boolean estado, String servicio, double importeDiario, Ciudad destinoCiudad) {
+    public Alojamiento(LocalDate fechaIn, LocalDate fechaOut, Estadia estadia) {
         this.fechaIn = fechaIn;
         this.fechaOut = fechaOut;
-        this.estado = estado;
-        this.servicio = servicio;
-        this.importeDiario = importeDiario;
-        this.destinoCiudad = destinoCiudad;
+        this.estadia = estadia;
     }
 
     public int getIdAlojamiento() {
@@ -50,53 +41,28 @@ public class Alojamiento {
         this.idAlojamiento = idAlojamiento;
     }
 
-    public Date getFechaIn() {
+    public LocalDate getFechaIn() {
         return fechaIn;
     }
 
-    public void setFechaIn(Date fechaIn) {
+    public void setFechaIn(LocalDate fechaIn) {
         this.fechaIn = fechaIn;
     }
 
-    public Date getFechaOut() {
+    public LocalDate getFechaOut() {
         return fechaOut;
     }
 
-    public void setFechaOut(Date fechaOut) {
+    public void setFechaOut(LocalDate fechaOut) {
         this.fechaOut = fechaOut;
     }
 
-    public boolean isEstado() {
-        return estado;
+    public Estadia getEstadia() {
+        return estadia;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setEstadia(Estadia estadia) {
+        this.estadia = estadia;
     }
-
-    public String getServicio() {
-        return servicio;
-    }
-
-    public void setServicio(String servicio) {
-        this.servicio = servicio;
-    }
-
-    public double getImporteDiario() {
-        return importeDiario;
-    }
-
-    public void setImporteDiario(double importeDiario) {
-        this.importeDiario = importeDiario;
-    }
-
-    public Ciudad getDestinoCiudad() {
-        return destinoCiudad;
-    }
-
-    public void setDestinoCiudad(Ciudad destinoCiudad) {
-        this.destinoCiudad = destinoCiudad;
-    }
-    
     
 }

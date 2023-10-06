@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import main.entidades.Paquete;
 
 /**
  *
@@ -22,32 +23,41 @@ public class PaqueteData {
     public PaqueteData(){
         con = ConexionData.getConexion();
     }
-    /* IDEAAAA
-    public List<PaqueteData> PaqueteXCliente(//deberia recibir un cliente) {
-    List<PaqueteData> paquetin = new ArrayList<>();
-    try {
-     
-        String selectQuery = "SELECT * FROM Paquete WHERE cliente_id = ?";
-        PreparedStatement preparedStatement = con.prepareStatement(selectQuery);
-        preparedStatement.setInt(1, cliente.getIdCliente());
-        ResultSet rs = preparedStatement.executeQuery();
-        
-        while (rs.next()) {
-            PaqueteData paquete = new PaqueteData();
-            paquete.setIdPaquete(rs.getInt("idPaquete"));
-          
-            paquetes.add(paquete);
+ 
+    public void agregarPaquete(Paquete paquete){
+         String sql= "INSERT INTO paquete (idOrigen,idDestino,idAlojamiento,idPasaje) VALUES (?,?,?,?)";
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,paquete.getOrigen().getIdCiudad());
+            ps.setInt(2,paquete.getDestino().getIdCiudad());
+            ps.setInt(3,paquete.getAlojamiento().getIdAlojamiento());
+            ps.setInt(4,paquete.getPasaje().getIdPasaje());
+            ps.close();
+            JOptionPane.showMessageDialog(null, "Agregado con exito");
+            
+        }catch(SQLException e){
+             JOptionPane.showMessageDialog(null, "Error en (agregarPaquete) " + e.getMessage());
         }
-        
-       
-        preparedStatement.close();
-      
-    } catch (SQLException e) {
-        e.printStackTrace();
     }
-    return paquetin;
-}
-*/
+     public void modificarPaquete(Paquete paquete) {
+        String sql = "UPDATE paquete SET idOrigen=?,idDestino=?,idAlojamiento=?,idPasaje=?,nombre=? WHERE idPaquete=?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, paquete.getOrigen().getIdCiudad());
+            ps.setInt(2, paquete.getDestino().getIdCiudad());
+            ps.setInt(3, paquete.getAlojamiento().getIdAlojamiento());
+            ps.setInt(4, paquete.getPasaje().getIdPasaje());
+            ps.setInt(5, paquete.getIdPaquete());
+            ps.executeUpdate();
+
+            JOptionPane.showConfirmDialog(null, "Se ha modificado una Estadia.");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error en (modificarEstadia)" + e.getMessage());
+        }
+    }
+
+     
     public void borrarPaquete(int idPaquete){
     String sql="DELETE FROM ciudad WHERE idPaquete=?";
         
@@ -55,7 +65,7 @@ public class PaqueteData {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1,idPaquete);
             ps.close();
-
+            JOptionPane.showMessageDialog(null, "Borrado con exito");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en (borrarPaquete) " + ex.getMessage());
         }
