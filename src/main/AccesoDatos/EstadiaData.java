@@ -32,6 +32,7 @@ public class EstadiaData {
             ps.setDouble(3, estadia.getImporteDiario());
             ps.setBoolean(4, estadia.isEstado());
             ps.setString(5, estadia.getNombre());
+            ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Se añadió una nueva estadía");
 
         } catch (SQLException ex) {
