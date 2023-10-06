@@ -185,6 +185,7 @@ public class CiudadData {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idCiudad);
+            ps.executeUpdate();
             ps.close();
             JOptionPane.showMessageDialog(null, "Borrado con exito");
         } catch (SQLException ex) {
