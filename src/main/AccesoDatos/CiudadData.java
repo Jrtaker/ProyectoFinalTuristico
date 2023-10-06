@@ -106,6 +106,49 @@ public class CiudadData {
     
     }
     
-    
-    
+     public List<String> obtenerProvinciasPorPais(String pais) {
+        List<String> provincias = new ArrayList<>();
+        try {
+           
+            String sql = "SELECT DISTINCT provincia FROM Ciudad WHERE pais = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, pais);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                provincias.add(rs.getString("provincia"));
+            }
+
+            
+            ps.close();
+          
+        } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al obtener provincia "+ e.getMessage());
+        }
+        return provincias;
+    }
+     
+     
+     public List<String> obtenerCiudadesPorProvincia(String provincia) {
+        List<String> cdades = new ArrayList<>();
+        try {
+        
+            String sql = "SELECT nombre FROM Ciudad WHERE provincia = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, provincia);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                cdades.add(rs.getString("nombre"));
+            }
+
+           
+            ps.close();
+        
+        } catch (SQLException e) {
+         JOptionPane.showMessageDialog(null, "Error al obtener ciudad "+ e.getMessage());
+        }
+        return cdades;
+    }
+     
 }

@@ -7,6 +7,7 @@ package main;
 
 import Login.Login;
 import main.AccesoDatos.CiudadData;
+import main.Vistas.Menu;
 import main.entidades.Ciudad;
 
 /**
@@ -19,15 +20,16 @@ public class ProyectoFinal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       
-       
+       Menu.mainMenu();
+      
+       /*
         Login.Login();
         CiudadData ciudad=new CiudadData();
         
         Ciudad probandoMetodo = new Ciudad("Santa Teresa", "Brasil", true, "Rio de Janeiro");
         ciudad.agregarCiudad(probandoMetodo);
        Ciudad probandoMetodo2 = new Ciudad(2,"Santa Teresa", "Brasil", false, "Rio de Janeiro");
-        ciudad.modificarCiudad(probandoMetodo2);
+        ciudad.modificarCiudad(probandoMetodo2);*/
     }
     
 }
