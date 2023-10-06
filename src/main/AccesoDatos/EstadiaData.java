@@ -45,6 +45,8 @@ public class EstadiaData {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idEstadia);
+             ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se borro una estadía");
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en (borrarEstadia) " + ex.getMessage());
@@ -61,6 +63,7 @@ public class EstadiaData {
             ps.setDouble(3, estadia.getImporteDiario());
             ps.setBoolean(4, true);
             ps.setString(5, estadia.getNombre());
+            ps.setInt(6, estadia.getIdEstadia());
             ps.executeUpdate();
 
             JOptionPane.showConfirmDialog(null, "Se ha modificado una Estadia.");
@@ -83,7 +86,7 @@ public class EstadiaData {
                 estadia.setIdEstadia(rs.getInt("idEstadia"));
                 estadia.setIdCiudad(rs.getInt("idCiudad"));
                 estadia.setServicio(rs.getString("servicio"));
-                estadia.setImporteDiario(rs.getDouble("importeDiario"));
+                estadia.setImporteDiario(rs.getInt("importeDiario"));
                 estadia.setNombre(rs.getString("nombre"));
 
                 estadias.add(estadia);

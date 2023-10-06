@@ -11,7 +11,7 @@ public class Estadia {
 
     public Estadia(){};
     
-    public Estadia(int idCiudad, String servicio, double importeDiario, boolean estado, String nombre) {
+    public Estadia(int idCiudad, String servicio, int importeDiario, boolean estado, String nombre) {
         this.idCiudad = idCiudad;
         this.servicio = servicio;
         this.importeDiario = importeDiario;
