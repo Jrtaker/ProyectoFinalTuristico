@@ -23,11 +23,11 @@ import main.entidades.Ciudad;
 public class CiudadData {
 
     private Connection con = null;
-    
-    public CiudadData(){
-        con=ConexionData.getConexion();
+
+    public CiudadData() {
+        con = ConexionData.getConexion();
     }
-    
+
     public void agregarCiudad(Ciudad ciudad) {
         String sql = "INSERT INTO ciudad( nombre, provincia, pais, estado) VALUES (?,?,?,?)";
 
@@ -41,14 +41,14 @@ public class CiudadData {
             JOptionPane.showMessageDialog(null, "Se añadio una nueva Ciudad.");
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error en (agregarCiudad)"+e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error en (agregarCiudad)" + e.getMessage());
         }
     }
-    
-    public void modificarCiudad(Ciudad ciudad){
+
+    public void modificarCiudad(Ciudad ciudad) {
         String sql = "UPDATE ciudad SET  nombre = ?, provincia = ?, pais = ?, estado = ? WHERE idCiudad=?";
-        
-        try{
+
+        try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, ciudad.getNombre());
             ps.setString(2, ciudad.getProvincia());
@@ -56,22 +56,22 @@ public class CiudadData {
             ps.setBoolean(4, true);
             ps.setInt(5, ciudad.getIdCiudad());
             ps.executeUpdate();
-            
+
             JOptionPane.showMessageDialog(null, "Cambiado con exito");
-        }catch(SQLException e){
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error en (modificarCiudad)" + e.getMessage());
         }
     }
-    
+
     public List<Ciudad> listarCiudad() {
 
-        List<Ciudad> ciudades = new ArrayList<>(); 
+        List<Ciudad> ciudades = new ArrayList<>();
         try {
             String sql = "SELECT * FROM ciudad WHERE estado = 1 ";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
-            while (rs.next()) { 
+            while (rs.next()) {
                 Ciudad ciudad = new Ciudad();
 
                 ciudad.setIdCiudad(rs.getInt("idCiudad"));
@@ -79,9 +79,9 @@ public class CiudadData {
                 ciudad.setProvincia(rs.getString("provincia"));
                 ciudad.setPais(rs.getString("pais"));
                 ciudad.setEstado(true);
-                
+
                 ciudades.add(ciudad);
-                 
+
             }
             ps.close();
 
@@ -90,22 +90,19 @@ public class CiudadData {
         }
         return ciudades;
     }
-    
+
     public void borrarCiudad(int idCiudad) {
-        String sql="DELETE FROM ciudad WHERE idCiudad=?";
-        
+        String sql = "DELETE FROM ciudad WHERE idCiudad=?";
+
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1,idCiudad);
+            ps.setInt(1, idCiudad);
             ps.close();
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en (borrarCiudad) " + ex.getMessage());
         }
-        
-    
+
     }
-    
-    
-    
+
 }
