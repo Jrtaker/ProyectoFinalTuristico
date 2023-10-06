@@ -22,11 +22,19 @@ public class ProyectoFinal {
  //     ciudad.agregarCiudad(probandoMetodo);
 //       Ciudad probandoMetodo2 = new Ciudad(2,"Santa Teresa", "Brasil", false, "Rio de Janeiro");
 //        ciudad.modificarCiudad(probandoMetodo2);
+        ciudad.borrarCiudad(1);
 
+<<<<<<< HEAD
        EstadiaData estadia =new EstadiaData();
        Estadia probarMetodos = new Estadia( 1, "Basico", 900, true, "Las Juaninas");
        estadia.agregarEstadia(probarMetodos);
        */
+=======
+//       EstadiaData estadia =new EstadiaData();
+//       Estadia probarMetodos = new Estadia( 1, "Basico", 900, true, "Las Juaninas");
+//       estadia.agregarEstadia(probarMetodos);
+       
+>>>>>>> 90cca498964400560b08d512929a573d17123379
     }
     
 }
