@@ -119,5 +119,25 @@ public class PasajeData {
             JOptionPane.showMessageDialog(null, "Error en (modificarPasaje)" + e.getMessage());
         }
     }
+    
+    public List<Integer> listarPasajePorTransporte(String transporte){
+        List<Integer> idCiudad = new ArrayList<>();
+        try {
+            String sql = "SELECT ciudad.idCiudad FROM ciudad INNER JOIN pasaje ON ciudad.idCiudad=pasaje.idCiudad "
+                    + "WHERE pasaje.tipoTransporte = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, transporte);
+            ResultSet rs = ps.executeQuery();
+            ps.execute();
+            while (rs.next()) {
+                idCiudad.add(rs.getInt("idCiudad")); 
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en (listarPasajePorTransporte)"+ex.getMessage());
+        }
+        return idCiudad;
+        
+    }
 
 }
