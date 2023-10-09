@@ -37,6 +37,7 @@ public class AlojamientoData {
             ps.setDouble(4, alojamiento.getImporteDiario());
             ps.setString(5, alojamiento.getServicio());
             ps.setInt(6, alojamiento.getCiudad().getIdCiudad());
+            
             ps.close();
             JOptionPane.showMessageDialog(null, "Agregado con exito");
             

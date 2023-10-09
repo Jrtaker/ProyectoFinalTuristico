@@ -26,7 +26,7 @@ public class CiudadData {
         con = ConexionData.getConexion();
     }
 
-    public void agregarCiudad(Ciudad ciudad) {
+    public void agregarCiudad(Ciudad ciudad) {           //OK
         String sql = "INSERT INTO ciudad( nombre, provincia, pais, estado) VALUES (?,?,?,?)";
 
         try {
@@ -42,12 +42,17 @@ public class CiudadData {
             JOptionPane.showMessageDialog(null, "Error en (agregarCiudad)" + e.getMessage());
         }
     }
+<<<<<<< Updated upstream
     //nombre =/= string
     //provincia =/= string
     //pais =/= string
     //estado!=boolean
     
     public void modificarCiudad(Ciudad ciudad) {
+=======
+
+    public void modificarCiudad(Ciudad ciudad) {             //OK
+>>>>>>> Stashed changes
         String sql = "UPDATE ciudad SET  nombre = ?, provincia = ?, pais = ?, estado = ? WHERE idCiudad=?";
 
         try {
@@ -64,8 +69,13 @@ public class CiudadData {
             JOptionPane.showMessageDialog(null, "Error en (modificarCiudad)" + e.getMessage());
         }
     }
+<<<<<<< Updated upstream
     
     public List<Ciudad> listarCiudad() {
+=======
+
+    public List<Ciudad> listarCiudad() {                   //OK
+>>>>>>> Stashed changes
 
         List<Ciudad> ciudades = new ArrayList<>();
         try {
@@ -94,7 +104,7 @@ public class CiudadData {
     }
     
     
-    public List<Ciudad> listarCiudadTodo() {
+    public List<Ciudad> listarCiudadTodo() {           //OK
 
         List<Ciudad> ciudades = new ArrayList<>();
         try {
@@ -122,14 +132,15 @@ public class CiudadData {
         return ciudades;
     }
     
-      public List<Ciudad> listarCiudadPorPais(String pais) {
+      public List<Ciudad> listarCiudadPorPais(String pais) {     //OK
 
         List<Ciudad> ciudades = new ArrayList<>();
         try {
             String sql = "SELECT * FROM ciudad WHERE pais=?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
+            
             ps.setString(1, pais);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Ciudad ciudad = new Ciudad();
 
@@ -151,14 +162,15 @@ public class CiudadData {
     }
 
       
-       public List<Ciudad> listarCiudadPorProvincia(String provincia) {
+       public List<Ciudad> listarCiudadPorProvincia(String provincia) {   //OK
 
         List<Ciudad> ciudades = new ArrayList<>();
         try {
             String sql = "SELECT * FROM ciudad WHERE provincia=?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
+            
             ps.setString(1, provincia);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Ciudad ciudad = new Ciudad();
                 
@@ -181,7 +193,7 @@ public class CiudadData {
         return ciudades;
     }
        
-    public void borrarCiudad(int idCiudad) {
+    public void borrarCiudad(int idCiudad) {                   //OK
         String sql = "DELETE FROM ciudad WHERE idCiudad=?";
 
         try {
