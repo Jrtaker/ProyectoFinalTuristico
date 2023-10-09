@@ -90,7 +90,7 @@ public class CiudadData {
     }
     
     
-    public List<Ciudad> listarCiudadSinEstado() {
+    public List<Ciudad> listarCiudadTodo() {
 
         List<Ciudad> ciudades = new ArrayList<>();
         try {
@@ -113,7 +113,7 @@ public class CiudadData {
             ps.close();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error en (listarCiudadSinEstado) " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error en (listarCiudadTodo) " + e.getMessage());
         }
         return ciudades;
     }
