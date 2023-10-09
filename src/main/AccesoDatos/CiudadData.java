@@ -107,7 +107,7 @@ public class CiudadData {
                 ciudad.setNombre(rs.getString("nombre"));
                 ciudad.setProvincia(rs.getString("provincia"));
                 ciudad.setPais(rs.getString("pais"));
-                
+                ciudad.setEstado(rs.getBoolean("estado"));
 
                 ciudades.add(ciudad);
 
@@ -135,7 +135,7 @@ public class CiudadData {
                 ciudad.setNombre(rs.getString("nombre"));
                 ciudad.setProvincia(rs.getString("provincia"));
                 ciudad.setPais(rs.getString("pais"));
-                ciudad.setEstado(true);
+                ciudad.setEstado(rs.getBoolean("estado"));
                 
                 ciudades.add(ciudad);
 
@@ -166,7 +166,7 @@ public class CiudadData {
                 ciudad.setNombre(rs.getString("nombre"));
                 ciudad.setProvincia(rs.getString("provincia"));
                 ciudad.setPais(rs.getString("pais"));
-                ciudad.setEstado(true);
+                ciudad.setEstado(rs.getBoolean("estado"));
                 
                 ciudades.add(ciudad);
 
