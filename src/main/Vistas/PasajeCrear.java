@@ -9,12 +9,12 @@ package main.Vistas;
  *
  * @author Joni
  */
-public class PasajeCambios extends javax.swing.JInternalFrame {
+public class PasajeCrear extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form PasajeCambios
      */
-    public PasajeCambios() {
+    public PasajeCrear() {
         initComponents();
     }
 
@@ -65,6 +65,11 @@ public class PasajeCambios extends javax.swing.JInternalFrame {
         jLabel4.setText("Tipo de transporte");
 
         jTextField1.setText("jTextField1");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Importe");
 
@@ -170,6 +175,10 @@ public class PasajeCambios extends javax.swing.JInternalFrame {
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

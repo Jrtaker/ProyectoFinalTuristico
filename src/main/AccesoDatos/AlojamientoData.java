@@ -28,12 +28,15 @@ public class AlojamientoData {
     
     //*********************ENZO (INSERT)********************************
     public void agregarAlojamiento(Alojamiento alojamiento){
-        String sql= "INSERT INTO alojamiento ( fechaInicio, fechaFin, idEstadia) VALUES (?,?,?)";
+        String sql= "INSERT INTO alojamiento ( fechaInicio, fechaFin, estado, importeDiario, servicio, idCiudad) VALUES (?,?,?)";
         try{
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDate(1, Date.valueOf(alojamiento.getFechaIn()));
             ps.setDate(2,Date.valueOf(alojamiento.getFechaOut()));
-            ps.setInt(3, alojamiento.getEstadia().getIdEstadia());
+            ps.setBoolean(3,alojamiento.isEstado());
+            ps.setDouble(4, alojamiento.getImporteDiario());
+            ps.setString(5, alojamiento.getServicio());
+            ps.setInt(6, alojamiento.getCiudad().getIdCiudad());
             ps.close();
             JOptionPane.showMessageDialog(null, "Agregado con exito");
             
@@ -44,7 +47,7 @@ public class AlojamientoData {
     
     
     public void cambiarAlojamiento(Alojamiento alojamiento){
-        String sql= "UPDATE alojamiento SET fechaInicio=?, fechaFin=?, idEstadia=? WHERE idAlojamiento=?";
+        String sql= "UPDATE alojamiento SET fechaInicio=?, fechaFin=?, WHERE idAlojamiento=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
         } catch (SQLException e) {
@@ -66,9 +69,7 @@ public class AlojamientoData {
         while (rs.next()) {
             Alojamiento alojamiento = new Alojamiento();
             alojamiento.setIdAlojamiento(rs.getInt("idAlojamiento"));
-            // fechhas de inicio y fin 
-            // tipos de alojamiento 
-            //temporada?
+
             
             alojamientos.add(alojamiento);
         }
@@ -86,7 +87,6 @@ public class AlojamientoData {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1,idAlojamiento);
-            ResultSet rs = ps.executeQuery();
             ps.close();
             JOptionPane.showMessageDialog(null, "Borrado con exito");
         } catch (SQLException ex) {

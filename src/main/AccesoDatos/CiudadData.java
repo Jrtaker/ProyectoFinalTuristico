@@ -11,8 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import main.entidades.Ciudad;
 
@@ -143,7 +141,7 @@ public class CiudadData {
             ps.close();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error en (listarCiudadPorPais) " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error en (listarCiudadPorPais)" + e.getMessage());
         }
         return ciudades;
     }

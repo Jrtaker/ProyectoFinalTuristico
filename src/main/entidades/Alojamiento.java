@@ -16,21 +16,31 @@ public class Alojamiento {
     private int idAlojamiento;
     private LocalDate fechaIn;
     private LocalDate fechaOut;
-    private Estadia estadia;
+    private boolean estado;
+    private String servicio;
+    private double importeDiario;
+    private Ciudad ciudad;
+    
     
     public Alojamiento(){}
 
-    public Alojamiento(int idAlojamiento, LocalDate fechaIn, LocalDate fechaOut, Estadia estadia) {
+    public Alojamiento(int idAlojamiento, LocalDate fechaIn, LocalDate fechaOut, boolean estado, String servicio, double importeDiario, Ciudad ciudad) {
         this.idAlojamiento = idAlojamiento;
         this.fechaIn = fechaIn;
         this.fechaOut = fechaOut;
-        this.estadia = estadia;
+        this.estado = estado;
+        this.servicio = servicio;
+        this.importeDiario = importeDiario;
+        this.ciudad = ciudad;
     }
 
-    public Alojamiento(LocalDate fechaIn, LocalDate fechaOut, Estadia estadia) {
+    public Alojamiento(LocalDate fechaIn, LocalDate fechaOut, boolean estado, String servicio, double importeDiario, Ciudad ciudad) {
         this.fechaIn = fechaIn;
         this.fechaOut = fechaOut;
-        this.estadia = estadia;
+        this.estado = estado;
+        this.servicio = servicio;
+        this.importeDiario = importeDiario;
+        this.ciudad = ciudad;
     }
 
     public int getIdAlojamiento() {
@@ -57,12 +67,37 @@ public class Alojamiento {
         this.fechaOut = fechaOut;
     }
 
-    public Estadia getEstadia() {
-        return estadia;
+    public boolean isEstado() {
+        return estado;
     }
 
-    public void setEstadia(Estadia estadia) {
-        this.estadia = estadia;
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
-    
+
+    public String getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(String servicio) {
+        this.servicio = servicio;
+    }
+
+    public double getImporteDiario() {
+        return importeDiario;
+    }
+
+    public void setImporteDiario(double importeDiario) {
+        this.importeDiario = importeDiario;
+    }
+
+    public Ciudad getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
+    }
+
+     
 }
