@@ -5,7 +5,7 @@
  */
 package Login;
 
-import main.Vistas.Menu;
+
 
 
 
@@ -84,7 +84,7 @@ public class Login extends javax.swing.JFrame {
             
      
         this.dispose();
-        Menu.mainMenu();
+
     }//GEN-LAST:event_LoginActionPerformed
 
     /**

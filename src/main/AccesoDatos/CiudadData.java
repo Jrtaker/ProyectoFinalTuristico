@@ -42,7 +42,11 @@ public class CiudadData {
             JOptionPane.showMessageDialog(null, "Error en (agregarCiudad)" + e.getMessage());
         }
     }
-
+    //nombre =/= string
+    //provincia =/= string
+    //pais =/= string
+    //estado!=boolean
+    
     public void modificarCiudad(Ciudad ciudad) {
         String sql = "UPDATE ciudad SET  nombre = ?, provincia = ?, pais = ?, estado = ? WHERE idCiudad=?";
 
@@ -60,7 +64,7 @@ public class CiudadData {
             JOptionPane.showMessageDialog(null, "Error en (modificarCiudad)" + e.getMessage());
         }
     }
-
+    
     public List<Ciudad> listarCiudad() {
 
         List<Ciudad> ciudades = new ArrayList<>();

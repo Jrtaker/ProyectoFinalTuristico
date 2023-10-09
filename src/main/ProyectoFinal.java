@@ -4,7 +4,6 @@ package main;
 import Login.Login;
 import java.util.List;
 import main.AccesoDatos.CiudadData;
-import main.Vistas.Menu;
 import main.entidades.Ciudad;
 
 
@@ -12,7 +11,6 @@ public class ProyectoFinal {
 
     public static void main(String[] args) {
        
-       Menu.mainMenu();
        /*
         Login.Login();
         CiudadData ciudad=new CiudadData();
