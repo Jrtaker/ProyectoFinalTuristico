@@ -56,7 +56,6 @@ public class PaqueteData {
             JOptionPane.showMessageDialog(null, "Error en (modificarEstadia)" + e.getMessage());
         }
     }
-
      
     public void borrarPaquete(int idPaquete){
     String sql="DELETE FROM ciudad WHERE idPaquete=?";
