@@ -39,15 +39,6 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JDesktopPane" name="jDesktopPane1">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cc" green="33" red="ff" type="rgb"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JDesktopPane(){&#xd;&#xa;&#xd;&#xa;&#x9;public void paintComponent(Graphics g)&#xd;&#xa;&#x9;{&#xd;&#xa;&#x9;g.drawImage(img,0,0,getWidth(),&#xd;&#xa;&#x9;getHeight(),this);&#xd;&#xa;        }&#xd;&#xa;}"/>
-        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="ImageIcon icon = new ImageIcon(getClass().getResource(&quot;hotel.jpg&quot;));&#xd;&#xa;Image img=icon.getImage();"/>
-      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
