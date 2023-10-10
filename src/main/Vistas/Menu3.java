@@ -547,7 +547,7 @@ public class Menu3 extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonLabelPasajesMouseClicked
 
     /** @param args the command line arguments*/
-    public static void main(String args[]) {
+    public static void menu3() {
        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

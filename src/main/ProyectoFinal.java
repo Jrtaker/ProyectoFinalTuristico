@@ -8,6 +8,7 @@ import java.time.Month;
 import java.util.List;
 import main.AccesoDatos.AlojamientoData;
 import main.AccesoDatos.CiudadData;
+import main.Vistas.Menu3;
 
 import main.entidades.Alojamiento;
 
@@ -18,7 +19,7 @@ public class ProyectoFinal {
 
     public static void main(String[] args) {
        
-
+        Menu3.menu3();
         //Login.Login();
         CiudadData ciudad=new CiudadData();
         
