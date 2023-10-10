@@ -26,7 +26,7 @@ public class AlojamientoData {
          con = ConexionData.getConexion();
     }
     
-    //*********************ENZO (INSERT)********************************
+    //Nuevo Alojamiento
     public void agregarAlojamiento(Alojamiento alojamiento){                      //ok
         String sql= "INSERT INTO alojamiento ( fechaInicio, fechaFin, estado, servicio,importeDiario, idCiudad) VALUES (?,?,?,?,?,?)";
         try{
@@ -47,9 +47,9 @@ public class AlojamientoData {
         }
     }
     
-    
+    //Cambia un Alojamiento
     public void modificarAlojamiento(Alojamiento alojamiento){                         //ok
-        String sql= "UPDATE alojamiento SET fechaInicio=?, fechaFin=? WHERE idAlojamiento=?";
+        String sql= "UPDATE alojamiento SET fechaInicio=?, fechaFin=?, estado=?, servicio=?,importeDiario=?, idCiudad=? WHERE idAlojamiento=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             System.out.println(alojamiento.getFechaInicio());
@@ -57,21 +57,24 @@ public class AlojamientoData {
             
             ps.setDate(1, Date.valueOf(alojamiento.getFechaInicio()));
             ps.setDate(2, Date.valueOf(alojamiento.getFechaFin()));
-            ps.setInt(3, alojamiento.getIdAlojamiento());
+            ps.setBoolean(3, alojamiento.isEstado());
+            ps.setString(4, alojamiento.getServicio());
+            ps.setDouble(5, alojamiento.getImporteDiario());
+            ps.setInt(6, alojamiento.getCiudad().getIdCiudad());
+            ps.setInt(7, alojamiento.getIdAlojamiento());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Se ha modificado un alojamiento");
         } catch (SQLException e) {
            JOptionPane.showMessageDialog(null, "Error en (modificarAlojamiento) " + e.getMessage());
         }
     }
-    
-    
-  
+       
+    //Alojamientos para usar adentro de paquete
     public List<Alojamiento> alojamientosPorCiudad(Ciudad ciudad) {                //ok
     List<Alojamiento> alojamientos = new ArrayList<>();
     try {
      
-        String sql = "SELECT * FROM Alojamiento WHERE idCiudad = ?";
+        String sql = "SELECT * FROM Alojamiento WHERE idCiudad = ? AND estado=1";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, ciudad.getIdCiudad());
         ResultSet rs = ps.executeQuery();
@@ -79,12 +82,12 @@ public class AlojamientoData {
         while (rs.next()) {
             Alojamiento alojamiento = new Alojamiento();
             
-            alojamiento.setIdAlojamiento(rs.getInt("idAlojamiento"));
+           alojamiento.setIdAlojamiento(rs.getInt("idAlojamiento"));
            alojamiento.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
            alojamiento.setFechaFin(rs.getDate("fechaFin").toLocalDate());
-           alojamiento.setEstado(true);
            alojamiento.setServicio(rs.getString("servicio"));
            alojamiento.setImporteDiario(rs.getInt("importeDiario"));
+           
            
             alojamientos.add(alojamiento);
         }
@@ -95,8 +98,38 @@ public class AlojamientoData {
     }
     return alojamientos;
 }
-
+    //Alojamiento para uso de referencias de alojamientos como para poder cambiarlos en pagina de alojamiento
+  public List<Alojamiento> alojamientosPorCiudadTodo(Ciudad ciudad) {                //ok
+    List<Alojamiento> alojamientos = new ArrayList<>();
+    try {
+     
+        String sql = "SELECT * FROM Alojamiento WHERE idCiudad = ? ";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, ciudad.getIdCiudad());
+        ResultSet rs = ps.executeQuery();
+        
+        while (rs.next()) {
+            Alojamiento alojamiento = new Alojamiento();
+            
+           alojamiento.setIdAlojamiento(rs.getInt("idAlojamiento"));
+           alojamiento.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+           alojamiento.setFechaFin(rs.getDate("fechaFin").toLocalDate());
+           alojamiento.setServicio(rs.getString("servicio"));
+           alojamiento.setImporteDiario(rs.getInt("importeDiario"));
+           alojamiento.setEstado(rs.getBoolean("estado"));
+           
+           
+            alojamientos.add(alojamiento);
+        }
+       ps.close();
+        
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error en (alojamientosPorCiudadTodo) " + e.getMessage());
+    }
+    return alojamientos;
+}
     
+  //Botom Eliminar | Borrado no logico
   public void borrarAlojamiento (int idAlojamiento){
       String sql = "DELETE FROM alojamiento WHERE idAlojamiento=?";
         try {

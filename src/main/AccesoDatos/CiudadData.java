@@ -25,7 +25,7 @@ public class CiudadData {
     public CiudadData() {
         con = ConexionData.getConexion();
     }
-
+    //Nueva Ciudad - Boton Nuevo
     public void agregarCiudad(Ciudad ciudad) {           //OK
         String sql = "INSERT INTO ciudad( nombre, provincia, pais, estado) VALUES (?,?,?,?)";
 
@@ -49,7 +49,7 @@ public class CiudadData {
     //estado!=boolean
     
 
-
+    //Modificar Ciudad - Boton Guardar
     public void modificarCiudad(Ciudad ciudad) {             //OK
 
         String sql = "UPDATE ciudad SET  nombre = ?, provincia = ?, pais = ?, estado = ? WHERE idCiudad=?";
@@ -69,7 +69,7 @@ public class CiudadData {
         }
     }
 
-
+    // Listar Ciudad - Uso en pasaje, alojamiento y paquete (Por ahora esperar con esto)
     public List<Ciudad> listarCiudad() {                   //OK
 
 
@@ -99,7 +99,7 @@ public class CiudadData {
         return ciudades;
     }
     
-    
+    //Lista de todas las ciudades- uso para referencias en ciudad-Usado para traer toda la informacion de ciudades activas o no
     public List<Ciudad> listarCiudadTodo() {           //OK
 
         List<Ciudad> ciudades = new ArrayList<>();
@@ -127,12 +127,12 @@ public class CiudadData {
         }
         return ciudades;
     }
-    
+    //Uso para listar por pais, referencia a todas las provincias en un cierto pais
       public List<Ciudad> listarCiudadPorPais(String pais) {     //OK
 
         List<Ciudad> ciudades = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM ciudad WHERE pais=?";
+            String sql = "SELECT * FROM ciudad WHERE pais=? AND estado=1";
             PreparedStatement ps = con.prepareStatement(sql);
             
             ps.setString(1, pais);
@@ -157,7 +157,7 @@ public class CiudadData {
         return ciudades;
     }
 
-      
+      //Listar todas las ciudades adentro de una cierta provincia
        public List<Ciudad> listarCiudadPorProvincia(String provincia) {   //OK
 
         List<Ciudad> ciudades = new ArrayList<>();
@@ -188,7 +188,7 @@ public class CiudadData {
         }
         return ciudades;
     }
-       
+       //Borrado no logico de ciudades
     public void borrarCiudad(int idCiudad) {                   //OK
         String sql = "DELETE FROM ciudad WHERE idCiudad=?";
 

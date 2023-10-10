@@ -17,7 +17,7 @@ public class PasajeData {
         con = ConexionData.getConexion();
     }
 
-    //*********************Enzo create*******************
+    //Nuevo Pasaje - Boton Nuevo
     public void agregarPasaje(Pasaje pasaje) {
         String sql = "INSERT INTO pasaje (tipoTransporte, importe, idCiudad, estado) VALUES (?,?,?,?)";
         
@@ -35,7 +35,7 @@ public class PasajeData {
         }
     }
     
-
+    //Listado de pasajes por su transporte
     public List<Pasaje> tipoDePasajes(String tipo) {
         List<Pasaje> pasajes = new ArrayList<>();
         try {
@@ -62,6 +62,7 @@ public class PasajeData {
         return pasajes;
     }
     
+    //Listado de todos los pasajes activos o no
         public List<Pasaje> PasajesTodo(String tipo) {
         List<Pasaje> pasajes = new ArrayList<>();
         try {
@@ -76,7 +77,6 @@ public class PasajeData {
                 pasaje.setIdPasaje(rs.getInt("idPasaje"));
                 pasaje.setTipoTransporte(rs.getString("tipoTransporte"));
                 pasaje.setImporte(rs.getDouble("importe"));
-                //podria ponerse como fechas de inicio y salida para los pasajess (yadhi)
                 pasaje.setEstado(rs.getBoolean("estado"));
                 pasajes.add(pasaje);
             }
@@ -87,7 +87,33 @@ public class PasajeData {
         }
         return pasajes;
     }
+        //Listado de todos los pasajes para uso en paquete.
+        public List<Pasaje> pasajesActivos(String tipo) {
+        List<Pasaje> pasajes = new ArrayList<>();
+        try {
 
+            String selectQuery = "SELECT * FROM Pasaje WHERE tipoTransporte = ? AND estado=1";
+            PreparedStatement ps = con.prepareStatement(selectQuery);
+            ps.setString(1, tipo);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Pasaje pasaje = new Pasaje();
+                pasaje.setIdPasaje(rs.getInt("idPasaje"));
+                pasaje.setTipoTransporte(rs.getString("tipoTransporte"));
+                pasaje.setImporte(rs.getDouble("importe"));
+                pasaje.setEstado(rs.getBoolean("estado"));
+                pasajes.add(pasaje);
+            }
+            ps.close();
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error en (pasajesActivo) " + e.getMessage());
+        }
+        return pasajes;
+    }
+        
+        //Borrado de pasaje no logico
     public void borrarPasaje(int id) {
         String sql = "DELETE FROM pasaje WHERE idPasaje=?";
 
@@ -101,7 +127,7 @@ public class PasajeData {
             JOptionPane.showMessageDialog(null, "Error en (borrarPasaje) " + ex.getMessage());
         }
     }
-
+    //Boton Guardar - Cambia cosas de pasaje
     public void modificarPasaje(Pasaje pasaje) {
         String sql = "UPDATE pasaje SET tipoTransporte= ?, importe=?, idCiudad=?, estado=? WHERE idPasaje=? ";
 
@@ -110,7 +136,7 @@ public class PasajeData {
             ps.setString(1, pasaje.getTipoTransporte());
             ps.setDouble(2, pasaje.getImporte());
             ps.setInt(3, pasaje.getOrigenCiudad().getIdCiudad());
-            ps.setBoolean(4, true);
+            ps.setBoolean(4, pasaje.isEstado());
             ps.setInt(5, pasaje.getIdPasaje());
             ps.executeUpdate();
 
@@ -119,7 +145,8 @@ public class PasajeData {
             JOptionPane.showMessageDialog(null, "Error en (modificarPasaje)" + e.getMessage());
         }
     }
-
+    
+    //?
     public List<Integer> listarPasajePorTransporte(String transporte){
         List<Integer> idCiudad = new ArrayList<>();
         try {

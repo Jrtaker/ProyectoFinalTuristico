@@ -23,7 +23,7 @@ public class PaqueteData {
     public PaqueteData(){
         con = ConexionData.getConexion();
     }
- 
+    // Nuevo Paquete Crear - Boton Nuevo
     public void agregarPaquete(Paquete paquete){
          String sql= "INSERT INTO paquete (idOrigen,idDestino,idAlojamiento,idPasaje) VALUES (?,?,?,?)";
         try{
@@ -39,6 +39,7 @@ public class PaqueteData {
              JOptionPane.showMessageDialog(null, "Error en (agregarPaquete) " + e.getMessage());
         }
     }
+    //Paquete modificar - Boton Guardar
      public void modificarPaquete(Paquete paquete) {
         String sql = "UPDATE paquete SET idOrigen=?,idDestino=?,idAlojamiento=?,idPasaje=?,nombre=? WHERE idPaquete=?";
 
@@ -56,7 +57,7 @@ public class PaqueteData {
             JOptionPane.showMessageDialog(null, "Error en (modificarEstadia)" + e.getMessage());
         }
     }
-     
+     //Eliminado no logico de paquete - Boton Eliminar
     public void borrarPaquete(int idPaquete){
     String sql="DELETE FROM ciudad WHERE idPaquete=?";
         
