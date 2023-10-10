@@ -8,14 +8,14 @@ package main.entidades;
 import java.time.LocalDate;
 import java.util.*;
 
-/**
+/**  
  *
  * @author Joni
  */
 public class Alojamiento {
     private int idAlojamiento;
-    private LocalDate fechaIn;
-    private LocalDate fechaOut;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
     private boolean estado;
     private String servicio;
     private double importeDiario;
@@ -24,24 +24,28 @@ public class Alojamiento {
     
     public Alojamiento(){}
 
-    public Alojamiento(int idAlojamiento, LocalDate fechaIn, LocalDate fechaOut, boolean estado, String servicio, double importeDiario, Ciudad ciudad) {
+    public Alojamiento(int idAlojamiento, LocalDate fechaInicio, LocalDate fechaFin, boolean estado, String servicio, double importeDiario, Ciudad ciudad) {
         this.idAlojamiento = idAlojamiento;
-        this.fechaIn = fechaIn;
-        this.fechaOut = fechaOut;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
         this.estado = estado;
         this.servicio = servicio;
         this.importeDiario = importeDiario;
         this.ciudad = ciudad;
     }
 
-    public Alojamiento(LocalDate fechaIn, LocalDate fechaOut, boolean estado, String servicio, double importeDiario, Ciudad ciudad) {
-        this.fechaIn = fechaIn;
-        this.fechaOut = fechaOut;
+   
+
+    public Alojamiento(LocalDate fechaInicio, LocalDate fechaFin, boolean estado, String servicio, double importeDiario, Ciudad ciudad) {
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
         this.estado = estado;
         this.servicio = servicio;
         this.importeDiario = importeDiario;
         this.ciudad = ciudad;
     }
+
+    
 
     public int getIdAlojamiento() {
         return idAlojamiento;
@@ -51,20 +55,20 @@ public class Alojamiento {
         this.idAlojamiento = idAlojamiento;
     }
 
-    public LocalDate getFechaIn() {
-        return fechaIn;
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
     }
 
-    public void setFechaIn(LocalDate fechaIn) {
-        this.fechaIn = fechaIn;
+    public void setFechaInicio(LocalDate fechaInicio) {
+        this.fechaInicio = fechaInicio;
     }
 
-    public LocalDate getFechaOut() {
-        return fechaOut;
+    public LocalDate getFechaFin() {
+        return fechaFin;
     }
 
-    public void setFechaOut(LocalDate fechaOut) {
-        this.fechaOut = fechaOut;
+    public void setFechaFin(LocalDate fechaFin) {
+        this.fechaFin = fechaFin;
     }
 
     public boolean isEstado() {
@@ -97,6 +101,11 @@ public class Alojamiento {
 
     public void setCiudad(Ciudad ciudad) {
         this.ciudad = ciudad;
+    }
+
+    @Override
+    public String toString() {
+        return "Alojamiento{" + "fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", estado=" + estado + ", servicio=" + servicio + ", importeDiario=" + importeDiario + '}';
     }
 
      

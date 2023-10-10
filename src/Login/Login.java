@@ -84,11 +84,12 @@ public class Login extends javax.swing.JFrame {
             
      
         this.dispose();
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
 
-=======
+//======
         
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
+        
     }//GEN-LAST:event_LoginActionPerformed
 
     /**

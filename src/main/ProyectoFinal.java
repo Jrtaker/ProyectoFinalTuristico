@@ -3,14 +3,14 @@ package main;
 
 import Login.Login;
 import java.time.LocalDate;
+
 import java.time.Month;
 import java.util.List;
 import main.AccesoDatos.AlojamientoData;
 import main.AccesoDatos.CiudadData;
-<<<<<<< Updated upstream
-=======
+
 import main.entidades.Alojamiento;
->>>>>>> Stashed changes
+
 import main.entidades.Ciudad;
 
 
@@ -18,32 +18,39 @@ public class ProyectoFinal {
 
     public static void main(String[] args) {
        
-<<<<<<< Updated upstream
-       /*
-=======
-       
-       
->>>>>>> Stashed changes
-        Login.Login();
+
+        //Login.Login();
         CiudadData ciudad=new CiudadData();
         
        Ciudad probandoMetodo = new Ciudad("La Plata", "Argentina", true, "Buenos Aires");
       //ciudad.agregarCiudad(probandoMetodo);
-      Ciudad probandoMetodo2 = new Ciudad(2,"Santa Teresa", "Brasil", true, "Rio de Janeiro");
+      Ciudad probandoMetodo2 = new Ciudad(4,"Santa Teresa", "Brasil", true, "Rio de Janeiro");
+      
 //        ciudad.modificarCiudad(probandoMetodo2);
-        List<Ciudad> ListadoDeCiudades = ciudad.listarCiudad();
-        List<Ciudad> ListarCiudadTodo = ciudad.listarCiudadTodo(); 
+        //List<Ciudad> ListadoDeCiudades = ciudad.listarCiudad();
+       // List<Ciudad> ListarCiudadTodo = ciudad.listarCiudadTodo(); 
         
-       List<Ciudad> ListarCiudadPorPais = ciudad.listarCiudadPorPais("Argentina");
-       List<Ciudad> ListarCiudadPorProvincia = ciudad.listarCiudadPorProvincia("Cordoba");
+       //List<Ciudad> ListarCiudadPorPais = ciudad.listarCiudadPorPais("Argentina");
+       //List<Ciudad> ListarCiudadPorProvincia = ciudad.listarCiudadPorProvincia("Cordoba");
        //ciudad.borrarCiudad(1);
-        System.out.println(ListadoDeCiudades);
-        System.out.println(ListarCiudadTodo);
-        System.out.println(ListarCiudadPorPais);
-        System.out.println(ListarCiudadPorProvincia);
+       //System.out.println(ListadoDeCiudades);
+//        System.out.println(ListarCiudadTodo);
+//        System.out.println(ListarCiudadPorPais);
+//        System.out.println(ListarCiudadPorProvincia);
         
         AlojamientoData alojamiento = new AlojamientoData();
-        Alojamiento probandoMetodo2 =new Alojamiento(LocalDate.of(2023, 11, 2), LocalDate.of(2013, 12, 24), true, "basico", 50.0, probandoMetodo);
+        Alojamiento alojamientoPrueba =new Alojamiento(LocalDate.of(2023, 11, 1), LocalDate.of(2023, 12, 15), true, "premium", 50.0, probandoMetodo2);
+        alojamiento.agregarAlojamiento(alojamientoPrueba);
+        Alojamiento alojamientoAModificar =new Alojamiento(5, LocalDate.of(2024, 1, 3), LocalDate.of(2014, 2, 5), true, "basico", 50.0, probandoMetodo);
+        //alojamiento.modificarAlojamiento(alojamientoAModificar);
+       // alojamiento.borrarAlojamiento(5);
+        
+        
+       // List <Alojamiento> ListarAlojamientosPorCiudad= alojamiento.alojamientosPorCiudad(probandoMetodo2);
+        //System.out.println(ListarAlojamientosPorCiudad);
+        
+        
+        
        //Estadia probarMetodos = new Estadia( 5, "PremiunPro", 950, true, "Los Tronquitos");
        //estadia.agregarEstadia(probarMetodos);
        //estadia.borrarEstadia(3);

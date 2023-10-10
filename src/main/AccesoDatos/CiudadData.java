@@ -42,17 +42,16 @@ public class CiudadData {
             JOptionPane.showMessageDialog(null, "Error en (agregarCiudad)" + e.getMessage());
         }
     }
-<<<<<<< Updated upstream
+
     //nombre =/= string
     //provincia =/= string
     //pais =/= string
     //estado!=boolean
     
-    public void modificarCiudad(Ciudad ciudad) {
-=======
+
 
     public void modificarCiudad(Ciudad ciudad) {             //OK
->>>>>>> Stashed changes
+
         String sql = "UPDATE ciudad SET  nombre = ?, provincia = ?, pais = ?, estado = ? WHERE idCiudad=?";
 
         try {
@@ -69,13 +68,10 @@ public class CiudadData {
             JOptionPane.showMessageDialog(null, "Error en (modificarCiudad)" + e.getMessage());
         }
     }
-<<<<<<< Updated upstream
-    
-    public List<Ciudad> listarCiudad() {
-=======
+
 
     public List<Ciudad> listarCiudad() {                   //OK
->>>>>>> Stashed changes
+
 
         List<Ciudad> ciudades = new ArrayList<>();
         try {

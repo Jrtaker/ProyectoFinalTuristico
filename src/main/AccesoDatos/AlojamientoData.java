@@ -27,19 +27,20 @@ public class AlojamientoData {
     }
     
     //*********************ENZO (INSERT)********************************
-    public void agregarAlojamiento(Alojamiento alojamiento){
-        String sql= "INSERT INTO alojamiento ( fechaInicio, fechaFin, estado, importeDiario, servicio, idCiudad) VALUES (?,?,?)";
+    public void agregarAlojamiento(Alojamiento alojamiento){                      //ok
+        String sql= "INSERT INTO alojamiento ( fechaInicio, fechaFin, estado, servicio,importeDiario, idCiudad) VALUES (?,?,?,?,?,?)";
         try{
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setDate(1, Date.valueOf(alojamiento.getFechaIn()));
-            ps.setDate(2,Date.valueOf(alojamiento.getFechaOut()));
+            ps.setDate(1, Date.valueOf(alojamiento.getFechaInicio()));
+            ps.setDate(2,Date.valueOf(alojamiento.getFechaFin()));
             ps.setBoolean(3,alojamiento.isEstado());
-            ps.setDouble(4, alojamiento.getImporteDiario());
-            ps.setString(5, alojamiento.getServicio());
-            ps.setInt(6, alojamiento.getCiudad().getIdCiudad());
+            ps.setString(4, alojamiento.getServicio());
+            ps.setDouble(5, alojamiento.getImporteDiario());
             
+            ps.setInt(6, alojamiento.getCiudad().getIdCiudad());
+            ps.executeUpdate();
             ps.close();
-            JOptionPane.showMessageDialog(null, "Agregado con exito");
+            JOptionPane.showMessageDialog(null, "Alojamiento agregado con exito.");
             
         }catch(SQLException e){
              JOptionPane.showMessageDialog(null, "Error en (agregarAlojamiento) " + e.getMessage());
@@ -47,18 +48,26 @@ public class AlojamientoData {
     }
     
     
-    public void cambiarAlojamiento(Alojamiento alojamiento){
-        String sql= "UPDATE alojamiento SET fechaInicio=?, fechaFin=?, WHERE idAlojamiento=?";
+    public void modificarAlojamiento(Alojamiento alojamiento){                         //ok
+        String sql= "UPDATE alojamiento SET fechaInicio=?, fechaFin=? WHERE idAlojamiento=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
+            System.out.println(alojamiento.getFechaInicio());
+            System.out.println(alojamiento.getFechaFin());
+            
+            ps.setDate(1, Date.valueOf(alojamiento.getFechaInicio()));
+            ps.setDate(2, Date.valueOf(alojamiento.getFechaFin()));
+            ps.setInt(3, alojamiento.getIdAlojamiento());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se ha modificado un alojamiento");
         } catch (SQLException e) {
-           JOptionPane.showMessageDialog(null, "Error en (cambiarAlojamiento) " + e.getMessage());
+           JOptionPane.showMessageDialog(null, "Error en (modificarAlojamiento) " + e.getMessage());
         }
     }
     
     
   
-    public List<Alojamiento> alojamientosPorCiudad(Ciudad ciudad) {
+    public List<Alojamiento> alojamientosPorCiudad(Ciudad ciudad) {                //ok
     List<Alojamiento> alojamientos = new ArrayList<>();
     try {
      
@@ -69,9 +78,14 @@ public class AlojamientoData {
         
         while (rs.next()) {
             Alojamiento alojamiento = new Alojamiento();
-            alojamiento.setIdAlojamiento(rs.getInt("idAlojamiento"));
-
             
+            alojamiento.setIdAlojamiento(rs.getInt("idAlojamiento"));
+           alojamiento.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+           alojamiento.setFechaFin(rs.getDate("fechaFin").toLocalDate());
+           alojamiento.setEstado(true);
+           alojamiento.setServicio(rs.getString("servicio"));
+           alojamiento.setImporteDiario(rs.getInt("importeDiario"));
+           
             alojamientos.add(alojamiento);
         }
        ps.close();
@@ -88,6 +102,7 @@ public class AlojamientoData {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1,idAlojamiento);
+            ps.executeUpdate();
             ps.close();
             JOptionPane.showMessageDialog(null, "Borrado con exito");
         } catch (SQLException ex) {
