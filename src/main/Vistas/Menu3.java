@@ -530,7 +530,8 @@ public class Menu3 extends javax.swing.JFrame {
         
 
 
-//alojamientoCrear
+       
+//alojamientoCrear -
     }//GEN-LAST:event_botonLabelAlojamientoMouseClicked
 
     private void BotonLabelPasajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonLabelPasajesMouseClicked
