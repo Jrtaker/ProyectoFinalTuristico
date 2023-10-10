@@ -5,6 +5,7 @@
  */
 package main.Vistas;
 
+import javax.swing.JOptionPane;
 import main.AccesoDatos.CiudadData;
 import main.entidades.Ciudad;
 
@@ -13,7 +14,8 @@ import main.entidades.Ciudad;
  * @author Joni
  */
 public class CiudadCrear extends javax.swing.JInternalFrame {
-
+    CiudadData ciudadData=new CiudadData();
+    Ciudad Ciudad =new Ciudad();
     /**
      * Creates new form CiudadCambios
      */
@@ -37,13 +39,13 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jREstado = new javax.swing.JRadioButton();
-        jComboBox9 = new javax.swing.JComboBox<>();
+        jCListarCiudad = new javax.swing.JComboBox<>();
         jBNuevo = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBEliminar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
-        jCPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Brazil", "Argentina", "Estados Unidos", "Colombia", "Chile", " " }));
+        jCPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Brazil", "Argentina", "Estados Unidos", "Colombia", "Chile", "" }));
         jCPais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCPaisActionPerformed(evt);
@@ -70,7 +72,12 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
 
         jREstado.setText("Estado");
 
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCListarCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCListarCiudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCListarCiudadActionPerformed(evt);
+            }
+        });
 
         jBNuevo.setText("Nuevo");
         jBNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +86,12 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setText("Eliminar");
+        jBEliminar.setText("Eliminar");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Guardar");
 
@@ -95,7 +107,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
                         .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jREstado)
-                            .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCListarCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jCPais, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -114,7 +126,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(jBNuevo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(jBEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -123,7 +135,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jCListarCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -141,7 +153,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBNuevo)
-                    .addComponent(jButton2)
+                    .addComponent(jBEliminar)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
                 .addContainerGap(35, Short.MAX_VALUE))
@@ -159,28 +171,44 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCPaisActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
-        String pais =jCPais.getSelectedItem().toString();
+        String pais = jCPais.getSelectedItem().toString();
+
         String provincia = jTProvincia.getText();
-        String ciudad =jTCiudad.getText();
+        String ciudad = jTCiudad.getText();
+        if (provincia.isEmpty() || ciudad.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Hay campos vacios.Rellenalos para continuar.");
+            return;
+        }
         boolean estado = jREstado.isSelected();
-        
+
         Ciudad nuevaciudad = new Ciudad(ciudad, pais, estado, provincia);
         CiudadData ciudadData = new CiudadData();
         ciudadData.agregarCiudad(nuevaciudad);
+        jTProvincia.setText("");
+        jTCiudad.setText("");
+        
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jTCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCiudadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTCiudadActionPerformed
 
+    private void jCListarCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCListarCiudadActionPerformed
+        
+    }//GEN-LAST:event_jCListarCiudadActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+       
+    }//GEN-LAST:event_jBEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBNuevo;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox<String> jCListarCiudad;
     private javax.swing.JComboBox<String> jCPais;
-    private javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

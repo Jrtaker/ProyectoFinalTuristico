@@ -547,7 +547,7 @@ public class Menu3 extends javax.swing.JFrame {
         // Pasaje Crear         // TODO add your handling code here:
     }//GEN-LAST:event_BotonLabelPasajesMouseClicked
 
-    /** @param args the command line arguments*/
+   
     public static void menu3() {
        
         try {
