@@ -5,6 +5,10 @@
  */
 package main.Vistas;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Joni
@@ -29,7 +33,16 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
 
         BGDesayuno = new javax.swing.ButtonGroup();
         BGCamas = new javax.swing.ButtonGroup();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        ImageIcon icon = new ImageIcon(getClass().getResource("hotel.jpg"));
+        Image img=icon.getImage();
+        jDesktopPane1 = new javax.swing.JDesktopPane(){
+
+            public void paintComponent(Graphics g)
+            {
+                g.drawImage(img,0,0,getWidth(),
+                    getHeight(),this);
+            }
+        };
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
@@ -49,6 +62,8 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jRadioButton9 = new javax.swing.JRadioButton();
+
+        jDesktopPane1.setBackground(new java.awt.Color(255, 51, 204));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
