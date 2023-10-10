@@ -198,7 +198,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCListarCiudadActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-       
+       ciudadData.borrarCiudad(WIDTH);
     }//GEN-LAST:event_jBEliminarActionPerformed
 
 
