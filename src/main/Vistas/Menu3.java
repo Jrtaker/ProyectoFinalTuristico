@@ -7,7 +7,10 @@ package main.Vistas;
 
 /**@author Programita */
 public class Menu3 extends javax.swing.JFrame {
-
+    PaquetePreparar  Pqt =new PaquetePreparar();
+    CiudadCrear  ciudadCrear =new CiudadCrear();
+    AlojamientoCrear  alojamientoCrear =new AlojamientoCrear();
+    PasajeCrear  psjeCrear =new PasajeCrear();
     
     public Menu3() {
         initComponents();
@@ -494,6 +497,7 @@ public class Menu3 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        fijarAbierto();
         PanelLateral.setVisible(true);
         panelPrincipal.setVisible(true);
         panelPaquete.setVisible(false);
@@ -501,6 +505,7 @@ public class Menu3 extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel12jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12jLabel1MouseClicked
+        fijarAbierto();
         PanelLateral.setVisible(true);
         panelPrincipal.setVisible(false);
         panelPaquete.setVisible(false);
@@ -509,7 +514,7 @@ public class Menu3 extends javax.swing.JFrame {
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
       
-       
+        fijarAbierto();
         PanelLateral.setVisible(true);
         panelPrincipal.setVisible(false);
         panelPaquete.setVisible(true);
@@ -517,58 +522,51 @@ public class Menu3 extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-          EscritorioPrincipal.removeAll();
-        EscritorioPrincipal.repaint();
-        PaquetePreparar  Pqt =new PaquetePreparar();
+       setFalse();
         Pqt.setVisible(true);
         EscritorioPrincipal.add(Pqt);
         EscritorioPrincipal.moveToFront(Pqt);
-
-
-
         ///Paquete Preparar
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void BotonLabelCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonLabelCiudadMouseClicked
-        EscritorioPrincipal.removeAll();
-        EscritorioPrincipal.repaint();
-        CiudadCrear  ciudadCrear =new CiudadCrear();
+        setFalse();
         ciudadCrear.setVisible(true);
         EscritorioPrincipal.add(ciudadCrear);
         EscritorioPrincipal.moveToFront(ciudadCrear);
-        
-
-
         // enlazar CiudadCrear
     }//GEN-LAST:event_BotonLabelCiudadMouseClicked
 
     private void botonLabelAlojamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLabelAlojamientoMouseClicked
-         EscritorioPrincipal.removeAll();
-        EscritorioPrincipal.repaint();
-        AlojamientoCrear  alojamientoCrear =new AlojamientoCrear();
+        setFalse();
         alojamientoCrear.setVisible(true);
         EscritorioPrincipal.add(alojamientoCrear);
-        EscritorioPrincipal.moveToFront(alojamientoCrear);
-        
-
-
-       
-//alojamientoCrear -
+        EscritorioPrincipal.moveToFront(alojamientoCrear);       
+        //alojamientoCrear -
     }//GEN-LAST:event_botonLabelAlojamientoMouseClicked
 
     private void BotonLabelPasajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonLabelPasajesMouseClicked
-      EscritorioPrincipal.removeAll();
-        EscritorioPrincipal.repaint();
-        PasajeCrear  psjeCrear =new PasajeCrear();
+        setFalse();
         psjeCrear.setVisible(true);
         EscritorioPrincipal.add(psjeCrear);
         EscritorioPrincipal.moveToFront(psjeCrear);
-
- 
-
         // Pasaje Crear         // TODO add your handling code here:
     }//GEN-LAST:event_BotonLabelPasajesMouseClicked
+public void fijarAbierto(){
+        if(ciudadCrear.isVisible()||Pqt.isVisible()||alojamientoCrear.isVisible()||psjeCrear.isVisible()){
+            ciudadCrear.dispose();
+            Pqt.dispose();
+            alojamientoCrear.dispose();
+            psjeCrear.dispose(); 
+        }
+    }
 
+public void setFalse(){
+        PanelLateral.setVisible(true);
+        panelPrincipal.setVisible(false);
+        panelPaquete.setVisible(false);
+        panelAdmin.setVisible(false);
+}
     /** @param args the command line arguments*/
     public static void menu3() {
        
