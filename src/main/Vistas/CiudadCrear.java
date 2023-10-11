@@ -25,10 +25,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
     public CiudadCrear() {
         initComponents();
         
-        cData =new CiudadData();
-        cargarCiudad =(List<Ciudad>)cData.listarCiudad();
-        for (Ciudad item: cargarCiudad)
-            jCListarCiudad.addItem(item);
+       refrescarLista();
     
     }
 
@@ -51,7 +48,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         jCListarCiudad = new javax.swing.JComboBox<>();
         jBNuevo = new javax.swing.JButton();
         jBEliminar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBGuardar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         jCPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Brazil", "Argentina", "Estados Unidos", "Colombia", "Chile", "" }));
@@ -101,7 +98,12 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton3.setText("Guardar");
+        jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Salir");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -129,8 +131,8 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
                                     .addComponent(jTCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addGap(59, 59, 59)
-                                        .addComponent(jButton3)
-                                        .addGap(18, 18, 18)
+                                        .addComponent(jBGuardar)
+                                        .addGap(24, 24, 24)
                                         .addComponent(jBEliminar)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,7 +141,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jCListarCiudad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jTProvincia, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                                    .addComponent(jTProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
@@ -169,15 +171,23 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBNuevo)
-                    .addComponent(jBEliminar)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jBGuardar)
+                    .addComponent(jButton4)
+                    .addComponent(jBEliminar))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void refrescarLista(){
+        cData =new CiudadData();
+        cargarCiudad =(List<Ciudad>)cData.listarCiudad();
+        for (Ciudad item: cargarCiudad)
+            jCListarCiudad.addItem(item);
+    
+    }
+    
+    
     private void jTProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTProvinciaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTProvinciaActionPerformed
@@ -202,7 +212,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         ciudadData.agregarCiudad(nuevaciudad);
         jTProvincia.setText("");
         jTCiudad.setText("");
-        
+        refrescarLista();
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jTCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCiudadActionPerformed
@@ -210,6 +220,19 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTCiudadActionPerformed
 
     private void jCListarCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCListarCiudadActionPerformed
+        
+        Ciudad ciudad = (Ciudad)jCListarCiudad.getSelectedItem();
+        int idCiudad =ciudad.getIdCiudad();
+        String pais = ciudad.getPais();
+        String provincia = ciudad.getProvincia();
+        String nombre = ciudad.getNombre();
+        boolean estado = ciudad.isEstado();
+        
+        jCPais.setSelectedItem(pais);
+        jTProvincia.setText(provincia);
+        jTCiudad.setText(nombre);
+        jREstado.setSelected(estado);
+        
         
     }//GEN-LAST:event_jCListarCiudadActionPerformed
 
@@ -220,17 +243,22 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         String ciudad = jTCiudad.getText();
         
         cData.borrarCiudad(pais, provincia, ciudad);
+        refrescarLista();
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+       
+    }//GEN-LAST:event_jBGuardarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBEliminar;
+    private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBNuevo;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<Ciudad> jCListarCiudad;
     private javax.swing.JComboBox<String> jCPais;

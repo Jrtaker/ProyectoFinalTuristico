@@ -190,7 +190,7 @@ public class CiudadData {
     }
        //Borrado no logico de ciudades
     public void borrarCiudad(String pais, String provincia, String ciudad) {                   //OK
-        String sql = "DELETE FROM ciudad WHERE pais=? AND provincia =? AND ciudad =?";
+        String sql = "DELETE FROM ciudad WHERE pais=? AND provincia =? AND nombre =?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
