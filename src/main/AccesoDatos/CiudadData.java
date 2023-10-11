@@ -189,12 +189,14 @@ public class CiudadData {
         return ciudades;
     }
        //Borrado no logico de ciudades
-    public void borrarCiudad(int idCiudad) {                   //OK
-        String sql = "DELETE FROM ciudad WHERE idCiudad=?";
+    public void borrarCiudad(String pais, String provincia, String ciudad) {                   //OK
+        String sql = "DELETE FROM ciudad WHERE pais=? AND provincia =? AND ciudad =?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, idCiudad);
+            ps.setString(1, pais);
+            ps.setString(2, provincia);
+            ps.setString(3, ciudad);
             ps.executeUpdate();
             ps.close();
             JOptionPane.showMessageDialog(null, "Borrado con exito");
