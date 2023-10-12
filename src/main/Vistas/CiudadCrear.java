@@ -16,7 +16,7 @@ import main.entidades.Ciudad;
  * @author Joni
  */
 public class CiudadCrear extends javax.swing.JInternalFrame {
-    private List <Ciudad> cargarCiudad;
+    private List <Ciudad> cargarCiudad; 
     private CiudadData cData;
     
     /**
@@ -25,6 +25,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
     public CiudadCrear() {
         initComponents();
         
+        limpiarCampos();
        refrescarLista();
     
     }
@@ -190,6 +191,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         
         jTProvincia.setText("");
         jTCiudad.setText("");
+        
     }
     
     private void jTProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTProvinciaActionPerformed
@@ -201,18 +203,20 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCPaisActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
+        
         String pais = jCPais.getSelectedItem().toString();
         String provincia = jTProvincia.getText();
         String ciudad = jTCiudad.getText();
+        
         if (provincia.isEmpty() || ciudad.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Hay campos vacios.Rellenalos para continuar.");
             return;
         }
         boolean estado = jREstado.isSelected();
-
         Ciudad nuevaciudad = new Ciudad(ciudad, pais, estado, provincia);
         CiudadData ciudadData = new CiudadData();
         ciudadData.agregarCiudad(nuevaciudad);
+        
         limpiarCampos();
         refrescarLista();
     }//GEN-LAST:event_jBNuevoActionPerformed
@@ -224,6 +228,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
     private void jCListarCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCListarCiudadActionPerformed
         
         Ciudad ciudad = (Ciudad)jCListarCiudad.getSelectedItem();
+        
         int idCiudad =ciudad.getIdCiudad();
         String pais = ciudad.getPais();
         String provincia = ciudad.getProvincia();
@@ -234,12 +239,13 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         jTProvincia.setText(provincia);
         jTCiudad.setText(nombre);
         jREstado.setSelected(estado);
+       
         
-        
+        refrescarLista();
     }//GEN-LAST:event_jCListarCiudadActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-       
+        
         String pais = jCPais.getSelectedItem().toString();
         String provincia = jTProvincia.getText();
         String ciudad = jTCiudad.getText();
@@ -256,24 +262,29 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         Ciudad listaCiudad = (Ciudad)jCListarCiudad.getSelectedItem();
         
-        String idCiudad = jCListarCiudad.getSelectedItem().toString();
+        int idCiudad =listaCiudad.getIdCiudad();
         String pais = jCPais.getSelectedItem().toString();
         String provincia = jTProvincia.getText();
         String nombre = jTCiudad.getText();
         boolean estado = jREstado.isSelected();
         
-        jCPais.setSelectedItem(pais);
-        jTProvincia.setText(provincia);
-        jREstado.setSelected(estado);
-        jTCiudad.setText(idCiudad);
         
-        Ciudad ciudad =new Ciudad(nombre, pais, estado, provincia);
-        cData.modificarCiudad(ciudad);
-        
-        
+        Ciudad ciudad =new Ciudad(idCiudad, nombre, pais, estado, provincia);
+        if (ciudad!=null){
+            ciudad.setIdCiudad(idCiudad);
+            ciudad.setPais(pais);
+            ciudad.setProvincia(provincia);
+            ciudad.setNombre(nombre);
+            ciudad.setEstado(estado);
+
+            cData.modificarCiudad(ciudad);
+        }
         
         limpiarCampos();
         refrescarLista();
+        
+        
+        
     }//GEN-LAST:event_jBGuardarActionPerformed
 
 
