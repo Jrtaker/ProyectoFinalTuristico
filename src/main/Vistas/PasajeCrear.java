@@ -5,11 +5,6 @@
  */
 package main.Vistas;
 
-import java.util.ArrayList;
-import java.util.List;
-import main.AccesoDatos.CiudadData;
-import main.entidades.Ciudad;
-
 /**
  *
  * @author Joni
@@ -32,26 +27,32 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jCPais = new javax.swing.JComboBox<>();
-        jCProvincia = new javax.swing.JComboBox<>();
-        jCCiudad = new javax.swing.JComboBox<>();
-        jCTipoDeTransporte = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jComboBox4 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTImporte = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jREstado = new javax.swing.JRadioButton();
-        jBNuevo = new javax.swing.JButton();
-        jBGuardar = new javax.swing.JButton();
-        jBEliminar = new javax.swing.JButton();
-        jBSalir = new javax.swing.JButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
-        jCTipoDeTransporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Avión", "Taxi", "Colectivo", "Tren" }));
-        jCTipoDeTransporte.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCTipoDeTransporteActionPerformed(evt);
+                jComboBox4ActionPerformed(evt);
             }
         });
 
@@ -63,43 +64,29 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Tipo de transporte");
 
-        jTImporte.addActionListener(new java.awt.event.ActionListener() {
+        jTextField1.setText("jTextField1");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTImporteActionPerformed(evt);
+                jTextField1ActionPerformed(evt);
             }
         });
 
         jLabel5.setText("Importe");
 
-        jREstado.setText("Estado");
-        jREstado.addActionListener(new java.awt.event.ActionListener() {
+        jRadioButton1.setText("Estado");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jREstadoActionPerformed(evt);
+                jRadioButton1ActionPerformed(evt);
             }
         });
 
-        jBNuevo.setText("Nuevo");
-        jBNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBNuevoActionPerformed(evt);
-            }
-        });
+        jButton1.setText("jButton1");
 
-        jBGuardar.setText("Guardar");
-        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBGuardarActionPerformed(evt);
-            }
-        });
+        jButton2.setText("jButton2");
 
-        jBEliminar.setText("Eliminar");
+        jButton3.setText("jButton3");
 
-        jBSalir.setText("Salir");
-        jBSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBSalirActionPerformed(evt);
-            }
-        });
+        jButton4.setText("jButton4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,13 +95,13 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jREstado)
+                    .addComponent(jRadioButton1)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jCPais, 0, 175, Short.MAX_VALUE)
-                                .addComponent(jCProvincia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jCCiudad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jComboBox1, 0, 175, Short.MAX_VALUE)
+                                .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -126,114 +113,89 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jLabel3))))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jCTipoDeTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, Short.MAX_VALUE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jTImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jBNuevo)
+                .addComponent(jButton1)
                 .addGap(18, 18, 18)
-                .addComponent(jBGuardar)
+                .addComponent(jButton2)
                 .addGap(18, 18, 18)
-                .addComponent(jBEliminar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                .addComponent(jBSalir)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addComponent(jButton4)
                 .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCTipoDeTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTImporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
-                .addComponent(jREstado)
+                .addComponent(jRadioButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBNuevo)
-                    .addComponent(jBGuardar)
-                    .addComponent(jBEliminar)
-                    .addComponent(jBSalir))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCTipoDeTransporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCTipoDeTransporteActionPerformed
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCTipoDeTransporteActionPerformed
+    }//GEN-LAST:event_jComboBox4ActionPerformed
 
-    private void jREstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jREstadoActionPerformed
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jREstadoActionPerformed
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
-    private void jTImporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTImporteActionPerformed
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTImporteActionPerformed
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        
-    }//GEN-LAST:event_jBGuardarActionPerformed
 
-    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jBSalirActionPerformed
-
-    private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
-        String transporte = jCTipoDeTransporte.getSelectedItem().toString();
-        double importe = Double.parseDouble(jTImporte.getText());
-        boolean estado = jREstado.isSelected();
-        String pais;
-        String provincia;
-        String ciudad;
-        
-    }//GEN-LAST:event_jBNuevoActionPerformed
-
-    private void refrescarLista(){
-        CiudadData ciudadData = new CiudadData();
-        List <Ciudad> listaCiudad = new ArrayList<Ciudad>();
-        for (Ciudad ciudad : listaCiudad) {
-            
-        }
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBEliminar;
-    private javax.swing.JButton jBGuardar;
-    private javax.swing.JButton jBNuevo;
-    private javax.swing.JButton jBSalir;
-    private javax.swing.JComboBox<String> jCCiudad;
-    private javax.swing.JComboBox<String> jCPais;
-    private javax.swing.JComboBox<String> jCProvincia;
-    private javax.swing.JComboBox<String> jCTipoDeTransporte;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JRadioButton jREstado;
-    private javax.swing.JTextField jTImporte;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
