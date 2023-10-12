@@ -595,7 +595,14 @@ public class Menu3 extends javax.swing.JFrame {
         psjeCrear.setVisible(true);
         EscritorioPrincipal.add(psjeCrear);
         EscritorioPrincipal.moveToFront(psjeCrear);
+<<<<<<< Updated upstream
         // Pasaje Crear         // TODO add your handling code here:
+=======
+
+ 
+
+        // Pasaje Crear       
+>>>>>>> Stashed changes
     }//GEN-LAST:event_BotonLabelPasajesMouseClicked
 
     private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
