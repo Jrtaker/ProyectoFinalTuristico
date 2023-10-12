@@ -36,7 +36,7 @@ public class CiudadData {
             ps.setString(3, ciudad.getPais());
             ps.setBoolean(4, true);
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se añadio una nueva Ciudad.");
+            JOptionPane.showMessageDialog(null, "SE AÑADIO NUEVA CIUDAD.");
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error en (agregarCiudad)" + e.getMessage());
@@ -63,7 +63,7 @@ public class CiudadData {
             ps.setInt(5, ciudad.getIdCiudad());
             ps.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "Cambiado con exito");
+            JOptionPane.showMessageDialog(null, "CIUDAD MODIFICADA.");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error en (modificarCiudad)" + e.getMessage());
         }
@@ -199,7 +199,7 @@ public class CiudadData {
             ps.setString(3, ciudad);
             ps.executeUpdate();
             ps.close();
-            JOptionPane.showMessageDialog(null, "Borrado con exito");
+            JOptionPane.showMessageDialog(null, "CIUDAD BORRADA.");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en (borrarCiudad) " + ex.getMessage());
         }

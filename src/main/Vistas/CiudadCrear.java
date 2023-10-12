@@ -186,7 +186,11 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
             jCListarCiudad.addItem(item);
     
     }
-    
+    private void limpiarCampos(){
+        
+        jTProvincia.setText("");
+        jTCiudad.setText("");
+    }
     
     private void jTProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTProvinciaActionPerformed
         // TODO add your handling code here:
@@ -198,7 +202,6 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         String pais = jCPais.getSelectedItem().toString();
-
         String provincia = jTProvincia.getText();
         String ciudad = jTCiudad.getText();
         if (provincia.isEmpty() || ciudad.isEmpty()) {
@@ -210,11 +213,10 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         Ciudad nuevaciudad = new Ciudad(ciudad, pais, estado, provincia);
         CiudadData ciudadData = new CiudadData();
         ciudadData.agregarCiudad(nuevaciudad);
-        jTProvincia.setText("");
-        jTCiudad.setText("");
+        limpiarCampos();
         refrescarLista();
     }//GEN-LAST:event_jBNuevoActionPerformed
-
+    
     private void jTCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCiudadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTCiudadActionPerformed
@@ -237,12 +239,13 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCListarCiudadActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-       String pais = jCPais.getSelectedItem().toString();
-
+       
+        String pais = jCPais.getSelectedItem().toString();
         String provincia = jTProvincia.getText();
         String ciudad = jTCiudad.getText();
         
         cData.borrarCiudad(pais, provincia, ciudad);
+        limpiarCampos();
         refrescarLista();
     }//GEN-LAST:event_jBEliminarActionPerformed
 
@@ -251,7 +254,26 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-       
+        Ciudad listaCiudad = (Ciudad)jCListarCiudad.getSelectedItem();
+        
+        String idCiudad = jCListarCiudad.getSelectedItem().toString();
+        String pais = jCPais.getSelectedItem().toString();
+        String provincia = jTProvincia.getText();
+        String nombre = jTCiudad.getText();
+        boolean estado = jREstado.isSelected();
+        
+        jCPais.setSelectedItem(pais);
+        jTProvincia.setText(provincia);
+        jREstado.setSelected(estado);
+        jTCiudad.setText(idCiudad);
+        
+        Ciudad ciudad =new Ciudad(nombre, pais, estado, provincia);
+        cData.modificarCiudad(ciudad);
+        
+        
+        
+        limpiarCampos();
+        refrescarLista();
     }//GEN-LAST:event_jBGuardarActionPerformed
 
 
