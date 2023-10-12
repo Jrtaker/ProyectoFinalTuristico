@@ -215,7 +215,7 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
         CiudadData ciudadData = new CiudadData();
         List <Ciudad> listaCiudad = new ArrayList<Ciudad>();
         for (Ciudad ciudad : listaCiudad) {
-            // "?"
+            
         }
     }
     
