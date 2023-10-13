@@ -59,7 +59,7 @@ public class CiudadData {
             ps.setString(1, ciudad.getNombre());
             ps.setString(2, ciudad.getProvincia());
             ps.setString(3, ciudad.getPais());
-            ps.setBoolean(4, true);
+            ps.setBoolean(4, ciudad.isEstado());
             ps.setInt(5, ciudad.getIdCiudad());
             ps.executeUpdate();
 
