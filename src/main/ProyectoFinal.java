@@ -6,12 +6,14 @@ import java.time.LocalDate;
 
 import main.AccesoDatos.AlojamientoData;
 import main.AccesoDatos.CiudadData;
+import main.AccesoDatos.PasajeData;
 import main.Vistas.Menu3;
 
 
 import main.entidades.Alojamiento;
 
 import main.entidades.Ciudad;
+import main.entidades.Pasaje;
 
 
 public class ProyectoFinal {
@@ -25,7 +27,7 @@ public class ProyectoFinal {
 //        
 //       Ciudad probandoMetodo = new Ciudad("La Plata", "Argentina", true, "Buenos Aires");
 //      //ciudad.agregarCiudad(probandoMetodo);
-//      Ciudad probandoMetodo2 = new Ciudad(4,"Santa Teresa", "Brasil", true, "Rio de Janeiro");
+//     Ciudad probandoMetodo2 = new Ciudad(4,"Santa Teresa", "Brasil", true, "Rio de Janeiro");
 //      
 ////        ciudad.modificarCiudad(probandoMetodo2);
 //        //List<Ciudad> ListadoDeCiudades = ciudad.listarCiudad();
@@ -68,8 +70,11 @@ public class ProyectoFinal {
 ////       Estadia probarMetodos = new Estadia( 1, "Basico", 900, true, "Las Juaninas");
 ////       estadia.agregarEstadia(probarMetodos);
 
-       
-
-    }
+//       PasajeData pasajeData = new PasajeData();
+//       Pasaje nuevoPasaje = new Pasaje("avion", 25000.00,probandoMetodo2 , true);
+//       pasajeData.agregarPasaje(nuevoPasaje);
+     }
     
 }
+
+
