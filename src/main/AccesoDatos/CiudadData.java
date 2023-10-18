@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import main.entidades.Ciudad;
 
@@ -24,6 +26,34 @@ public class CiudadData {
 
     public CiudadData() {
         con = ConexionData.getConexion();
+    }
+    public Ciudad buscarCiudad(int id){
+        Ciudad ciudad=null;
+        String sql = "SELECT * FROM ciudad WHERE idCiudad =?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()){
+            
+            
+            ciudad=new Ciudad ();
+            ciudad.setIdCiudad(id);
+            ciudad.setNombre(rs.getString("nombre"));
+            ciudad.setPais(rs.getString("pais"));
+            ciudad.setProvincia(rs.getString("provincia"));
+            ciudad.setEstado(rs.getBoolean("estado"));
+            
+            }else {
+                JOptionPane.showMessageDialog(null, "Ciudad no existe");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en (buscarNombre(Ciudad))" + ex.getMessage());
+        }
+        return ciudad;
+        
     }
     //Nueva Ciudad - Boton Nuevo
     public void agregarCiudad(Ciudad ciudad) {           //OK

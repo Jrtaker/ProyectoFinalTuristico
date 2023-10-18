@@ -22,6 +22,7 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
     public PasajeCrear() {
         initComponents();
         refrescarLista();
+        refrescarListaPasaje();
     }
     private void refrescarLista(){
         CiudadData ciudadData = new CiudadData();
@@ -29,9 +30,10 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
         for (Ciudad ciudad : listaCiudad) {
             jCOrigen.addItem(ciudad);
         }
-        Ciudad ciudad =new Ciudad();
+    }    
+        private void refrescarListaPasaje(){
         PasajeData pasajeData =new PasajeData();
-        List <Pasaje> listaPasaje =(List<Pasaje>pasajeData.PasajesTodo(tipoTransporte) ;
+        List <Pasaje> listaPasaje =(List<Pasaje>)pasajeData.PasajesTodo() ;
         for (Pasaje pasaje :listaPasaje)
             jCListarPasaje.addItem(pasaje);
     }
@@ -94,6 +96,11 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
         jBGuardar.setText("Guardar");
 
         jBEliminar.setText("Eliminar");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
 
         jBSalir.setText("Salir");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -131,17 +138,17 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jCTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(127, 127, 127)))
-                                .addGap(0, 26, Short.MAX_VALUE))
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 153, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCOrigen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jCListarPasaje, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jCOrigen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jCListarPasaje, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel2)
+                                .addGap(19, 19, 19))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jBNuevo)
@@ -224,13 +231,17 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCListarPasajeActionPerformed
 
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBNuevo;
     private javax.swing.JButton jBSalir;
-    private javax.swing.JComboBox<String> jCListarPasaje;
+    private javax.swing.JComboBox<Pasaje> jCListarPasaje;
     private javax.swing.JComboBox<Ciudad> jCOrigen;
     private javax.swing.JComboBox<String> jCTransporte;
     private javax.swing.JLabel jLabel1;

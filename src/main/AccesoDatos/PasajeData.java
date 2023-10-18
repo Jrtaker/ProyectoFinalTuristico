@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import main.entidades.Ciudad;
 import main.entidades.Pasaje;
 
 public class PasajeData {
@@ -52,6 +53,10 @@ public class PasajeData {
                 pasaje.setImporte(rs.getDouble("importe"));
                 //podria ponerse como fechas de inicio y salida para los pasajess (yadhi)
                 pasaje.setEstado(rs.getBoolean("estado"));
+                CiudadData ciudadData=new CiudadData();
+                int idCiudad=rs.getInt("idCiudad");
+                Ciudad ciudad = ciudadData.buscarCiudad(idCiudad);
+                
                 pasajes.add(pasaje);
             }
             ps.close();
@@ -63,21 +68,26 @@ public class PasajeData {
     }
     
     //Listado de todos los pasajes activos o no
-        public List<Pasaje> PasajesTodo(String tipo) {
+        public List<Pasaje> PasajesTodo() {
         List<Pasaje> pasajes = new ArrayList<>();
         try {
 
             String selectQuery = "SELECT * FROM Pasaje";
             PreparedStatement ps = con.prepareStatement(selectQuery);
-            ps.setString(1, tipo);
+            
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                Pasaje pasaje = new Pasaje();
-                pasaje.setIdPasaje(rs.getInt("idPasaje"));
-                pasaje.setTipoTransporte(rs.getString("tipoTransporte"));
-                pasaje.setImporte(rs.getDouble("importe"));
-                pasaje.setEstado(rs.getBoolean("estado"));
+                
+                int IdPasaje=(rs.getInt("idPasaje"));
+                String TipoTransporte=(rs.getString("tipoTransporte"));
+                double Importe=(rs.getDouble("importe"));
+                boolean Estado=(rs.getBoolean("estado"));
+                
+                CiudadData ciudadData=new CiudadData();
+                int idCiudad=rs.getInt("idCiudad");
+                Ciudad ciudad = ciudadData.buscarCiudad(idCiudad);
+                Pasaje pasaje = new Pasaje(IdPasaje,TipoTransporte,Importe,ciudad,Estado);
                 pasajes.add(pasaje);
             }
             ps.close();
@@ -103,6 +113,9 @@ public class PasajeData {
                 pasaje.setTipoTransporte(rs.getString("tipoTransporte"));
                 pasaje.setImporte(rs.getDouble("importe"));
                 pasaje.setEstado(rs.getBoolean("estado"));
+                CiudadData ciudadData=new CiudadData();
+                int idCiudad=rs.getInt("idCiudad");
+                Ciudad ciudad = ciudadData.buscarCiudad(idCiudad);
                 pasajes.add(pasaje);
             }
             ps.close();

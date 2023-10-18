@@ -5,6 +5,8 @@
  */
 package main.entidades;
 
+import main.AccesoDatos.CiudadData;
+
 /**
  *
  * @author Ana
@@ -73,10 +75,14 @@ public class Pasaje {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-
+    
     @Override
     public String toString() {
-        return "Pasaje{" + "tipoTransporte=" + tipoTransporte + ", importe=" + importe + ", origenCiudad=" + origenCiudad + ", estado=" + estado + '}';
+       
+        String nombreCiudad = origenCiudad.getNombre();
+        
+        return  tipoTransporte + ", " + importe + ", " + nombreCiudad ;
+    
     }
     
     

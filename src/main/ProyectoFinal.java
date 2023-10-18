@@ -67,12 +67,13 @@ public class ProyectoFinal {
 ////       Estadia probarMetodos = new Estadia( 1, "Basico", 900, true, "Las Juaninas");
 ////       estadia.agregarEstadia(probarMetodos);
 
-        PasajeData pasajeData = new PasajeData();
-       Pasaje nuevoPasaje = new Pasaje("avion", 25000.00,probandoMetodo2 , true);
-//       pasajeData.agregarPasaje(nuevoPasaje);
-//    --------------metodo listar pasaje por tipo: ---------------------
-      Pasaje nuevoPasajeId = new Pasaje(2, "Avion", 25000.00,probandoMetodo2 , true);     
-      List <Pasaje> listaPasajeTodo = pasajeData.PasajesTodo("avion");
-        System.out.println(""+listaPasajeTodo);
+//        PasajeData pasajeData = new PasajeData();
+//       Pasaje nuevoPasaje = new Pasaje("avion", 25000.00,probandoMetodo2 , true);
+////       pasajeData.agregarPasaje(nuevoPasaje);
+////    --------------metodo listar pasaje por tipo: ---------------------
+//      Pasaje nuevoPasajeId = new Pasaje(2, "Avion", 25000.00,probandoMetodo2 , true);     
+//      List <Pasaje> listaPasajeTodo = pasajeData.PasajesTodo("avion");
+//        System.out.println(""+listaPasajeTodo);
     }
+    
 }
