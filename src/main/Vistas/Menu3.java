@@ -65,7 +65,7 @@ public class Menu3 extends javax.swing.JFrame {
         labelFondoAlojamiento = new javax.swing.JLabel();
         labelFondoPasaje = new javax.swing.JLabel();
         panelAdmin = new javax.swing.JPanel();
-        PanelPrincipal = new javax.swing.JPanel();
+        PanelCiudad = new javax.swing.JPanel();
         BotonLabelCiudad = new javax.swing.JLabel();
         PanelAlojamiento = new javax.swing.JPanel();
         botonLabelAlojamiento = new javax.swing.JLabel();
@@ -74,6 +74,7 @@ public class Menu3 extends javax.swing.JFrame {
         panelPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLayeredPane1.setBackground(new java.awt.Color(153, 204, 255));
         jLayeredPane1.setOpaque(true);
@@ -121,6 +122,11 @@ public class Menu3 extends javax.swing.JFrame {
         PAdmin2.setBackground(new java.awt.Color(255, 255, 255));
         PAdmin2.setOpaque(false);
         panelAdmin.setVisible(true);
+        PAdmin2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PAdmin2MouseClicked(evt);
+            }
+        });
 
         labelAdmin.setBackground(new java.awt.Color(0, 0, 0));
         labelAdmin.setFont(new java.awt.Font("Yu Gothic", 1, 22)); // NOI18N
@@ -380,16 +386,16 @@ public class Menu3 extends javax.swing.JFrame {
                 .addGroup(panelPaqueteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(207, 207, 207))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
         panelPaqueteLayout.setVerticalGroup(
             panelPaqueteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPaqueteLayout.createSequentialGroup()
-                .addGap(161, 161, 161)
+                .addContainerGap(162, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addContainerGap(224, Short.MAX_VALUE))
         );
 
         labelFondoCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/Vistas/Imagenes/Ciudad10V3.png"))); // NOI18N
@@ -400,19 +406,24 @@ public class Menu3 extends javax.swing.JFrame {
 
         panelAdmin.setBackground(new Color (255,255,255,110));
         panelAdmin.setOpaque(false);
-
-        PanelPrincipal.setBackground(new Color (255,255,255,110));
-        PanelPrincipal.setPreferredSize(new java.awt.Dimension(252, 55));
-        PanelPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
+        panelAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                PanelPrincipalmouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                PanelPrincipalmouseExited(evt);
+                panelAdminMouseEntered(evt);
             }
         });
 
-        BotonLabelCiudad.setBackground(new java.awt.Color(102, 102, 102));
+        PanelCiudad.setBackground(new Color (255,255,255,110));
+        PanelCiudad.setOpaque(false);
+        PanelCiudad.setPreferredSize(new java.awt.Dimension(252, 55));
+        PanelCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelCiudadmouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelCiudadmouseExited(evt);
+            }
+        });
+
         BotonLabelCiudad.setFont(new java.awt.Font("Consolas", 1, 22)); // NOI18N
         BotonLabelCiudad.setForeground(new java.awt.Color(0, 0, 0));
         BotonLabelCiudad.setText("       Ciudad");
@@ -429,22 +440,25 @@ public class Menu3 extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout PanelPrincipalLayout = new javax.swing.GroupLayout(PanelPrincipal);
-        PanelPrincipal.setLayout(PanelPrincipalLayout);
-        PanelPrincipalLayout.setHorizontalGroup(
-            PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BotonLabelCiudad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+        javax.swing.GroupLayout PanelCiudadLayout = new javax.swing.GroupLayout(PanelCiudad);
+        PanelCiudad.setLayout(PanelCiudadLayout);
+        PanelCiudadLayout.setHorizontalGroup(
+            PanelCiudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(BotonLabelCiudad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
         );
-        PanelPrincipalLayout.setVerticalGroup(
-            PanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        PanelCiudadLayout.setVerticalGroup(
+            PanelCiudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(BotonLabelCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
         );
 
         PanelAlojamiento.setBackground(new Color (255,255,255,110));
+        PanelAlojamiento.setOpaque(false);
 
         botonLabelAlojamiento.setFont(new java.awt.Font("Consolas", 1, 22)); // NOI18N
         botonLabelAlojamiento.setForeground(new java.awt.Color(0, 0, 0));
         botonLabelAlojamiento.setText("     Alojamiento");
+        botonLabelAlojamiento.setMaximumSize(new java.awt.Dimension(156, 27));
+        botonLabelAlojamiento.setMinimumSize(new java.awt.Dimension(156, 27));
         botonLabelAlojamiento.setPreferredSize(new java.awt.Dimension(147, 33));
         botonLabelAlojamiento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -470,6 +484,7 @@ public class Menu3 extends javax.swing.JFrame {
         );
 
         PanelPasajes.setBackground(new Color(255,255,255,110));
+        PanelPasajes.setOpaque(false);
         PanelPasajes.setPreferredSize(new java.awt.Dimension(252, 55));
 
         BotonLabelPasajes.setFont(new java.awt.Font("Consolas", 1, 22)); // NOI18N
@@ -506,35 +521,40 @@ public class Menu3 extends javax.swing.JFrame {
             .addGroup(panelAdminLayout.createSequentialGroup()
                 .addGap(209, 209, 209)
                 .addGroup(panelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(PanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PanelCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                     .addGroup(panelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(PanelAlojamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(PanelPasajes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
         panelAdminLayout.setVerticalGroup(
             panelAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAdminLayout.createSequentialGroup()
                 .addGap(85, 85, 85)
-                .addComponent(PanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PanelCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(117, 117, 117)
                 .addComponent(PanelAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addComponent(PanelPasajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(106, 106, 106))
         );
 
         panelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        panelPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelPrincipalMouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 706, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 565, Short.MAX_VALUE)
+            .addGap(0, 567, Short.MAX_VALUE)
         );
 
         jLayeredPane2.setLayer(panelPaquete, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -555,8 +575,7 @@ public class Menu3 extends javax.swing.JFrame {
                     .addGap(0, 23, Short.MAX_VALUE)))
             .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane2Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(labelFondoCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE))
@@ -571,9 +590,7 @@ public class Menu3 extends javax.swing.JFrame {
             .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelPaquete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jLayeredPane2Layout.createSequentialGroup()
-                    .addComponent(panelAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(panelAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane2Layout.createSequentialGroup()
                     .addComponent(labelFondoCiudad)
@@ -735,8 +752,8 @@ public class Menu3 extends javax.swing.JFrame {
   
     private void BotonLabelCiudadMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonLabelCiudadMouseEntered
          if (evt.getSource() == BotonLabelCiudad) {
-             PanelPrincipal.setBackground(new Color(255,255,255,200));
-        PanelPrincipal.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2)); 
+             PanelCiudad.setBackground(new Color(255,255,255,200));
+        PanelCiudad.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2)); 
       
     }
       
@@ -745,9 +762,9 @@ public class Menu3 extends javax.swing.JFrame {
 
     private void BotonLabelCiudadMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonLabelCiudadMouseExited
        if (evt.getSource() == BotonLabelCiudad) {
-            PanelPrincipal.setBackground(null);
-        PanelPrincipal.setBorder(null); // Elimina el borde al salir del ratón de BotonLabelCiudad
-    PanelPrincipal.setPreferredSize(null);
+            PanelCiudad.setBackground(null);
+        PanelCiudad.setBorder(null); // Elimina el borde al salir del ratón de BotonLabelCiudad
+    PanelCiudad.setPreferredSize(null);
        }
        
     }//GEN-LAST:event_BotonLabelCiudadMouseExited
@@ -766,6 +783,9 @@ public class Menu3 extends javax.swing.JFrame {
         PanelPasajes.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2)); 
       
     }
+        
+          
+          
     }//GEN-LAST:event_BotonLabelPasajesMouseEntered
 
     private void botonLabelAlojamientoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLabelAlojamientoMouseExited
@@ -782,21 +802,49 @@ public class Menu3 extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_BotonLabelPasajesMouseExited
 
-    private void PanelPrincipalmouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelPrincipalmouseEntered
+    private void PanelCiudadmouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCiudadmouseEntered
       /*
         
         PanelPrincipal.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
        BotonLabelCiudad.setForeground(Color.black);
        BotonLabelCiudad.setOpaque(false);*/
 // TODO add your handling code here:
-    }//GEN-LAST:event_PanelPrincipalmouseEntered
+    }//GEN-LAST:event_PanelCiudadmouseEntered
 
-    private void PanelPrincipalmouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelPrincipalmouseExited
+    private void PanelCiudadmouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCiudadmouseExited
         /*PanelPrincipal.setBorder(null);
           BotonLabelCiudad.setForeground(Color.black);
        BotonLabelCiudad.setOpaque(false);*/
         // TODO add your handling code here:
-    }//GEN-LAST:event_PanelPrincipalmouseExited
+    }//GEN-LAST:event_PanelCiudadmouseExited
+
+    private void panelPrincipalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMouseEntered
+       /* if (evt.getSource()==panelPrincipal) {
+            PanelPasajes.setVisible(false);
+            PanelCiudad.setVisible(false);
+            PanelAlojamiento.setVisible(false);
+            
+        }*/
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panelPrincipalMouseEntered
+
+    private void panelAdminMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelAdminMouseEntered
+       /*  if (evt.getSource()==panelPrincipal) {
+            PanelPasajes.setVisible(true);
+            PanelCiudad.setVisible(true);
+            PanelAlojamiento.setVisible(true);
+            
+        }*/
+    }//GEN-LAST:event_panelAdminMouseEntered
+
+    private void PAdmin2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PAdmin2MouseClicked
+         if (evt.getSource()==panelPrincipal) {
+            PanelPasajes.setVisible(true);
+            PanelCiudad.setVisible(true);
+            PanelAlojamiento.setVisible(true);
+            
+        }
+    }//GEN-LAST:event_PAdmin2MouseClicked
     
     
     
@@ -853,9 +901,9 @@ public class Menu3 extends javax.swing.JFrame {
     private javax.swing.JDesktopPane EscritorioPrincipal;
     private javax.swing.JPanel PAdmin2;
     private javax.swing.JPanel PanelAlojamiento;
+    private javax.swing.JPanel PanelCiudad;
     private javax.swing.JPanel PanelLateral;
     private javax.swing.JPanel PanelPasajes;
-    private javax.swing.JPanel PanelPrincipal;
     private javax.swing.JLabel botonLabelAlojamiento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
