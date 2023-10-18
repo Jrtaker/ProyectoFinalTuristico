@@ -179,6 +179,36 @@ public class PasajeData {
         return idCiudad;
         
     }
+    
+    public Pasaje buscarPasaje (int id){
+        Pasaje pasaje = null;
+        String sql = "SELECT * FROM pasaje WHERE idPasaje = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                
+            pasaje = new Pasaje();
+            pasaje.setIdPasaje(id);
+            pasaje.setTipoTransporte(rs.getString("tipoTransporte"));
+            pasaje.setImporte(rs.getDouble("importe"));
+            pasaje.setEstado(rs.getBoolean("estado"));
+            int idCiudad = rs.getInt("idCiudad");
+            CiudadData ciudadData = new CiudadData();
+            Ciudad ciudad = ciudadData.buscarCiudad(idCiudad);
+            pasaje.setOrigenCiudad(ciudad);
+            
+            }else{
+            JOptionPane.showMessageDialog(null, "No existe el pasaje");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en 'buscarPasaje' "+ex);
+        }
+        return pasaje;
+    }
 
 
 }
