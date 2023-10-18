@@ -5,7 +5,6 @@
  */
 package main.Vistas;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import main.AccesoDatos.CiudadData;

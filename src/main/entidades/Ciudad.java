@@ -70,5 +70,4 @@ public class Ciudad {
         return nombre+ ", "+provincia+", "+pais;
     }
     
-    
 }
