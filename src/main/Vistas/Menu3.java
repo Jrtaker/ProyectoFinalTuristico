@@ -209,7 +209,6 @@ public class Menu3 extends javax.swing.JFrame {
         jPanel7.setOpaque(false);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/Vistas/Imagenes/Iconov3TrazoNegro.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
