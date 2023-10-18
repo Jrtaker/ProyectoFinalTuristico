@@ -226,6 +226,7 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
         Pasaje pasaje = new Pasaje(tipoTransporte, importe, OrigenidCiudad , estado);
         pData.agregarPasaje(pasaje);
         jTImporte.setText("");
+        refrescarListaPasaje();
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
