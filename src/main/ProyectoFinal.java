@@ -68,12 +68,22 @@ public class ProyectoFinal {
 ////       estadia.agregarEstadia(probarMetodos);
 
 //        PasajeData pasajeData = new PasajeData();
-//       Pasaje nuevoPasaje = new Pasaje("avion", 25000.00,probandoMetodo2 , true);
-////       pasajeData.agregarPasaje(nuevoPasaje);
+       Pasaje nuevoPasaje = new Pasaje("avion", 25000.00,probandoMetodo2 , true);
+//       pasajeData.agregarPasaje(nuevoPasaje);
 ////    --------------metodo listar pasaje por tipo: ---------------------
 //      Pasaje nuevoPasajeId = new Pasaje(2, "Avion", 25000.00,probandoMetodo2 , true);     
 //      List <Pasaje> listaPasajeTodo = pasajeData.PasajesTodo("avion");
 //        System.out.println(""+listaPasajeTodo);
+
+
+       //------------metodo modificar pasaje -------------------
+       PasajeData pasajeData = new PasajeData();
+        Pasaje pasaje = new Pasaje (2, "Colectivo", 18.00, probandoMetodo2, true);
+//        pasajeData.modificarPasaje(pasaje);
+//        System.out.println("pasaje modificado: "+pasaje);
+        //------------metodo borrar pasaje: probado con los datos de los pasajes ya creados aqui--------------
+//        pasajeData.borrarPasaje(2);
+//        System.out.println("pasaje borrado: "+pasaje);
     }
     
 }

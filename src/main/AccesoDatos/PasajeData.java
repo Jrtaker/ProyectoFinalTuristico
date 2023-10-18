@@ -133,7 +133,7 @@ public class PasajeData {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
-            ps.close();
+            ResultSet rs = ps.executeQuery();
 
             JOptionPane.showMessageDialog(null, "Borrado con exito");
         } catch (SQLException ex) {

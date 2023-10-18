@@ -94,6 +94,11 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
         });
 
         jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
         jBEliminar.setText("Eliminar");
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +159,7 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
                         .addComponent(jBNuevo)
                         .addGap(18, 18, 18)
                         .addComponent(jBGuardar)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBSalir)))
@@ -232,8 +237,40 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCListarPasajeActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-        // TODO add your handling code here:
+        int idPasaje = jCListarPasaje.getSelectedItem().hashCode();
+        Ciudad OrigenidCiudad = (Ciudad) jCOrigen.getSelectedItem();
+        String tipoTransporte = jCTransporte.getSelectedItem().toString();
+        double importe = Double.parseDouble(jTImporte.getText());
+        boolean estado = jREstado.isSelected();
+        
+        PasajeData pData = new PasajeData();
+        
+        pData.borrarPasaje(idPasaje);
+        refrescarLista();
+        refrescarListaPasaje();
+        jTImporte.setText("");
     }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+        int idPasaje = jCListarPasaje.getSelectedItem().hashCode();
+        Ciudad OrigenidCiudad = (Ciudad) jCOrigen.getSelectedItem();
+        String tipoTransporte = jCTransporte.getSelectedItem().toString();
+        double importe = Double.parseDouble(jTImporte.getText());
+        boolean estado = jREstado.isSelected();
+        
+        PasajeData pData = new PasajeData();
+        Pasaje pasaje =new Pasaje (idPasaje, tipoTransporte, importe, OrigenidCiudad, estado);
+        pasaje.setIdPasaje(idPasaje);
+        pasaje.setTipoTransporte(tipoTransporte);
+        pasaje.setImporte(importe);
+        pasaje.setOrigenCiudad(OrigenidCiudad);
+        pasaje.setEstado(estado);
+        
+        pData.modificarPasaje(pasaje);
+        refrescarLista();
+        refrescarListaPasaje();
+        jTImporte.setText("");
+    }//GEN-LAST:event_jBGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
