@@ -11,7 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import main.entidades.Alojamiento;
+import main.entidades.Ciudad;
 import main.entidades.Paquete;
+import main.entidades.Pasaje;
 
 /**
  *
@@ -69,6 +72,48 @@ public class PaqueteData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en (borrarPaquete) " + ex.getMessage());
         }
+    }
+    
+    public List<Paquete> paqueteTodo(){
+        List<Paquete> paquetes = new ArrayList<>();
+        try {
+            
+            String sql = "SELECT * FROM paquete";
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                
+                int idPaquete = (rs.getInt("idPaquete"));
+                int idCiudadOrigen = (rs.getInt("idOrigen"));
+                int idCiudadDestino = (rs.getInt("idDestino"));
+                int idAlojamiento = (rs.getInt("idAlojamiento"));
+                int idPasaje = (rs.getInt("idPasaje"));
+                
+                CiudadData ciudadData = new CiudadData();
+                PasajeData pasajeData = new PasajeData();
+                AlojamientoData alojamientoData = new AlojamientoData();
+                
+                Ciudad ciudadOrigen = ciudadData.buscarCiudad(idCiudadOrigen);
+                Ciudad ciudadDestino = ciudadData.buscarCiudad(idCiudadDestino);
+                Pasaje pasaje = pasajeData.buscarPasaje(idPasaje);
+              //Alojamiento alojamiento = alojamientoData.buscarAlojamiento(idAlojamiento);
+                
+                Paquete paquete = new Paquete();
+              //paquete.setAlojamiento(alojamiento);
+                paquete.setOrigen(ciudadOrigen);
+                paquete.setDestino(ciudadDestino);
+                paquete.setIdPaquete(idPaquete);
+                paquete.setPasaje(pasaje);
+                paquetes.add(paquete);
+                
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en 'paqueteTodo' "+ex);
+        }
+        return paquetes;
     }
     
 }
