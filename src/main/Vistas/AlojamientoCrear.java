@@ -274,7 +274,7 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
                     .addComponent(jRadioButton2)
                     .addComponent(jRadioButton3)
                     .addComponent(jRadioButton5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton9)
                     .addComponent(jRadioButton6))
@@ -315,7 +315,8 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTImporteActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-    this.dispose();        // TODO add your handling code here:
+    this.dispose();  
+    
     }//GEN-LAST:event_jBSalirActionPerformed
 
 

@@ -142,4 +142,36 @@ public class AlojamientoData {
             JOptionPane.showMessageDialog(null, "Error en (borrarAlojamiento) " + ex.getMessage());
         }
   }
+  public Alojamiento buscarAlojamiento (int id){
+        Alojamiento alojamiento = null;
+        String sql = "SELECT * FROM alojamiento WHERE idAlojamiento = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                
+            alojamiento = new Alojamiento();
+            alojamiento.setIdAlojamiento(id);
+            alojamiento.setFechaInicio(rs.getDate("fechaInicio" ).toLocalDate());
+            alojamiento.setFechaFin(rs.getDate("fechaFin").toLocalDate());
+            alojamiento.setEstado(rs.getBoolean("estado"));
+            alojamiento.setServicio(rs.getString("servicio"));
+            alojamiento.setImporteDiario(rs.getDouble("importeDiario"));
+            int idCiudad = rs.getInt("idCiudad");
+            
+            CiudadData ciudadData = new CiudadData();
+            Ciudad ciudad = ciudadData.buscarCiudad(idCiudad);
+            alojamiento.setCiudad(ciudad);
+            
+            }else{
+            JOptionPane.showMessageDialog(null, "No existe el alojamiento");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en 'buscarAlojamiento' "+ex);
+        }
+        return alojamiento;
+    }
 }

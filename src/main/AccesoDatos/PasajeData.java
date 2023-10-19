@@ -108,14 +108,15 @@ public class PasajeData {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                Pasaje pasaje = new Pasaje();
-                pasaje.setIdPasaje(rs.getInt("idPasaje"));
-                pasaje.setTipoTransporte(rs.getString("tipoTransporte"));
-                pasaje.setImporte(rs.getDouble("importe"));
-                pasaje.setEstado(rs.getBoolean("estado"));
+                int IdPasaje=(rs.getInt("idPasaje"));
+                String TipoTransporte=(rs.getString("tipoTransporte"));
+                double Importe=(rs.getDouble("importe"));
+                boolean Estado=(rs.getBoolean("estado"));
+                
                 CiudadData ciudadData=new CiudadData();
                 int idCiudad=rs.getInt("idCiudad");
                 Ciudad ciudad = ciudadData.buscarCiudad(idCiudad);
+                Pasaje pasaje = new Pasaje(IdPasaje,TipoTransporte,Importe,ciudad,Estado);
                 pasajes.add(pasaje);
             }
             ps.close();
@@ -160,25 +161,25 @@ public class PasajeData {
     }
     
     //?
-    public List<Integer> listarPasajePorTransporte(String transporte){
-        List<Integer> idCiudad = new ArrayList<>();
-        try {
-            String sql = "SELECT ciudad.idCiudad FROM ciudad INNER JOIN pasaje ON ciudad.idCiudad=pasaje.idCiudad "
-                    + "WHERE pasaje.tipoTransporte = ?";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, transporte);
-            ResultSet rs = ps.executeQuery();
-            ps.execute();
-            while (rs.next()) {
-                idCiudad.add(rs.getInt("idCiudad")); 
-            }
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en (listarPasajePorTransporte)"+ex.getMessage());
-        }
-        return idCiudad;
-        
-    }
+//    public List<Integer> listarPasajePorTransporte(String transporte){
+//        List<Integer> idCiudad = new ArrayList<>();
+//        try {
+//            String sql = "SELECT ciudad.idCiudad FROM ciudad INNER JOIN pasaje ON ciudad.idCiudad=pasaje.idCiudad "
+//                    + "WHERE pasaje.tipoTransporte = ?";
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setString(1, transporte);
+//            ResultSet rs = ps.executeQuery();
+//            ps.execute();
+//            while (rs.next()) {
+//                idCiudad.add(rs.getInt("idCiudad")); 
+//            }
+//            ps.close();
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error en (listarPasajePorTransporte)"+ex.getMessage());
+//        }
+//        return idCiudad;
+//        
+//    }
     
     public Pasaje buscarPasaje (int id){
         Pasaje pasaje = null;

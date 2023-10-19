@@ -21,9 +21,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import main.Vistas.Imagenes.MiPanelLateral;
 
-/**
- * @author Programita
- */
+
 public class Menu3 extends javax.swing.JFrame {
 
     PaquetePreparar Pqt = new PaquetePreparar();

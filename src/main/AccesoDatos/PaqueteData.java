@@ -98,10 +98,10 @@ public class PaqueteData {
                 Ciudad ciudadOrigen = ciudadData.buscarCiudad(idCiudadOrigen);
                 Ciudad ciudadDestino = ciudadData.buscarCiudad(idCiudadDestino);
                 Pasaje pasaje = pasajeData.buscarPasaje(idPasaje);
-              //Alojamiento alojamiento = alojamientoData.buscarAlojamiento(idAlojamiento);
+                Alojamiento alojamiento = alojamientoData.buscarAlojamiento(idAlojamiento);
                 
                 Paquete paquete = new Paquete();
-              //paquete.setAlojamiento(alojamiento);
+                paquete.setAlojamiento(alojamiento);
                 paquete.setOrigen(ciudadOrigen);
                 paquete.setDestino(ciudadDestino);
                 paquete.setIdPaquete(idPaquete);
