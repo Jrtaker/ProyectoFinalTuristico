@@ -118,6 +118,11 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         jBGuardar.setText("Guardar");
 
         jBEliminar.setText("Eliminar");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
 
         jBNuevo.setText("Nuevo");
 
@@ -349,6 +354,11 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
     private void jCListarAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCListarAlojamientoActionPerformed
         
     }//GEN-LAST:event_jCListarAlojamientoActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+       String listarAlojamiento = jCListarAlojamiento.getSelectedItem().toString();
+       
+    }//GEN-LAST:event_jBEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
