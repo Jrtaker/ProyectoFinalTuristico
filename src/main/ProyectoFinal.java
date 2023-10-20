@@ -38,13 +38,14 @@ public class ProyectoFinal {
 ////        System.out.println(ListarCiudadPorPais);
 ////        System.out.println(ListarCiudadPorProvincia);
 //        
-//        AlojamientoData alojamiento = new AlojamientoData();
+        AlojamientoData alojamiento = new AlojamientoData();
 //        Alojamiento alojamientoPrueba =new Alojamiento(LocalDate.of(2023, 11, 1), LocalDate.of(2023, 12, 15), true, "premium", 50.0, probandoMetodo2);
 //        alojamiento.agregarAlojamiento(alojamientoPrueba);
 //        Alojamiento alojamientoAModificar =new Alojamiento(5, LocalDate.of(2024, 1, 3), LocalDate.of(2014, 2, 5), true, "basico", 50.0, probandoMetodo);
 //        //alojamiento.modificarAlojamiento(alojamientoAModificar);
 //       // alojamiento.borrarAlojamiento(5);
-//        
+ //       List <Alojamiento> ListarAlojamiento = alojamiento.listarAlojamiento();
+ //       System.out.println(""+ListarAlojamiento);
 //        
 //       // List <Alojamiento> ListarAlojamientosPorCiudad= alojamiento.alojamientosPorCiudad(probandoMetodo2);
 //        //System.out.println(ListarAlojamientosPorCiudad);
@@ -84,6 +85,7 @@ public class ProyectoFinal {
         //------------metodo borrar pasaje: probado con los datos de los pasajes ya creados aqui--------------
 //        pasajeData.borrarPasaje(2);
 //        System.out.println("pasaje borrado: "+pasaje);
+    
     }
     
 }

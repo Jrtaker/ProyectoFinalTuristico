@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import main.entidades.Alojamiento;
 import main.entidades.Ciudad;
@@ -68,6 +70,33 @@ public class AlojamientoData {
            JOptionPane.showMessageDialog(null, "Error en (modificarAlojamiento) " + e.getMessage());
         }
     }
+       public List <Alojamiento> listarAlojamiento (){
+       List  <Alojamiento> alojamientos =new ArrayList <>();
+       String sql = "SELECT * FROM alojamiento ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Alojamiento alojamiento =new Alojamiento();
+                Ciudad ciudad =new Ciudad ();
+                
+                alojamiento.setIdAlojamiento(rs.getInt("idAlojamiento"));
+                alojamiento.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+                alojamiento.setFechaFin(rs.getDate("fechaFin").toLocalDate());
+                alojamiento.setEstado(rs.getBoolean("estado"));
+                alojamiento.setServicio(rs.getString("Servicio"));
+                alojamiento.setImporteDiario(rs.getDouble("importeDiario"));
+                
+                alojamientos.add(alojamiento);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error en (listarAlojamiento) " + ex.getMessage());
+        }
+        return alojamientos;
+       
+       }
        
     //Alojamientos para usar adentro de paquete
     public List<Alojamiento> alojamientosPorCiudad(Ciudad ciudad) {                //ok

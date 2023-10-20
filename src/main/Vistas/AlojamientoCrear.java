@@ -6,7 +6,9 @@
 package main.Vistas;
 
 import java.util.List;
+import main.AccesoDatos.AlojamientoData;
 import main.AccesoDatos.CiudadData;
+import main.entidades.Alojamiento;
 import main.entidades.Ciudad;
 
 /**
@@ -16,20 +18,30 @@ import main.entidades.Ciudad;
 public class AlojamientoCrear extends javax.swing.JInternalFrame {
      private CiudadData cData;
      private List<Ciudad> cargarCiudad;
+     private AlojamientoData aData;
+     private List<Alojamiento> cargarListaAlojamientos;
     /**
      * Creates new form PaqueteCambios
      */
     public AlojamientoCrear() {
         initComponents();
         refrescarLista();
+        refrescarListaAlojamiento();
     }
  private void refrescarLista(){
         cData =new CiudadData();
         cargarCiudad =(List<Ciudad>)cData.listarCiudad();
         for (Ciudad item: cargarCiudad)
-            jCDestino.addItem(item);//
-    
+            jCDestino.addItem(item);
     }
+ private void refrescarListaAlojamiento(){
+        aData = new AlojamientoData();
+        cargarListaAlojamientos = (List<Alojamiento>)aData.listarAlojamiento();
+        for (Alojamiento item :cargarListaAlojamientos )
+        jCListarAlojamiento.addItem(item);
+ 
+ }
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -69,6 +81,8 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         jRadioButton11 = new javax.swing.JRadioButton();
         jDateChooser3 = new com.toedter.calendar.JDateChooser();
         jDateChooser4 = new com.toedter.calendar.JDateChooser();
+        jCListarAlojamiento = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
 
         BGDesayuno.add(jRDCompleto);
         jRDCompleto.setText("Desayuno");
@@ -136,6 +150,14 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         BGCamas.add(jRadioButton11);
         jRadioButton11.setText("Cucheta");
 
+        jCListarAlojamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCListarAlojamientoActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Listas de Alojamientos");
+
         jDesktopPane1.setLayer(jCDestino, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jRDCompleto, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jRadioButton4, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -163,89 +185,91 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jRadioButton11, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jDateChooser3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jDateChooser4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jCListarAlojamiento, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(jREstado))
-                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGap(43, 43, 43)
+                        .addComponent(jREstado))
+                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                            .addComponent(jTImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(jBNuevo)
+                            .addGap(55, 55, 55)
+                            .addComponent(jBGuardar)
+                            .addGap(45, 45, 45)
+                            .addComponent(jBEliminar)
+                            .addGap(35, 35, 35)
+                            .addComponent(jBSalir))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
+                            .addComponent(jRadioButton6)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jRadioButton9))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
+                            .addComponent(jRadioButton4)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jRadioButton1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jRadioButton11))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
+                            .addComponent(jRadioButton2)
+                            .addGap(24, 24, 24)
+                            .addComponent(jRadioButton3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jRadioButton5))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(71, 71, 71)
+                            .addComponent(jLabel5))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
+                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                    .addComponent(jTImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jRDCompleto)
+                                    .addGap(12, 12, 12)
+                                    .addComponent(jRadioButton7)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                        .addComponent(jCTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(217, 217, 217))
-                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                                .addComponent(jRadioButton6)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jRadioButton9))
-                                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                                .addComponent(jRadioButton4)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jRadioButton1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jRadioButton11))
-                                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                                .addComponent(jRadioButton2)
-                                                .addGap(24, 24, 24)
-                                                .addComponent(jRadioButton3)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jRadioButton5))
-                                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(71, 71, 71)
-                                                .addComponent(jLabel5))
-                                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                                .addGap(256, 256, 256)
-                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                                        .addComponent(jRDCompleto)
-                                                        .addGap(12, 12, 12)
-                                                        .addComponent(jRadioButton7)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jRadioButton8)))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jRadioButton10)))
-                                        .addGap(36, 36, 36)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jBNuevo)
-                                    .addGap(55, 55, 55)
-                                    .addComponent(jBGuardar)
-                                    .addGap(45, 45, 45)
-                                    .addComponent(jBEliminar)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jBSalir))
-                                .addComponent(jCDestino, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                                    .addComponent(jRadioButton8)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jRadioButton10))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
+                            .addComponent(jCTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
+                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jCListarAlojamiento, javax.swing.GroupLayout.Alignment.LEADING, 0, 305, Short.MAX_VALUE)
+                                .addComponent(jCDestino, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCListarAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(14, 14, 14)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -296,7 +320,10 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDesktopPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,6 +346,10 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
     
     }//GEN-LAST:event_jBSalirActionPerformed
 
+    private void jCListarAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCListarAlojamientoActionPerformed
+        
+    }//GEN-LAST:event_jCListarAlojamientoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup BGCamas;
@@ -328,6 +359,7 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBNuevo;
     private javax.swing.JButton jBSalir;
     private javax.swing.JComboBox<Ciudad> jCDestino;
+    private javax.swing.JComboBox<Alojamiento> jCListarAlojamiento;
     private javax.swing.JComboBox<String> jCTipo;
     private com.toedter.calendar.JDateChooser jDateChooser3;
     private com.toedter.calendar.JDateChooser jDateChooser4;
@@ -337,6 +369,7 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JRadioButton jRDCompleto;
     private javax.swing.JRadioButton jREstado;
     private javax.swing.JRadioButton jRadioButton1;
