@@ -19,6 +19,7 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 import main.Vistas.Imagenes.MiPanelLateral;
 
 
@@ -638,7 +639,10 @@ public class Menu3 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        setFalse();
+        //setFalse();
+        BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) Pqt.getUI();
+        borraVentana.setNorthPane(null);
+        Pqt.setResizable(false);
         Pqt.setVisible(true);
         EscritorioPrincipal.add(Pqt);
         EscritorioPrincipal.moveToFront(Pqt);
@@ -647,7 +651,10 @@ public class Menu3 extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void BotonLabelCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonLabelCiudadMouseClicked
-        setFalse();
+        //setFalse();
+        BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) ciudadCrear.getUI();
+        borraVentana.setNorthPane(null);
+        ciudadCrear.setResizable(false);
         ciudadCrear.setVisible(true);
         EscritorioPrincipal.add(ciudadCrear);
         EscritorioPrincipal.moveToFront(ciudadCrear);
@@ -655,7 +662,10 @@ public class Menu3 extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonLabelCiudadMouseClicked
 
     private void botonLabelAlojamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLabelAlojamientoMouseClicked
-        setFalse();
+        //setFalse();
+        BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) alojamientoCrear.getUI();
+        borraVentana.setNorthPane(null);
+        alojamientoCrear.setResizable(false);
         alojamientoCrear.setVisible(true);
         EscritorioPrincipal.add(alojamientoCrear);
         EscritorioPrincipal.moveToFront(alojamientoCrear);
@@ -663,7 +673,10 @@ public class Menu3 extends javax.swing.JFrame {
     }//GEN-LAST:event_botonLabelAlojamientoMouseClicked
 
     private void BotonLabelPasajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonLabelPasajesMouseClicked
-        setFalse();
+        //setFalse();
+        BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) psjeCrear.getUI();
+        borraVentana.setNorthPane(null);
+        psjeCrear.setResizable(false);
         psjeCrear.setVisible(true);
         EscritorioPrincipal.add(psjeCrear);
         EscritorioPrincipal.moveToFront(psjeCrear);
