@@ -268,11 +268,16 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCListarPasajeActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-        int idPasaje = jCListarPasaje.getSelectedItem().hashCode();
-        Ciudad OrigenidCiudad = (Ciudad) jCOrigen.getSelectedItem();
-        String tipoTransporte = jCTransporte.getSelectedItem().toString();
-        double importe = Double.parseDouble(jTImporte.getText());
-        boolean estado = jREstado.isSelected();
+        
+        int confirmResult = JOptionPane.showConfirmDialog(
+                this, 
+                "¿Está seguro que desea borrar el Pasaje?", 
+                "Confirmar Borrado", 
+                JOptionPane.YES_NO_OPTION
+        );
+        
+        if (confirmResult == JOptionPane.YES_OPTION) {
+            int idPasaje = jCListarPasaje.getSelectedItem().hashCode();
         
         PasajeData pData = new PasajeData();
         
@@ -280,6 +285,7 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
         refrescarLista();
         refrescarListaPasaje();
         jTImporte.setText("");
+        }
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
