@@ -34,7 +34,6 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
         }
     }    
         private void refrescarListaPasaje(){
-        jCListarPasaje.removeAllItems();
         PasajeData pasajeData =new PasajeData();
         List <Pasaje> listaPasaje =(List<Pasaje>)pasajeData.PasajesTodo() ;
         for (Pasaje pasaje :listaPasaje)

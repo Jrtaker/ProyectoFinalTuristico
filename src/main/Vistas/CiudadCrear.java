@@ -246,7 +246,6 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void refrescarLista(){
-        jCListarCiudad.removeAllItems();
         cData =new CiudadData();
         cargarCiudad =(List<Ciudad>)cData.listarCiudad();
         for (Ciudad item: cargarCiudad)
@@ -270,23 +269,6 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         
-        try {
-           
-            String provincia;
-            provincia = jTProvincia.toString();
-            for (int i = 0; i < provincia.length(); i++)  {
-                try{
-                    String y;
-                    y=provincia.substring(i, i);
-                    System.out.println(y);
-                    int x= Integer.parseInt(y);
-                JOptionPane.showMessageDialog(this, "Porfavor ingrese un pais valido.");
-                
-                }catch(NumberFormatException ex){}
-            }
-                           
-            
-        } catch (NumberFormatException ex) {
         String pais = jCPais.getSelectedItem().toString();
         String provincia = jTProvincia.getText();
         String ciudad = jTCiudad.getText();
@@ -302,7 +284,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         
         limpiarCampos();
         refrescarLista();
-        }
+        
         
     }//GEN-LAST:event_jBNuevoActionPerformed
     
@@ -331,6 +313,14 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         
+        int confirmResult = JOptionPane.showConfirmDialog(
+                this, 
+                "¿Desea borrar la Ciudad?",
+                "Confirmar Borrado",
+                JOptionPane.YES_NO_OPTION
+        );
+        if (confirmResult == JOptionPane.YES_OPTION) {
+        //Confirmo Selección
         String pais = jCPais.getSelectedItem().toString();
         String provincia = jTProvincia.getText();
         String ciudad = jTCiudad.getText();
@@ -338,6 +328,8 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         cData.borrarCiudad(pais, provincia, ciudad);
         limpiarCampos();
         refrescarLista();
+        }
+        
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
