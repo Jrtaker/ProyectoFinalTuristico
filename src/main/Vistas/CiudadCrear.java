@@ -245,6 +245,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void refrescarLista(){
+        jCListarCiudad.removeAllItems();
         cData =new CiudadData();
         cargarCiudad =(List<Ciudad>)cData.listarCiudad();
         for (Ciudad item: cargarCiudad)

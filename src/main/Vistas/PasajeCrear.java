@@ -25,6 +25,7 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
         refrescarListaPasaje();
     }
     private void refrescarLista(){
+       
         CiudadData ciudadData = new CiudadData();
         List <Ciudad> listaCiudad =(List<Ciudad>)ciudadData.listarCiudad();
         for (Ciudad ciudad : listaCiudad) {
@@ -32,6 +33,7 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
         }
     }    
         private void refrescarListaPasaje(){
+        jCListarPasaje.removeAllItems();
         PasajeData pasajeData =new PasajeData();
         List <Pasaje> listaPasaje =(List<Pasaje>)pasajeData.PasajesTodo() ;
         for (Pasaje pasaje :listaPasaje)
