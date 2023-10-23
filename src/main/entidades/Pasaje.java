@@ -81,7 +81,7 @@ public class Pasaje {
        
         String nombreCiudad = origenCiudad.getNombre();
         
-        return  tipoTransporte + ", " + importe + ", " + nombreCiudad ;
+        return  tipoTransporte + ", " + importe + "$, " + nombreCiudad ;
     
     }
     
