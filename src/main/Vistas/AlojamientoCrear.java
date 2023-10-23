@@ -5,6 +5,8 @@
  */
 package main.Vistas;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 import main.AccesoDatos.AlojamientoData;
 import main.AccesoDatos.CiudadData;
@@ -57,10 +59,10 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         BGCamas = new javax.swing.ButtonGroup();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jCDestino = new javax.swing.JComboBox<>();
-        jRDCompleto = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton7 = new javax.swing.JRadioButton();
-        jRadioButton8 = new javax.swing.JRadioButton();
+        jRDesayuno = new javax.swing.JRadioButton();
+        jRCamasSimple = new javax.swing.JRadioButton();
+        jRCena = new javax.swing.JRadioButton();
+        jRAlmuerzo = new javax.swing.JRadioButton();
         jTImporte = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jREstado = new javax.swing.JRadioButton();
@@ -71,16 +73,16 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         jBEliminar = new javax.swing.JButton();
         jBNuevo = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
-        jRadioButton9 = new javax.swing.JRadioButton();
+        jRCamaDoble = new javax.swing.JRadioButton();
+        jRWifi = new javax.swing.JRadioButton();
+        jRPileta = new javax.swing.JRadioButton();
+        jRAire = new javax.swing.JRadioButton();
+        jRBanoPrivado = new javax.swing.JRadioButton();
+        jRGimnasio = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jRadioButton10 = new javax.swing.JRadioButton();
-        jRadioButton11 = new javax.swing.JRadioButton();
+        jRServicioHabitacion = new javax.swing.JRadioButton();
+        jRCucheta = new javax.swing.JRadioButton();
         jDateChooser3 = new com.toedter.calendar.JDateChooser();
         jDateChooser4 = new com.toedter.calendar.JDateChooser();
         jCListarAlojamiento = new javax.swing.JComboBox<>();
@@ -88,20 +90,20 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
 
         jDesktopPane1.setPreferredSize(new java.awt.Dimension(681, 547));
 
-        BGDesayuno.add(jRDCompleto);
-        jRDCompleto.setText("Desayuno");
-        jRDCompleto.addActionListener(new java.awt.event.ActionListener() {
+        BGDesayuno.add(jRDesayuno);
+        jRDesayuno.setText("Desayuno");
+        jRDesayuno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRDCompletoActionPerformed(evt);
+                jRDesayunoActionPerformed(evt);
             }
         });
 
-        BGCamas.add(jRadioButton4);
-        jRadioButton4.setText("Camas Simple");
+        BGCamas.add(jRCamasSimple);
+        jRCamasSimple.setText("Camas Simple");
 
-        jRadioButton7.setText("Cena");
+        jRCena.setText("Cena");
 
-        jRadioButton8.setText("Almuerzo");
+        jRAlmuerzo.setText("Almuerzo");
 
         jTImporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,6 +131,11 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         });
 
         jBNuevo.setText("Nuevo");
+        jBNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNuevoActionPerformed(evt);
+            }
+        });
 
         jBSalir.setText("Salir");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -137,27 +144,27 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
             }
         });
 
-        BGCamas.add(jRadioButton1);
-        jRadioButton1.setText("Camas Doble");
+        BGCamas.add(jRCamaDoble);
+        jRCamaDoble.setText("Camas Doble");
 
-        jRadioButton2.setText("WiFi");
+        jRWifi.setText("WiFi");
 
-        jRadioButton3.setText("Pileta");
+        jRPileta.setText("Pileta");
 
-        jRadioButton5.setText("Aire Acondicionado");
+        jRAire.setText("Aire Acondicionado");
 
-        jRadioButton6.setText("Baño Privado");
+        jRBanoPrivado.setText("Baño Privado");
 
-        jRadioButton9.setText("Gimnasio");
+        jRGimnasio.setText("Gimnasio");
 
         jLabel4.setText("Entrada");
 
         jLabel5.setText("Salida");
 
-        jRadioButton10.setText("Servicio a Habitacion");
+        jRServicioHabitacion.setText("Servicio a Habitacion");
 
-        BGCamas.add(jRadioButton11);
-        jRadioButton11.setText("Cucheta");
+        BGCamas.add(jRCucheta);
+        jRCucheta.setText("Cucheta");
 
         jCListarAlojamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,10 +175,10 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         jLabel6.setText("Listas de Alojamientos");
 
         jDesktopPane1.setLayer(jCDestino, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jRDCompleto, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jRadioButton4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jRadioButton7, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jRadioButton8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jRDesayuno, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jRCamasSimple, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jRCena, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jRAlmuerzo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jTImporte, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jREstado, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -182,16 +189,16 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jBEliminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jBNuevo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jBSalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jRadioButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jRadioButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jRadioButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jRadioButton5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jRadioButton6, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jRadioButton9, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jRCamaDoble, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jRWifi, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jRPileta, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jRAire, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jRBanoPrivado, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jRGimnasio, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jRadioButton10, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jRadioButton11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jRServicioHabitacion, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jRCucheta, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jDateChooser3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jDateChooser4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jCListarAlojamiento, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -207,29 +214,29 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(jRadioButton6)
+                                .addComponent(jRBanoPrivado)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton9))
+                                .addComponent(jRGimnasio))
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(jRadioButton2)
+                                .addComponent(jRWifi)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButton3)
+                                .addComponent(jRPileta)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton5))
+                                .addComponent(jRAire))
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(jRadioButton4)
+                                .addComponent(jRCamasSimple)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton1)
+                                .addComponent(jRCamaDoble)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton11))
+                                .addComponent(jRCucheta))
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(jRDCompleto)
+                                .addComponent(jRDesayuno)
                                 .addGap(12, 12, 12)
-                                .addComponent(jRadioButton7)
+                                .addComponent(jRCena)
                                 .addGap(12, 12, 12)
-                                .addComponent(jRadioButton8)
+                                .addComponent(jRAlmuerzo)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButton10)))
+                                .addComponent(jRServicioHabitacion)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -298,24 +305,24 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
                     .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRDCompleto)
-                    .addComponent(jRadioButton7)
-                    .addComponent(jRadioButton8)
-                    .addComponent(jRadioButton10))
+                    .addComponent(jRDesayuno)
+                    .addComponent(jRCena)
+                    .addComponent(jRAlmuerzo)
+                    .addComponent(jRServicioHabitacion))
                 .addGap(32, 32, 32)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton11))
+                    .addComponent(jRCamasSimple)
+                    .addComponent(jRCamaDoble)
+                    .addComponent(jRCucheta))
                 .addGap(31, 31, 31)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton5)
-                    .addComponent(jRadioButton2))
+                    .addComponent(jRPileta)
+                    .addComponent(jRAire)
+                    .addComponent(jRWifi))
                 .addGap(30, 30, 30)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton6)
-                    .addComponent(jRadioButton9))
+                    .addComponent(jRBanoPrivado)
+                    .addComponent(jRGimnasio))
                 .addGap(48, 48, 48)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jREstado)
@@ -344,9 +351,9 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRDCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRDCompletoActionPerformed
+    private void jRDesayunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRDesayunoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRDCompletoActionPerformed
+    }//GEN-LAST:event_jRDesayunoActionPerformed
 
     private void jTImporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTImporteActionPerformed
         // TODO add your handling code here:
@@ -354,17 +361,83 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
     this.dispose();  
-    
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jCListarAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCListarAlojamientoActionPerformed
-        
+       //Incoming
     }//GEN-LAST:event_jCListarAlojamientoActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-       String listarAlojamiento = jCListarAlojamiento.getSelectedItem().toString();
-       
+      Alojamiento alojamiento = (Alojamiento) jCListarAlojamiento.getSelectedItem();
+        int idAlojamiento = alojamiento.getIdAlojamiento();
+        AlojamientoData alojamientoData = new AlojamientoData();
+        alojamientoData.borrarAlojamiento(idAlojamiento);
+        
+      
     }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
+        Ciudad ciudad = (Ciudad) jCDestino.getSelectedItem();
+        String tipoTransporte = jCTipo.getSelectedItem().toString();
+        LocalDate fechaEnt = jDateChooser3.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaSal = jDateChooser4.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        
+        boolean estado = jREstado.isSelected();
+        double importe = Double.parseDouble(jTImporte.getText());
+        String aire = "";
+        String almuerzo = "";
+        String bano = "";
+        String CD = "";
+        String CS = "";
+        String cena = "";
+        String desayuno = ""; 
+        String cucheta = "";        
+        String gym = "";
+        String pileta = "";
+        String servicioHab = "";
+        String wifi = "";
+        if(jRAire.isSelected()){
+             aire=jRAire.getText() + ", ";
+        }
+        if(jRAlmuerzo.isSelected()){
+             almuerzo = jRAlmuerzo.getText()+", ";
+        }
+        if(jRBanoPrivado.isSelected()){
+             bano = jRBanoPrivado.getText()+ ", ";
+        }    
+        if(jRCamaDoble.isSelected()){
+             CD = jRCamaDoble.getText()+ ", ";
+        }
+        if(jRCamasSimple.isSelected()){
+            CS = jRCamasSimple.getText()+ ", ";
+        }
+        if(jRCena.isSelected()){
+             cena= jRCena.getText()+", ";
+        }
+        if(jRDesayuno.isSelected()){
+             desayuno = jRDesayuno.getText()+", ";
+        }    
+        if(jRCucheta.isSelected()){
+            cucheta = jRCucheta.getText()+", ";
+        }
+        if(jRGimnasio.isSelected()){
+             gym = jRCucheta.getText();
+        }
+        if(jRPileta.isSelected()){
+             pileta = jRPileta.getText()+ ", ";
+        }
+        if(jRServicioHabitacion.isSelected()){
+             servicioHab = jRServicioHabitacion.getText()+", ";
+        }
+        if(jRWifi.isSelected()){
+             wifi = jRWifi.getText()+", ";
+        }
+        String servicio =desayuno + almuerzo + servicioHab+ cena + CD + CS + cucheta + wifi + pileta + aire + bano + gym;
+        
+        Alojamiento alojamiento = new Alojamiento(fechaEnt,fechaSal,estado,servicio,importe,ciudad);
+        AlojamientoData alojamientoData = new AlojamientoData();
+        alojamientoData.agregarAlojamiento(alojamiento);
+    }//GEN-LAST:event_jBNuevoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -386,19 +459,19 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JRadioButton jRDCompleto;
+    private javax.swing.JRadioButton jRAire;
+    private javax.swing.JRadioButton jRAlmuerzo;
+    private javax.swing.JRadioButton jRBanoPrivado;
+    private javax.swing.JRadioButton jRCamaDoble;
+    private javax.swing.JRadioButton jRCamasSimple;
+    private javax.swing.JRadioButton jRCena;
+    private javax.swing.JRadioButton jRCucheta;
+    private javax.swing.JRadioButton jRDesayuno;
     private javax.swing.JRadioButton jREstado;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton10;
-    private javax.swing.JRadioButton jRadioButton11;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JRadioButton jRadioButton7;
-    private javax.swing.JRadioButton jRadioButton8;
-    private javax.swing.JRadioButton jRadioButton9;
+    private javax.swing.JRadioButton jRGimnasio;
+    private javax.swing.JRadioButton jRPileta;
+    private javax.swing.JRadioButton jRServicioHabitacion;
+    private javax.swing.JRadioButton jRWifi;
     private javax.swing.JTextField jTImporte;
     // End of variables declaration//GEN-END:variables
 }

@@ -105,7 +105,7 @@ public class Alojamiento {
 
     @Override
     public String toString() {
-        return fechaInicio + ", " + fechaFin + ", " + estado + ", " + servicio + ", " + importeDiario + "$" ;
+        return fechaInicio + ", " + fechaFin + ", " + importeDiario + "$" ;
     }
 
      
