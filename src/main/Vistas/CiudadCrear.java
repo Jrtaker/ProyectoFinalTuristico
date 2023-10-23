@@ -7,6 +7,7 @@ package main.Vistas;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.Iterator;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -269,6 +270,23 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         
+        try {
+           
+            String provincia;
+            provincia = jTProvincia.toString();
+            for (int i = 0; i < provincia.length(); i++)  {
+                try{
+                    String y;
+                    y=provincia.substring(i, i);
+                    System.out.println(y);
+                    int x= Integer.parseInt(y);
+                JOptionPane.showMessageDialog(this, "Porfavor ingrese un pais valido.");
+                
+                }catch(NumberFormatException ex){}
+            }
+                           
+            
+        } catch (NumberFormatException ex) {
         String pais = jCPais.getSelectedItem().toString();
         String provincia = jTProvincia.getText();
         String ciudad = jTCiudad.getText();
@@ -284,6 +302,8 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         
         limpiarCampos();
         refrescarLista();
+        }
+        
     }//GEN-LAST:event_jBNuevoActionPerformed
     
     private void jTCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCiudadActionPerformed

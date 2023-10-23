@@ -7,6 +7,7 @@ package main.Vistas;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import main.AccesoDatos.CiudadData;
 import main.AccesoDatos.PasajeData;
 import main.entidades.Ciudad;
@@ -241,7 +242,7 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCOrigenActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
-        
+        try {
         Ciudad OrigenidCiudad = (Ciudad) jCOrigen.getSelectedItem();
         String tipoTransporte = jCTransporte.getSelectedItem().toString();
         double importe = Double.parseDouble(jTImporte.getText());
@@ -253,6 +254,10 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
         pData.agregarPasaje(pasaje);
         jTImporte.setText("");
         refrescarListaPasaje();
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Porfavor ingrese un valor apropiado.");
+        }
+        
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
