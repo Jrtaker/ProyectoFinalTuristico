@@ -53,6 +53,11 @@ public class CiudadData {
         return ciudad;
         
     }
+    
+    //IMPORTANTE
+    //buscarCiudadRepetida "SELECT * FROM ciudad WHERE pais =? AND provincia =? AND nombre =?" 
+    
+    
     //Nueva Ciudad - Boton Nuevo
     public void agregarCiudad(Ciudad ciudad) {           //OK
         String sql = "INSERT INTO ciudad( nombre, provincia, pais, estado) VALUES (?,?,?,?)";
@@ -76,7 +81,8 @@ public class CiudadData {
     //pais =/= string
     //estado!=boolean
     
-
+    
+    
     //Modificar Ciudad - Boton Guardar
     public void modificarCiudad(Ciudad ciudad) {             //OK
 

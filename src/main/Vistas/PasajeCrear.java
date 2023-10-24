@@ -35,6 +35,7 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
         }
     }    
         private void refrescarListaPasaje(){
+            jCListarPasaje.removeAllItems();
         PasajeData pasajeData =new PasajeData();
         List <Pasaje> listaPasaje =(List<Pasaje>)pasajeData.PasajesTodo() ;
         for (Pasaje pasaje :listaPasaje)
@@ -281,7 +282,9 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
             int idPasaje = jCListarPasaje.getSelectedItem().hashCode();
         
         PasajeData pData = new PasajeData();
-        
+        if(jCListarPasaje==null){
+            return;
+        }
         pData.borrarPasaje(idPasaje);
         refrescarLista();
         refrescarListaPasaje();
