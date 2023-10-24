@@ -116,7 +116,8 @@ public class AlojamientoData {
            alojamiento.setFechaFin(rs.getDate("fechaFin").toLocalDate());
            alojamiento.setServicio(rs.getString("servicio"));
            alojamiento.setImporteDiario(rs.getInt("importeDiario"));
-           
+           alojamiento.setEstado(true);
+           alojamiento.setCiudad(ciudad);
            
             alojamientos.add(alojamiento);
         }

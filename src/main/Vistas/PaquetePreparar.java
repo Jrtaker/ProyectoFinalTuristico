@@ -24,7 +24,7 @@ import main.entidades.Pasaje;
 public class PaquetePreparar extends javax.swing.JInternalFrame {
 
     private DefaultTableModel model = new DefaultTableModel();
-  private TextArea tipoServicio= new TextArea();
+ 
     /**
      * Creates new form PaqueteCrear
      */
@@ -33,21 +33,45 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         initComponents();
         armarCabecera();
         refrescarLista();
-       tipoServicio.setVisible(true);
+        refrescarLista2();
     }
-
+    public void limpiarTexto(){
+        jTServicio.setText("");
+    }
     public void refrescarLista() {
         
         CiudadData cData = new CiudadData();
 
         List<Ciudad> listaCiudad = (List<Ciudad>) cData.listarCiudad();
 
-        jCListaCiudadOrigen.removeAllItems();
+        //jCListaCiudadOrigen.removeAllItems();
 
         for (Ciudad item : listaCiudad) {
             jCListaCiudadOrigen.addItem(item);
         }
 
+    }
+    public void refrescarLista2() {
+        
+        CiudadData cData = new CiudadData();
+
+        List<Ciudad> listaCiudad = (List<Ciudad>) cData.listarCiudad();
+
+        //jCListaCiudadOrigen.removeAllItems();
+
+        for (Ciudad item : listaCiudad) {
+            jCListaCiudadDestino.addItem(item);
+        }
+
+    }
+    public void armarAlojamiento(List<Alojamiento> alojamientos){
+        jCAlojamiento.removeAllItems();
+        limpiarTexto();
+        for(Alojamiento item : alojamientos){
+            jCAlojamiento.addItem(item);
+            
+        }
+    
     }
 
     /**
@@ -261,7 +285,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
 
         for (Pasaje pasajes : pasaje) {
 
-            model.addRow(new Object[]{pasajes.getTipoTransporte(), pasajes.getImporte(), pasajes.getOrigenCiudad().getNombre()});
+            model.addRow(new Object[]{pasajes.getTipoTransporte(), pasajes.getImporte()});
         }
     }
 
@@ -269,7 +293,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         // model.setColumnCount(0);
         model.addColumn("Tipo de Transporte");
         model.addColumn("Importe");
-        model.addColumn("Ciudad de Origen");
+        
         jTabla.setModel(model);
     }
     private void jBnuevoPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoPaqueteActionPerformed
@@ -281,27 +305,33 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jComboBox7ActionPerformed
 
     private void jCAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCAlojamientoActionPerformed
+        limpiarTexto();
+       try{
+           
+        
+        
         Alojamiento alojamiento = (Alojamiento) jCAlojamiento.getSelectedItem();
+        
         String Servicio = alojamiento.getServicio();
         jTServicio.setText(Servicio);
-        AlojamientoData aData = new AlojamientoData();
-        List<Alojamiento> alojamientos = (List<Alojamiento>)aData.listarAlojamiento();
-        cargarServicio();
+        
+        }catch(NullPointerException ex){
+        return;
+        }
+        
     }//GEN-LAST:event_jCAlojamientoActionPerformed
-    public void cargarServicio(){
-        Frame frame =new Frame ();
-        frame.add(tipoServicio);
-        
-        
-        
-    }
+    
     private void jTablaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTablaAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jTablaAncestorAdded
 
     private void jCListaCiudadDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCListaCiudadDestinoActionPerformed
         // crea Alojamiento toma AlojamientoPorCiudad(Ciudad)
-       // Alojamiento alojamiento =jCListaCiudadDestino.getSelectedItem();
+         Ciudad ciudad = (Ciudad) jCListaCiudadDestino.getSelectedItem();
+        AlojamientoData alojamientoData=new AlojamientoData();
+        List<Alojamiento> alojamientos= alojamientoData.alojamientosPorCiudad(ciudad);
+        limpiarTexto();
+        armarAlojamiento(alojamientos);
         
     }//GEN-LAST:event_jCListaCiudadDestinoActionPerformed
 
