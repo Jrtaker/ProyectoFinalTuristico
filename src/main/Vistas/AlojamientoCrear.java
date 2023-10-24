@@ -126,6 +126,11 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         jLabel3.setText("Tipo de Estadia");
 
         jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
         jBEliminar.setText("Eliminar");
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -569,9 +574,9 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
                 wifi = jRWifi.getText()+" | ";
             }
             
-            int comparar = fechaEnt.compareTo(fechaSal);
             String servicio =tipo + desayuno + almuerzo + servicioHab+ cena + CD + CS + cucheta + wifi + pileta + aire + bano + gym;
             
+            int comparar = fechaEnt.compareTo(fechaSal);
 
             if (comparar < 0) {
                 if(jRCamaDoble.isSelected()||jRCamasSimple.isSelected() || jRCucheta.isSelected()){
@@ -593,6 +598,89 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
                 }
         }
     }//GEN-LAST:event_jBNuevoActionPerformed
+
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+        if(jCListarAlojamiento==null){
+            return;
+        }
+        Alojamiento alojamiento = (Alojamiento) jCListarAlojamiento.getSelectedItem();
+        
+        LocalDate fechaEnt = jDEntrada.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaSal = jDSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        
+        boolean Estado = jREstado.isSelected();
+        double importe = Double.parseDouble(jTImporte.getText());
+        
+        Ciudad ciudad = (Ciudad) jCDestino.getSelectedItem();
+        String servicio;
+        String tipoTransporte = jCTipo.getSelectedItem().toString();
+        String tipo = tipoTransporte+ " | ";
+            
+            //inicializar variables
+            String aire = "";
+            String almuerzo = "";
+            String bano = "";
+            String CD = "";
+            String CS = "";
+            String cena = "";
+            String desayuno = ""; 
+            String cucheta = "";        
+            String gym = "";
+            String pileta = "";
+            String servicioHab = "";
+            String wifi = "";
+        
+            if(jRAire.isSelected()){
+                aire=jRAire.getText() + " | ";
+            }
+            if(jRAlmuerzo.isSelected()){
+                almuerzo = jRAlmuerzo.getText()+" | ";
+            }
+            if(jRBanoPrivado.isSelected()){
+                bano = jRBanoPrivado.getText()+ " | ";
+            }    
+            if(jRCamaDoble.isSelected()){
+                CD = jRCamaDoble.getText()+ " | ";
+            }
+            if(jRCamasSimple.isSelected()){
+                CS = jRCamasSimple.getText()+ " | ";
+            }
+            if(jRCena.isSelected()){
+                cena= jRCena.getText()+" | ";
+            }
+            if(jRDesayuno.isSelected()){
+                desayuno = jRDesayuno.getText()+" | ";
+            }    
+            if(jRCucheta.isSelected()){
+                cucheta = jRCucheta.getText()+" | ";
+            }
+            if(jRGimnasio.isSelected()){
+                gym = jRGimnasio.getText()+" | ";
+            }
+            if(jRPileta.isSelected()){
+                pileta = jRPileta.getText()+ " | ";
+            }
+            if(jRServicioHabitacion.isSelected()){
+                servicioHab = jRServicioHabitacion.getText()+" | ";
+            }
+            if(jRWifi.isSelected()){
+                wifi = jRWifi.getText()+" | ";
+            }
+            
+            servicio =tipo + desayuno + almuerzo + servicioHab+ cena + CD + CS + cucheta + wifi + pileta + aire + bano + gym;
+            
+        //actualiza alojamiento
+        alojamiento.setCiudad(ciudad);
+        alojamiento.setImporteDiario(importe);
+        alojamiento.setEstado(Estado);
+        alojamiento.setFechaFin(fechaSal);
+        alojamiento.setFechaInicio(fechaEnt);
+        alojamiento.setServicio(servicio);
+        
+        AlojamientoData alojamientoData = new AlojamientoData();
+        alojamientoData.modificarAlojamiento(alojamiento);
+        
+    }//GEN-LAST:event_jBGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -52,8 +52,6 @@ public class AlojamientoData {
         String sql= "UPDATE alojamiento SET fechaInicio=?, fechaFin=?, estado=?, servicio=?,importeDiario=?, idCiudad=? WHERE idAlojamiento=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            System.out.println(alojamiento.getFechaInicio());
-            System.out.println(alojamiento.getFechaFin());
             
             ps.setDate(1, Date.valueOf(alojamiento.getFechaInicio()));
             ps.setDate(2, Date.valueOf(alojamiento.getFechaFin()));
