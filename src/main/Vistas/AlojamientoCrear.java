@@ -8,6 +8,7 @@ package main.Vistas;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
+import javax.swing.JOptionPane;
 import main.AccesoDatos.AlojamientoData;
 import main.AccesoDatos.CiudadData;
 import main.entidades.Alojamiento;
@@ -377,6 +378,7 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
+        try{
         Ciudad ciudad = (Ciudad) jCDestino.getSelectedItem();
         String tipoTransporte = jCTipo.getSelectedItem().toString();
         LocalDate fechaEnt = jDateChooser3.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -437,6 +439,9 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         Alojamiento alojamiento = new Alojamiento(fechaEnt,fechaSal,estado,servicio,importe,ciudad);
         AlojamientoData alojamientoData = new AlojamientoData();
         alojamientoData.agregarAlojamiento(alojamiento);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Porfavor ingrese un valor apropiado.");
+        }
     }//GEN-LAST:event_jBNuevoActionPerformed
 
 
