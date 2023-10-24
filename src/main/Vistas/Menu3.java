@@ -20,6 +20,10 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 import main.Vistas.Imagenes.MiPanelLateral;
 
 
@@ -40,6 +44,7 @@ public class Menu3 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel7 = new javax.swing.JLabel();
         EscritorioLateral = new javax.swing.JDesktopPane();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jLabel1 = new javax.swing.JLabel();
@@ -71,6 +76,23 @@ public class Menu3 extends javax.swing.JFrame {
         PanelPasajes = new javax.swing.JPanel();
         BotonLabelPasajes = new javax.swing.JLabel();
         panelPrincipal = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        DirectorEjecutivo = new javax.swing.JTextPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        RecursosHumanos = new javax.swing.JTextPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        GerenteReservas = new javax.swing.JTextPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        RespFinanzas = new javax.swing.JTextPane();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        RepresentatesVentas = new javax.swing.JTextPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        SoporteTecnico = new javax.swing.JTextPane();
+
+        jLabel7.setText("jLabel7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -531,21 +553,200 @@ public class Menu3 extends javax.swing.JFrame {
         );
 
         panelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        panelPrincipal.setPreferredSize(new java.awt.Dimension(684, 567));
         panelPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelPrincipalMouseEntered(evt);
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Impact", 0, 40)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel3.setText("TURITICWORLD");
+
+        jLabel4.setFont(new java.awt.Font("MV Boli", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Nuetra Misión: Hacer Realidad Tus Sueños ");
+
+        jLabel15.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setText("Contactos:");
+
+        DirectorEjecutivo.setBackground(new java.awt.Color(186, 219, 252));
+        jScrollPane2.setViewportView(DirectorEjecutivo);
+        StyledDocument styledDocument = DirectorEjecutivo.getStyledDocument();
+
+        // Crear un atributo para aplicar negritas
+        SimpleAttributeSet bold = new SimpleAttributeSet();
+        StyleConstants.setBold(bold, true);
+
+        try {
+            styledDocument.insertString(styledDocument.getLength(), "Director Ejecutivo:", bold);
+            styledDocument.insertString(styledDocument.getLength(), "\nStanley Pines\n+54 351 656 8464", null);
+        } catch (BadLocationException ex) {
+            ex.printStackTrace();
+        }
+
+        //DirectorEjecutivo= new javax.swing.JTextPane();
+        DirectorEjecutivo.setEditable(false); // Establece la edición en falso
+        jScrollPane2.setViewportView(DirectorEjecutivo);
+
+        RecursosHumanos.setBackground(new java.awt.Color(186, 219, 252));
+        jScrollPane1.setViewportView(RecursosHumanos);
+        StyledDocument styledDocument2 = RecursosHumanos.getStyledDocument();
+
+        // Crear un atributo para aplicar negritas
+        SimpleAttributeSet bold2 = new SimpleAttributeSet();
+        StyleConstants.setBold(bold, true);
+
+        try {
+            styledDocument2.insertString(styledDocument2.getLength(), "Recursos Humanos:", bold);
+            styledDocument2.insertString(styledDocument2.getLength(), "\nStanford Pines\n+54 351 912 2348", null);
+        } catch (BadLocationException ex) {
+            ex.printStackTrace();
+        }
+
+        //RecursosHumanos = new javax.swing.JTextPane();
+        RecursosHumanos.setEditable(false); // Establece la edición en falso
+        jScrollPane1.setViewportView(RecursosHumanos);
+
+        // Resto del código para aplicar el formato de negritas
+
+        GerenteReservas.setBackground(new java.awt.Color(186, 219, 252));
+        jScrollPane3.setViewportView(GerenteReservas);
+        StyledDocument styledDocument3 = GerenteReservas.getStyledDocument();
+
+        // Crear un atributo para aplicar negritas
+        SimpleAttributeSet bold3 = new SimpleAttributeSet();
+        StyleConstants.setBold(bold, true);
+
+        try {
+            styledDocument3.insertString(styledDocument3.getLength(), "Gerente de Reservas:", bold);
+            styledDocument3.insertString(styledDocument3.getLength(), "\n Adrian Sanchez \n+54 351 784 8454", null);
+        } catch (BadLocationException ex) {
+            ex.printStackTrace();
+        }
+
+        //GerenteReservas = new javax.swing.JTextPane();
+        GerenteReservas.setEditable(false); // Establece la edición en falso
+        jScrollPane3.setViewportView(GerenteReservas);
+
+        // Resto del código para aplicar el formato de negritas
+
+        RespFinanzas.setBackground(new java.awt.Color(186, 219, 252));
+        jScrollPane4.setViewportView(RespFinanzas);
+        StyledDocument styledDocument4 = RespFinanzas.getStyledDocument();
+
+        // Crear un atributo para aplicar negritas
+        SimpleAttributeSet bold4 = new SimpleAttributeSet();
+        StyleConstants.setBold(bold, true);
+
+        try {
+            styledDocument4.insertString(styledDocument4.getLength(), "Responzable de Finanzas:", bold);
+            styledDocument4.insertString(styledDocument4.getLength(), "\n Ana \n  +54 351 456 8894", null);
+        } catch (BadLocationException ex) {
+            ex.printStackTrace();
+        }
+
+        //RespFinanzas = new javax.swing.JTextPane();
+        RespFinanzas.setEditable(false); // Establece la edición en falso
+        jScrollPane4.setViewportView(RespFinanzas);
+
+        // Resto del código para aplicar el formato de negritas
+
+        RepresentatesVentas.setBackground(new java.awt.Color(186, 219, 252));
+        jScrollPane5.setViewportView(RepresentatesVentas);
+        StyledDocument styledDocument5 = RepresentatesVentas.getStyledDocument();
+
+        // Crear un atributo para aplicar negritas
+        SimpleAttributeSet bold5 = new SimpleAttributeSet();
+        StyleConstants.setBold(bold, true);
+
+        try {
+            styledDocument5.insertString(styledDocument5.getLength(), "Representantes de Ventas:", bold);
+            styledDocument5.insertString(styledDocument5.getLength(), "\n Enzo Barvaro \n+54 351 252 8648", null);
+        } catch (BadLocationException ex) {
+            ex.printStackTrace();
+        }
+
+        //RepresentatesVentas = new javax.swing.JTextPane();
+        RepresentatesVentas.setEditable(false); // Establece la edición en falso
+        jScrollPane5.setViewportView(RepresentatesVentas);
+
+        // Resto del código para aplicar el formato de negritas
+
+        SoporteTecnico.setBackground(new java.awt.Color(186, 219, 252));
+        jScrollPane6.setViewportView(SoporteTecnico);
+        StyledDocument styledDocument6 = SoporteTecnico.getStyledDocument();
+
+        // Crear un atributo para aplicar negritas
+        SimpleAttributeSet bold6 = new SimpleAttributeSet();
+        StyleConstants.setBold(bold, true);
+
+        try {
+            styledDocument6.insertString(styledDocument6.getLength(), "joni ", bold);
+            styledDocument6.insertString(styledDocument6.getLength(), "\n Yadhira Rebaza \n+54 351 295 4663", null);
+        } catch (BadLocationException ex) {
+            ex.printStackTrace();
+        }
+
+        //SoporteTecnico = new javax.swing.JTextPane();
+        SoporteTecnico.setEditable(false); // Establece la edición en falso
+        jScrollPane6.setViewportView(SoporteTecnico);
+
+        // Resto del código para aplicar el formato de negritas
+
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addGap(181, 181, 181)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)))))
+                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 567, Short.MAX_VALUE)
+            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addGap(65, 65, 65)
+                .addComponent(jLabel15)
+                .addGap(18, 18, 18)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane5)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         jLayeredPane2.setLayer(panelPaquete, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -900,17 +1101,27 @@ public class Menu3 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BotonLabelCiudad;
     private javax.swing.JLabel BotonLabelPasajes;
+    private javax.swing.JTextPane DirectorEjecutivo;
     private javax.swing.JDesktopPane EscritorioLateral;
     private javax.swing.JDesktopPane EscritorioPrincipal;
+    private javax.swing.JTextPane GerenteReservas;
     private javax.swing.JPanel PAdmin2;
     private javax.swing.JPanel PanelAlojamiento;
     private javax.swing.JPanel PanelCiudad;
     private javax.swing.JPanel PanelLateral;
     private javax.swing.JPanel PanelPasajes;
+    private javax.swing.JTextPane RecursosHumanos;
+    private javax.swing.JTextPane RepresentatesVentas;
+    private javax.swing.JTextPane RespFinanzas;
+    private javax.swing.JTextPane SoporteTecnico;
     private javax.swing.JLabel botonLabelAlojamiento;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
@@ -919,6 +1130,12 @@ public class Menu3 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JLabel labelAdmin;
     private javax.swing.JLabel labelFondoAlojamiento;
     private javax.swing.JLabel labelFondoCiudad;
