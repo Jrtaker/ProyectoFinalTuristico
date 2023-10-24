@@ -77,15 +77,15 @@ public class AlojamientoData {
             
             while (rs.next()) {
                 Alojamiento alojamiento =new Alojamiento();
-                Ciudad ciudad =new Ciudad ();
-                
+                Ciudad ciudad = new Ciudad();
+                CiudadData ciudadData = new CiudadData();
                 alojamiento.setIdAlojamiento(rs.getInt("idAlojamiento"));
                 alojamiento.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
                 alojamiento.setFechaFin(rs.getDate("fechaFin").toLocalDate());
                 alojamiento.setEstado(rs.getBoolean("estado"));
                 alojamiento.setServicio(rs.getString("Servicio"));
                 alojamiento.setImporteDiario(rs.getDouble("importeDiario"));
-                
+                alojamiento.setCiudad(ciudadData.buscarCiudad(rs.getInt("idCiudad")));
                 alojamientos.add(alojamiento);
             }
             ps.close();

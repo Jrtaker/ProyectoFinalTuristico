@@ -7,6 +7,8 @@ package main.Vistas;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import main.AccesoDatos.AlojamientoData;
@@ -23,6 +25,7 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
      private List<Ciudad> cargarCiudad;
      private AlojamientoData aData;
      private List<Alojamiento> cargarListaAlojamientos;
+     
     /**
      * Creates new form PaqueteCambios
      */
@@ -30,6 +33,7 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         initComponents();
         refrescarLista();
         refrescarListaAlojamiento();
+        jRCamasSimple.setSelected(true);
     }
  private void refrescarLista(){
         jCDestino.removeAllItems();
@@ -91,7 +95,6 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
 
         jDesktopPane1.setPreferredSize(new java.awt.Dimension(681, 547));
 
-        BGDesayuno.add(jRDesayuno);
         jRDesayuno.setText("Desayuno");
         jRDesayuno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -365,81 +368,230 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jCListarAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCListarAlojamientoActionPerformed
-       //Incoming
+        if(jCListarAlojamiento==null){
+            return;
+        }else{
+        
+            Alojamiento alojamiento = (Alojamiento) jCListarAlojamiento.getSelectedItem();
+            //Preparar variables
+            try{
+                String servicio = alojamiento.getServicio();
+                Ciudad ciudad = alojamiento.getCiudad();//Done
+                boolean estado = alojamiento.isEstado();//Done
+                Date fechaEnt = Date.from(alojamiento.getFechaInicio().atStartOfDay(ZoneId.systemDefault()).toInstant());//Done
+                Date fechaSal = Date.from(alojamiento.getFechaFin().atStartOfDay(ZoneId.systemDefault()).toInstant());      //Done  
+                double Importe = alojamiento.getImporteDiario();//Done
+            
+                //setea los parametros
+                jTImporte.setText(String.valueOf(Importe));
+                jDEntrada.setDate(fechaEnt);
+                jDSalida.setDate(fechaSal);
+                jREstado.setSelected(estado);
+        
+                for (Ciudad item : cargarCiudad) {
+                    if (item.getIdCiudad() == ciudad.getIdCiudad()) {
+                        jCDestino.setSelectedItem(item);
+                        break;
+                    }
+                }
+        
+                String[] serviciosArray = servicio.split(" \\| ");
+                List<String> serviciosList = Arrays.asList(serviciosArray);
+                
+                boolean selectedAire = false;
+                boolean selectedAlmuerzo = false;
+                boolean selectedBanoPrivado = false;
+                boolean selectedCamaDoble = false;
+                boolean selectedCamasSimple = false;
+                boolean selectedCena = false;
+                boolean selectedCucheta = false;
+                boolean selectedGimnasio = false;
+                boolean selectedPileta = false;
+                boolean selectedServicioHabitacion = false;
+                boolean selectedWifi = false;
+                boolean selectedDesayuno = false;
+                String selectedTipo = "Hotel"; 
+            
+                for (String service : serviciosList) {
+                    if (service.equals("Hostel")) {
+                        selectedTipo = "Hostel";
+                    } else if (service.equals("Motel")) {
+                        selectedTipo = "Motel";
+                    } else if (service.equals("Cabaña")) {
+                        selectedTipo = "Cabaña";
+                    }
+                    
+                    if (service.equals(jRAire.getText())) {
+                        selectedAire = true;
+                    }
+                    
+                    if (service.equals(jRAlmuerzo.getText())) {
+                        selectedAlmuerzo = true;
+                    }
+                    
+                    if (service.equals(jRBanoPrivado.getText())) {
+                        selectedBanoPrivado = true;
+                    }
+                 
+                     if (service.equals(jRCamaDoble.getText())) {
+                        selectedCamaDoble = true;
+                    }
+                 
+                    if (service.equals(jRCamasSimple.getText())) {
+                        selectedCamasSimple = true;
+                    }
+                 
+                    if (service.equals(jRCena.getText())) {
+                        selectedCena = true;
+                    }
+                 
+                    if (service.equals(jRCucheta.getText())) {
+                       selectedCucheta = true;
+                    }
+                    
+                    if (service.equals(jRGimnasio.getText())) {
+                       selectedGimnasio = true;
+                    }
+                   
+                    if (service.equals(jRPileta.getText())) {
+                      selectedPileta = true;
+                    }
+                  
+                    if (service.equals(jRServicioHabitacion.getText())) {
+                      selectedServicioHabitacion = true;
+                    }
+                   
+                    if (service.equals(jRWifi.getText())) {
+                       selectedWifi = true;
+                    }
+                    
+                     if (service.equals(jRDesayuno.getText())) {
+                       selectedDesayuno = true;
+                    }
+                }
+
+                jCTipo.setSelectedItem(selectedTipo);
+                jRAire.setSelected(selectedAire);
+                jRAlmuerzo.setSelected(selectedAlmuerzo);
+                jRBanoPrivado.setSelected(selectedBanoPrivado);
+                jRCamaDoble.setSelected(selectedCamaDoble);
+                jRDesayuno.setSelected(selectedDesayuno);
+                jRCamasSimple.setSelected(selectedCamasSimple);
+                jRCena.setSelected(selectedCena);
+                jRCucheta.setSelected(selectedCucheta);
+                jRGimnasio.setSelected(selectedGimnasio);
+                jRPileta.setSelected(selectedPileta);
+                jRServicioHabitacion.setSelected(selectedServicioHabitacion);
+                jRWifi.setSelected(selectedWifi);
+            }catch(NullPointerException ex){
+                return;    
+            }
+        }
     }//GEN-LAST:event_jCListarAlojamientoActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-      Alojamiento alojamiento = (Alojamiento) jCListarAlojamiento.getSelectedItem();
+        if (jCListarAlojamiento==null) {
+            return;
+        }
+        Alojamiento alojamiento = (Alojamiento) jCListarAlojamiento.getSelectedItem();
         int idAlojamiento = alojamiento.getIdAlojamiento();
         AlojamientoData alojamientoData = new AlojamientoData();
         alojamientoData.borrarAlojamiento(idAlojamiento);
-        
+        refrescarListaAlojamiento();
       
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         
+        if(jCDestino==null){
+            return;
+        }
         Ciudad ciudad = (Ciudad) jCDestino.getSelectedItem();
         String tipoTransporte = jCTipo.getSelectedItem().toString();
         LocalDate fechaEnt = jDEntrada.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate fechaSal = jDSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        String tipo = tipoTransporte+ ", ";
+        
+       
+        
+        String tipo = tipoTransporte+ " | ";
         boolean estado = jREstado.isSelected();
-        double importe = Double.parseDouble(jTImporte.getText());
-        String aire = "";
-        String almuerzo = "";
-        String bano = "";
-        String CD = "";
-        String CS = "";
-        String cena = "";
-        String desayuno = ""; 
-        String cucheta = "";        
-        String gym = "";
-        String pileta = "";
-        String servicioHab = "";
-        String wifi = "";
-        if(jRAire.isSelected()){
-             aire=jRAire.getText() + ", ";
-        }
-        if(jRAlmuerzo.isSelected()){
-             almuerzo = jRAlmuerzo.getText()+", ";
-        }
-        if(jRBanoPrivado.isSelected()){
-             bano = jRBanoPrivado.getText()+ ", ";
-        }    
-        if(jRCamaDoble.isSelected()){
-             CD = jRCamaDoble.getText()+ ", ";
-        }
-        if(jRCamasSimple.isSelected()){
-            CS = jRCamasSimple.getText()+ ", ";
-        }
-        if(jRCena.isSelected()){
-             cena= jRCena.getText()+", ";
-        }
-        if(jRDesayuno.isSelected()){
-             desayuno = jRDesayuno.getText()+", ";
-        }    
-        if(jRCucheta.isSelected()){
-            cucheta = jRCucheta.getText()+", ";
-        }
-        if(jRGimnasio.isSelected()){
-             gym = jRCucheta.getText();
-        }
-        if(jRPileta.isSelected()){
-             pileta = jRPileta.getText()+ ", ";
-        }
-        if(jRServicioHabitacion.isSelected()){
-             servicioHab = jRServicioHabitacion.getText()+", ";
-        }
-        if(jRWifi.isSelected()){
-             wifi = jRWifi.getText()+", ";
-        }
-        String servicio =tipo+desayuno + almuerzo + servicioHab+ cena + CD + CS + cucheta + wifi + pileta + aire + bano + gym;
         
-        Alojamiento alojamiento = new Alojamiento(fechaEnt,fechaSal,estado,servicio,importe,ciudad);
-        AlojamientoData alojamientoData = new AlojamientoData();
-        alojamientoData.agregarAlojamiento(alojamiento);
+        try{
+            double importe = Double.parseDouble(jTImporte.getText());
         
+            String aire = "";
+            String almuerzo = "";
+            String bano = "";
+            String CD = "";
+            String CS = "";
+            String cena = "";
+            String desayuno = ""; 
+            String cucheta = "";        
+            String gym = "";
+            String pileta = "";
+            String servicioHab = "";
+            String wifi = "";
+        
+            if(jRAire.isSelected()){
+                     aire=jRAire.getText() + " | ";
+            }
+            if(jRAlmuerzo.isSelected()){
+                almuerzo = jRAlmuerzo.getText()+" | ";
+            }
+            if(jRBanoPrivado.isSelected()){
+                bano = jRBanoPrivado.getText()+ " | ";
+            }    
+            if(jRCamaDoble.isSelected()){
+                CD = jRCamaDoble.getText()+ " | ";
+            }
+            if(jRCamasSimple.isSelected()){
+             CS = jRCamasSimple.getText()+ " | ";
+            }
+            if(jRCena.isSelected()){
+                 cena= jRCena.getText()+" | ";
+            }
+            if(jRDesayuno.isSelected()){
+                 desayuno = jRDesayuno.getText()+" | ";
+            }    
+            if(jRCucheta.isSelected()){
+                cucheta = jRCucheta.getText()+" | ";
+            }
+            if(jRGimnasio.isSelected()){
+                gym = jRGimnasio.getText()+" | ";
+            }
+            if(jRPileta.isSelected()){
+                pileta = jRPileta.getText()+ " | ";
+            }
+            if(jRServicioHabitacion.isSelected()){
+                servicioHab = jRServicioHabitacion.getText()+" | ";
+            }
+            if(jRWifi.isSelected()){
+                wifi = jRWifi.getText()+" | ";
+            }
+            
+            int comparar = fechaEnt.compareTo(fechaSal);
+            String servicio =tipo + desayuno + almuerzo + servicioHab+ cena + CD + CS + cucheta + wifi + pileta + aire + bano + gym;
+            
+
+            if (comparar < 0) {
+                if(jRCamaDoble.isSelected()||jRCamasSimple.isSelected() || jRCucheta.isSelected()){
+                Alojamiento alojamiento = new Alojamiento(fechaEnt,fechaSal,estado,servicio,importe,ciudad);
+                AlojamientoData alojamientoData = new AlojamientoData();
+                alojamientoData.agregarAlojamiento(alojamiento);
+                refrescarListaAlojamiento();
+                }else{
+                    JOptionPane.showMessageDialog(this, "Porfavor elija un estilo de cama. No se puede dormir en el piso!");
+                }
+            }else{ 
+                JOptionPane.showMessageDialog(this, "Entrada fallada, la fecha de salida debe ser posterior a la fecha de entrada");
+            }
+        }catch(NumberFormatException ex){
+                if(jTImporte.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(this, "Porfavor ingrese un valor en Importe Diario.");
+                }else{
+                   JOptionPane.showMessageDialog(this, "Porfavor ingrese un valor de Importe Diario correcto. Solo numeros.");
+                }
+        }
     }//GEN-LAST:event_jBNuevoActionPerformed
 
 
