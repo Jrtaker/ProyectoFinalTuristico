@@ -498,11 +498,28 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         if (jCListarAlojamiento==null) {
             return;
         }
-        Alojamiento alojamiento = (Alojamiento) jCListarAlojamiento.getSelectedItem();
-        int idAlojamiento = alojamiento.getIdAlojamiento();
-        AlojamientoData alojamientoData = new AlojamientoData();
-        alojamientoData.borrarAlojamiento(idAlojamiento);
-        refrescarListaAlojamiento();
+        
+            int confirmResult = JOptionPane.showConfirmDialog(
+                this, 
+                "¿Desea borrar el Alojamiento?",
+                "Confirmar Borrado",
+                JOptionPane.YES_NO_OPTION
+            );
+            if (confirmResult == JOptionPane.YES_OPTION) {
+                int confirmResult2 = JOptionPane.showConfirmDialog(
+                this, 
+                "¿Estas seguro que quieres borrar el Alojamiento?",
+                "Confirmar Borrado",
+                JOptionPane.YES_NO_OPTION
+                );
+                if (confirmResult2 == JOptionPane.YES_OPTION) {
+                    Alojamiento alojamiento = (Alojamiento) jCListarAlojamiento.getSelectedItem();            
+                    int idAlojamiento = alojamiento.getIdAlojamiento();
+                    AlojamientoData alojamientoData = new AlojamientoData();
+                    alojamientoData.borrarAlojamiento(idAlojamiento);
+                    refrescarListaAlojamiento();    
+                }
+            }
       
     }//GEN-LAST:event_jBEliminarActionPerformed
 
@@ -511,8 +528,13 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         if(jCDestino==null){
             return;
         }
+        
         Ciudad ciudad = (Ciudad) jCDestino.getSelectedItem();
         String tipoTransporte = jCTipo.getSelectedItem().toString();
+        if(jDEntrada.getDate()==null || jDSalida.getDate()==null){
+            JOptionPane.showMessageDialog(this, "Porfavor ingrese una fecha.");
+            return;
+        }
         LocalDate fechaEnt = jDEntrada.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate fechaSal = jDSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         
@@ -580,9 +602,11 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
 
             if (comparar < 0) {
                 if(jRCamaDoble.isSelected()||jRCamasSimple.isSelected() || jRCucheta.isSelected()){
+                    servicio = servicio + "El importe total es de : "+(-1*importe * comparar)+ "$";
                 Alojamiento alojamiento = new Alojamiento(fechaEnt,fechaSal,estado,servicio,importe,ciudad);
                 AlojamientoData alojamientoData = new AlojamientoData();
                 alojamientoData.agregarAlojamiento(alojamiento);
+                
                 refrescarListaAlojamiento();
                 }else{
                     JOptionPane.showMessageDialog(this, "Porfavor elija un estilo de cama. No se puede dormir en el piso!");
@@ -605,10 +629,17 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         }
         Alojamiento alojamiento = (Alojamiento) jCListarAlojamiento.getSelectedItem();
         
+        if(jDEntrada.getDate()==null || jDSalida.getDate()==null){
+            JOptionPane.showMessageDialog(this, "Porfavor ingrese una fecha.");
+            return;
+        }
+        
         LocalDate fechaEnt = jDEntrada.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate fechaSal = jDSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         
         boolean Estado = jREstado.isSelected();
+        try{
+            
         double importe = Double.parseDouble(jTImporte.getText());
         
         Ciudad ciudad = (Ciudad) jCDestino.getSelectedItem();
@@ -669,16 +700,27 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
             
             servicio =tipo + desayuno + almuerzo + servicioHab+ cena + CD + CS + cucheta + wifi + pileta + aire + bano + gym;
             
-        //actualiza alojamiento
-        alojamiento.setCiudad(ciudad);
-        alojamiento.setImporteDiario(importe);
-        alojamiento.setEstado(Estado);
-        alojamiento.setFechaFin(fechaSal);
-        alojamiento.setFechaInicio(fechaEnt);
-        alojamiento.setServicio(servicio);
-        
+            int comparar = fechaEnt.compareTo(fechaSal);
+            if (comparar < 0) {
+                //actualiza alojamiento
+                alojamiento.setCiudad(ciudad);
+                alojamiento.setImporteDiario(importe);
+                alojamiento.setEstado(Estado);
+                alojamiento.setFechaFin(fechaSal);
+                alojamiento.setFechaInicio(fechaEnt);
+                alojamiento.setServicio(servicio);
+            } else {
+                JOptionPane.showMessageDialog(this, "Entrada fallada, la fecha de salida debe ser posterior a la fecha de entrada");
+            }
         AlojamientoData alojamientoData = new AlojamientoData();
         alojamientoData.modificarAlojamiento(alojamiento);
+        }catch(NumberFormatException ex){
+            if(jTImporte.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Porfavor ingrese un valor en Importe Diario.");
+            }else{
+                JOptionPane.showMessageDialog(this, "Porfavor ingrese un valor de Importe Diario correcto. Solo numeros.");
+            }
+        }
         
     }//GEN-LAST:event_jBGuardarActionPerformed
 
