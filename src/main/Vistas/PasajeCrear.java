@@ -29,6 +29,7 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
        
         CiudadData ciudadData = new CiudadData();
         List <Ciudad> listaCiudad =(List<Ciudad>)ciudadData.listarCiudad();
+        
         for (Ciudad ciudad : listaCiudad) {
             jCOrigen.addItem(ciudad);
         }
