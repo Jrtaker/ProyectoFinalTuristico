@@ -335,7 +335,6 @@ public class Menu3 extends javax.swing.JFrame {
                 .addComponent(jLayeredPane1))
         );
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/Vistas/Imagenes/fondoparaPaquete.jpg"))); // NOI18N
         jLabel11.setText("jLabel11");
 
         panelPaquete.setBackground(new java.awt.Color(255, 255, 255));
@@ -784,12 +783,12 @@ public class Menu3 extends javax.swing.JFrame {
             .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane2Layout.createSequentialGroup()
                     .addGap(3, 3, 3)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 684, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
                     .addGap(3, 3, 3)))
         );
         jLayeredPane2Layout.setVerticalGroup(
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
             .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelPaquete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
