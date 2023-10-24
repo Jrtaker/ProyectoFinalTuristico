@@ -84,8 +84,8 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jRServicioHabitacion = new javax.swing.JRadioButton();
         jRCucheta = new javax.swing.JRadioButton();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
-        jDateChooser4 = new com.toedter.calendar.JDateChooser();
+        jDEntrada = new com.toedter.calendar.JDateChooser();
+        jDSalida = new com.toedter.calendar.JDateChooser();
         jCListarAlojamiento = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
 
@@ -200,8 +200,8 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jRServicioHabitacion, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jRCucheta, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jDateChooser3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jDateChooser4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jDEntrada, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jDSalida, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jCListarAlojamiento, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -263,9 +263,9 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                        .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jDEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(44, 44, 44)
-                                        .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jDSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jCListarAlojamiento, 0, 484, Short.MAX_VALUE)
                                     .addComponent(jCDestino, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
@@ -302,8 +302,8 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRDesayuno)
@@ -378,12 +378,12 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
-        try{
+        
         Ciudad ciudad = (Ciudad) jCDestino.getSelectedItem();
         String tipoTransporte = jCTipo.getSelectedItem().toString();
-        LocalDate fechaEnt = jDateChooser3.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        LocalDate fechaSal = jDateChooser4.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        
+        LocalDate fechaEnt = jDEntrada.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaSal = jDSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        String tipo = tipoTransporte+ ", ";
         boolean estado = jREstado.isSelected();
         double importe = Double.parseDouble(jTImporte.getText());
         String aire = "";
@@ -434,14 +434,12 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         if(jRWifi.isSelected()){
              wifi = jRWifi.getText()+", ";
         }
-        String servicio =desayuno + almuerzo + servicioHab+ cena + CD + CS + cucheta + wifi + pileta + aire + bano + gym;
+        String servicio =tipo+desayuno + almuerzo + servicioHab+ cena + CD + CS + cucheta + wifi + pileta + aire + bano + gym;
         
         Alojamiento alojamiento = new Alojamiento(fechaEnt,fechaSal,estado,servicio,importe,ciudad);
         AlojamientoData alojamientoData = new AlojamientoData();
         alojamientoData.agregarAlojamiento(alojamiento);
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Porfavor ingrese un valor apropiado.");
-        }
+        
     }//GEN-LAST:event_jBNuevoActionPerformed
 
 
@@ -455,8 +453,8 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<Ciudad> jCDestino;
     private javax.swing.JComboBox<Alojamiento> jCListarAlojamiento;
     private javax.swing.JComboBox<String> jCTipo;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
-    private com.toedter.calendar.JDateChooser jDateChooser4;
+    private com.toedter.calendar.JDateChooser jDEntrada;
+    private com.toedter.calendar.JDateChooser jDSalida;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
