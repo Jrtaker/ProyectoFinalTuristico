@@ -98,13 +98,13 @@ public class PasajeData {
         return pasajes;
     }
         //Listado de todos los pasajes para uso en paquete.
-        public List<Pasaje> pasajesActivos(String tipo) {
+        public List<Pasaje> pasajesActivos(int idCiudad) {
         List<Pasaje> pasajes = new ArrayList<>();
         try {
 
-            String selectQuery = "SELECT * FROM Pasaje WHERE tipoTransporte = ? AND estado=1";
+            String selectQuery = "SELECT * FROM Pasaje WHERE idCiudad = ? AND estado=1";
             PreparedStatement ps = con.prepareStatement(selectQuery);
-            ps.setString(1, tipo);
+            ps.setInt(1, idCiudad);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -114,7 +114,7 @@ public class PasajeData {
                 boolean Estado=(rs.getBoolean("estado"));
                 
                 CiudadData ciudadData=new CiudadData();
-                int idCiudad=rs.getInt("idCiudad");
+                
                 Ciudad ciudad = ciudadData.buscarCiudad(idCiudad);
                 Pasaje pasaje = new Pasaje(IdPasaje,TipoTransporte,Importe,ciudad,Estado);
                 pasajes.add(pasaje);
