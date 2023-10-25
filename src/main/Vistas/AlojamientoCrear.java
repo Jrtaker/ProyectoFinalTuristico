@@ -534,7 +534,7 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
                        selectedWifi = true;
                     }
                     
-                     if (service.equals(jRDesayuno.getText())) {
+                    if (service.equals(jRDesayuno.getText())) {
                        selectedDesayuno = true;
                     }
                 }
@@ -667,11 +667,11 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
             if (comparar < 0) {
                 if(jRCamaDoble.isSelected()||jRCamasSimple.isSelected() || jRCucheta.isSelected()){
                     servicio = servicio + "El importe total es de : "+(-1*importe * comparar)+ "$";
-                Alojamiento alojamiento = new Alojamiento(fechaEnt,fechaSal,estado,servicio,importe,ciudad);
-                AlojamientoData alojamientoData = new AlojamientoData();
-                alojamientoData.agregarAlojamiento(alojamiento);
+                    Alojamiento alojamiento = new Alojamiento(fechaEnt,fechaSal,estado,servicio,importe,ciudad);
+                    AlojamientoData alojamientoData = new AlojamientoData();
+                    alojamientoData.agregarAlojamiento(alojamiento);
                 
-                refrescarListaAlojamiento();
+                    refrescarListaAlojamiento();
                 }else{
                     JOptionPane.showMessageDialog(this, "Porfavor elija un estilo de cama. No se puede dormir en el piso!");
                 }
@@ -773,11 +773,12 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
                 alojamiento.setFechaFin(fechaSal);
                 alojamiento.setFechaInicio(fechaEnt);
                 alojamiento.setServicio(servicio);
+                AlojamientoData alojamientoData = new AlojamientoData();
+                    alojamientoData.modificarAlojamiento(alojamiento);
             } else {
                 JOptionPane.showMessageDialog(this, "Entrada fallada, la fecha de salida debe ser posterior a la fecha de entrada");
             }
-        AlojamientoData alojamientoData = new AlojamientoData();
-        alojamientoData.modificarAlojamiento(alojamiento);
+        ;
         }catch(NumberFormatException ex){
             if(jTImporte.getText().isEmpty()){
                 JOptionPane.showMessageDialog(this, "Porfavor ingrese un valor en Importe Diario.");

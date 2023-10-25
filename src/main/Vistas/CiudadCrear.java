@@ -307,7 +307,9 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         }
         boolean estado = jREstado.isSelected();
         Ciudad nuevaciudad = new Ciudad(ciudad, pais, estado, provincia);
+        
         CiudadData ciudadData = new CiudadData();
+        //Ciudad nuevaciudad2 = ciudadData.buscarCiudadRepetida(pais,provincia,ciudad);
         ciudadData.agregarCiudad(nuevaciudad);
         
         limpiarCampos();
@@ -349,13 +351,21 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         );
         if (confirmResult == JOptionPane.YES_OPTION) {
         //Confirmo Selección
-        String pais = jCPais.getSelectedItem().toString();
-        String provincia = jTProvincia.getText();
-        String ciudad = jTCiudad.getText();
+                int confirmResult2 = JOptionPane.showConfirmDialog(
+                this, 
+                "Borrar una ciudad no puede ser desecho",
+                "Quiere proceder?",
+                JOptionPane.YES_NO_OPTION
+                );
+                if (confirmResult2 == JOptionPane.YES_OPTION) {
+                String pais = jCPais.getSelectedItem().toString();
+                String provincia = jTProvincia.getText();
+                String ciudad = jTCiudad.getText();
         
-        cData.borrarCiudad(pais, provincia, ciudad);
-        limpiarCampos();
-        refrescarLista();
+                cData.borrarCiudad(pais, provincia, ciudad);
+                limpiarCampos();
+                refrescarLista();
+                }
         }
         
     }//GEN-LAST:event_jBEliminarActionPerformed
@@ -385,10 +395,11 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
             ciudad.setEstado(estado);
 
             cData.modificarCiudad(ciudad);
+            limpiarCampos();
+            refrescarLista();
         }
         
-        limpiarCampos();
-        refrescarLista();
+        
         
         
         
