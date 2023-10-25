@@ -8,6 +8,7 @@ package main.Vistas;
 import java.awt.Frame;
 import java.awt.TextArea;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import main.AccesoDatos.AlojamientoData;
 import main.AccesoDatos.CiudadData;
@@ -34,6 +35,15 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         armarCabecera();
         refrescarLista();
         refrescarLista2();
+        cargarNumeros();
+    }
+    public void cargarNumeros(){
+        int cantidadPersonas;
+
+        
+        for (int i = 0; 0 < 100; i++) {
+            jCcantidadPersonas.addItem(i);
+        }
     }
     public void limpiarTexto(){
         
@@ -92,7 +102,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         jTabla = new javax.swing.JTable();
         jBnuevoPaquete = new javax.swing.JButton();
         jCAlojamiento = new javax.swing.JComboBox<>();
-        jComboBox7 = new javax.swing.JComboBox<>();
+        jCcantidadPersonas = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -132,9 +142,9 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 jTablaAncestorAdded(evt);
             }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         jScrollPane2.setViewportView(jTabla);
@@ -157,11 +167,11 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
             }
         });
 
-        jComboBox7.setBackground(new java.awt.Color(209, 237, 251));
-        jComboBox7.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox7.addActionListener(new java.awt.event.ActionListener() {
+        jCcantidadPersonas.setBackground(new java.awt.Color(209, 237, 251));
+        jCcantidadPersonas.setForeground(new java.awt.Color(0, 0, 0));
+        jCcantidadPersonas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox7ActionPerformed(evt);
+                jCcantidadPersonasActionPerformed(evt);
             }
         });
 
@@ -206,7 +216,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jBnuevoPaquete, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jCAlojamiento, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jComboBox7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jCcantidadPersonas, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -225,7 +235,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jCcantidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(jLabel1))
                                 .addComponent(jCAlojamiento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -263,7 +273,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCcantidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(33, 33, 33)
                 .addComponent(jCAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -275,7 +285,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBnuevoPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jDesktopPane1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -325,12 +335,17 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         jTabla.setModel(model);
     }
     private void jBnuevoPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoPaqueteActionPerformed
-        // TODO add your handling code here:
+        //
+        
+        
+        
     }//GEN-LAST:event_jBnuevoPaqueteActionPerformed
 
-    private void jComboBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox7ActionPerformed
+    private void jCcantidadPersonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCcantidadPersonasActionPerformed
+       
+        
+        
+    }//GEN-LAST:event_jCcantidadPersonasActionPerformed
 
     private void jCAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCAlojamientoActionPerformed
         limpiarTexto();
@@ -374,7 +389,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<Alojamiento> jCAlojamiento;
     private javax.swing.JComboBox<Ciudad> jCListaCiudadDestino;
     private javax.swing.JComboBox<Ciudad> jCListaCiudadOrigen;
-    private javax.swing.JComboBox<Integer> jComboBox7;
+    private javax.swing.JComboBox<Integer> jCcantidadPersonas;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

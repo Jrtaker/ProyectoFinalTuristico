@@ -100,10 +100,10 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jRServicioHabitacion = new javax.swing.JRadioButton();
         jRCucheta = new javax.swing.JRadioButton();
-        jDEntrada = new com.toedter.calendar.JDateChooser();
-        jDSalida = new com.toedter.calendar.JDateChooser();
         jCListarAlojamiento = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
+        jDEntrada = new com.toedter.calendar.JDateChooser();
+        jDSalida = new com.toedter.calendar.JDateChooser();
 
         jDesktopPane1.setForeground(new java.awt.Color(0, 0, 0));
         jDesktopPane1.setPreferredSize(new java.awt.Dimension(681, 547));
@@ -228,12 +228,6 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         jRCucheta.setForeground(new java.awt.Color(0, 0, 0));
         jRCucheta.setText("Cucheta");
 
-        jDEntrada.setBackground(new java.awt.Color(209, 237, 251));
-        jDEntrada.setForeground(new java.awt.Color(0, 0, 0));
-
-        jDSalida.setBackground(new java.awt.Color(209, 237, 251));
-        jDSalida.setForeground(new java.awt.Color(0, 0, 0));
-
         jCListarAlojamiento.setBackground(new java.awt.Color(209, 237, 251));
         jCListarAlojamiento.setForeground(new java.awt.Color(0, 0, 0));
         jCListarAlojamiento.addActionListener(new java.awt.event.ActionListener() {
@@ -271,10 +265,10 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jRServicioHabitacion, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jRCucheta, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jDEntrada, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jDSalida, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jCListarAlojamiento, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jDEntrada, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jDSalida, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -318,35 +312,39 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
                                 .addComponent(jBSalir))
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jBNuevo)
-                                        .addGap(55, 55, 55)
-                                        .addComponent(jBGuardar)
-                                        .addGap(45, 45, 45)
-                                        .addComponent(jBEliminar))
-                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(83, 83, 83)
-                                        .addComponent(jLabel5))
-                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                        .addComponent(jCTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                        .addComponent(jDEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(44, 44, 44)
-                                        .addComponent(jDSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jCListarAlojamiento, 0, 484, Short.MAX_VALUE)
                                     .addComponent(jCDestino, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                        .addGap(43, 43, 43)
-                                        .addComponent(jREstado)
-                                        .addGap(45, 45, 45)
-                                        .addComponent(jTImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jBNuevo)
+                                            .addGap(55, 55, 55)
+                                            .addComponent(jBGuardar)
+                                            .addGap(45, 45, 45)
+                                            .addComponent(jBEliminar))
+                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                            .addComponent(jCTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                            .addGap(43, 43, 43)
+                                            .addComponent(jREstado)
+                                            .addGap(45, 45, 45)
+                                            .addComponent(jTImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                            .addGap(6, 6, 6)
+                                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jDEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                                    .addGap(78, 78, 78)
+                                                    .addComponent(jLabel5))
+                                                .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                                    .addGap(70, 70, 70)
+                                                    .addComponent(jDSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
@@ -376,7 +374,7 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jDEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRDesayuno)
                     .addComponent(jRCena)
@@ -387,16 +385,16 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
                     .addComponent(jRCamasSimple)
                     .addComponent(jRCamaDoble)
                     .addComponent(jRCucheta))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRAire)
                     .addComponent(jRPileta)
                     .addComponent(jRWifi))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRBanoPrivado)
                     .addComponent(jRGimnasio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jREstado)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
