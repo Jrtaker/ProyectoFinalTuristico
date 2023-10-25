@@ -37,6 +37,8 @@ public class Menu3 extends javax.swing.JFrame {
 
     public Menu3() {
         initComponents();
+        setTitle("Paquete Turistico - Turistic World");
+        setLocationRelativeTo(null);
         // Crea un panel con fondo y agrégalo al JFrame
 
     }

@@ -10,7 +10,7 @@ import main.Vistas.Menu3;
 
 /**@author Programita */
 public class Loginnn extends javax.swing.JFrame {
-
+       
     
     public Loginnn() {
         initComponents();
@@ -51,8 +51,6 @@ public class Loginnn extends javax.swing.JFrame {
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-
-        jPasswordField1.setText("jPasswordField1");
 
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -171,7 +169,7 @@ public class Loginnn extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     /** @param args the command line arguments*/
-    public static void main(String args[]) {
+    public static void login() {
        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
