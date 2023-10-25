@@ -747,7 +747,7 @@ public class Menu3 extends javax.swing.JFrame {
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addGap(190, 190, 190)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -784,7 +784,7 @@ public class Menu3 extends javax.swing.JFrame {
         jLayeredPane2.setLayout(jLayeredPane2Layout);
         jLayeredPane2Layout.setHorizontalGroup(
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
             .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelPaquete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1007,11 +1007,7 @@ public class Menu3 extends javax.swing.JFrame {
           if (evt.getSource() == BotonLabelPasajes) {
              PanelPasajes.setBackground(new Color(255,255,255,200));
         PanelPasajes.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2)); 
-      
     }
-        
-          
-          
     }//GEN-LAST:event_BotonLabelPasajesMouseEntered
 
     private void botonLabelAlojamientoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLabelAlojamientoMouseExited
@@ -1075,30 +1071,33 @@ public class Menu3 extends javax.swing.JFrame {
     private void labelCrearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelCrearMouseEntered
         if (evt.getSource() == labelCrear) {
             panelCrear.setBackground(new Color(51, 51, 255, 255));
+            labelCrear.setForeground(Color.white);
             panelCrear.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2));
         } 
-        // TODO add your handling code here:
     }//GEN-LAST:event_labelCrearMouseEntered
 
     private void labelCambiosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelCambiosMouseEntered
       if (evt.getSource() == labelCambios) {
             panelCambios.setBackground(new Color(51, 51, 255, 255));
+            labelCambios.setForeground(Color.white);
             panelCambios.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2));
-        }      // TODO add your handling code here:
+        }      
     }//GEN-LAST:event_labelCambiosMouseEntered
 
     private void labelCrearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelCrearMouseExited
  if (evt.getSource() == labelCrear) {
             panelCrear.setBackground(new Color(188, 219, 249, 255));
+            labelCrear.setForeground(Color.black);
             panelCrear.setBorder(null);
-        }         // TODO add your handling code here:
+        }        
     }//GEN-LAST:event_labelCrearMouseExited
 
     private void labelCambiosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelCambiosMouseExited
    if (evt.getSource() == labelCambios) {
             panelCambios.setBackground(new Color(188, 219, 249, 255));
+             labelCambios.setForeground(Color.black);
             panelCambios.setBorder(null);
-        }           // TODO add your handling code here:
+        }          
     }//GEN-LAST:event_labelCambiosMouseExited
 
     private void labelCambiosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelCambiosMouseClicked
