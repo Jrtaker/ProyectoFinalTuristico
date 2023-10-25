@@ -36,6 +36,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         refrescarLista2();
     }
     public void limpiarTexto(){
+        
         jTServicio.setText("");
     }
     public void refrescarLista() {

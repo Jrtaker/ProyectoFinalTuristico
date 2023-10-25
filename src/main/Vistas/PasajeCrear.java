@@ -301,7 +301,9 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCListarPasajeActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-        
+        if(jCListarPasaje==null){
+        return;
+        }
         int confirmResult = JOptionPane.showConfirmDialog(
                 this, 
                 "¿Está seguro que desea borrar el Pasaje?", 
