@@ -5,6 +5,7 @@
  */
 package main.Vistas;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.Iterator;
@@ -70,6 +71,9 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         setMinimumSize(new java.awt.Dimension(0, 0));
         setPreferredSize(new java.awt.Dimension(683, 569));
 
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jButton4.setFont(new java.awt.Font("Impact", 0, 12)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(0, 0, 0));
         jButton4.setText("Salir");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +81,9 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
             }
         });
 
+        jBEliminar.setBackground(new java.awt.Color(195, 223, 251));
+        jBEliminar.setFont(new java.awt.Font("Impact", 0, 13)); // NOI18N
+        jBEliminar.setForeground(new java.awt.Color(0, 0, 0));
         jBEliminar.setText("Eliminar");
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +91,9 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
             }
         });
 
+        jCPais.setBackground(new java.awt.Color(209, 237, 251));
+        jCPais.setFont(new java.awt.Font("Sitka Small", 0, 14)); // NOI18N
+        jCPais.setForeground(new java.awt.Color(0, 0, 0));
         jCPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Brazil", "Argentina", "Estados Unidos", "Colombia", "Chile", "" }));
         jCPais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,32 +101,53 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
             }
         });
 
+        jTProvincia.setBackground(new java.awt.Color(209, 237, 251));
+        jTProvincia.setForeground(new java.awt.Color(0, 0, 0));
         jTProvincia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTProvinciaActionPerformed(evt);
             }
         });
 
+        jTCiudad.setBackground(new java.awt.Color(209, 237, 251));
+        jTCiudad.setForeground(new java.awt.Color(0, 0, 0));
         jTCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTCiudadActionPerformed(evt);
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(212, 233, 255));
+        jLabel1.setFont(new java.awt.Font("Sitka Small", 1, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Pais");
 
+        jLabel2.setBackground(new java.awt.Color(212, 233, 255));
+        jLabel2.setFont(new java.awt.Font("Sitka Small", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Provincia");
 
+        jLabel3.setBackground(new java.awt.Color(212, 233, 255));
+        jLabel3.setFont(new java.awt.Font("Sitka Small", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Ciudad");
 
+        jREstado.setFont(new java.awt.Font("Sitka Small", 1, 16)); // NOI18N
+        jREstado.setForeground(new java.awt.Color(0, 0, 0));
         jREstado.setText("Estado");
 
+        jCListarCiudad.setBackground(new java.awt.Color(209, 237, 251));
+        jCListarCiudad.setFont(new java.awt.Font("Sitka Small", 0, 14)); // NOI18N
+        jCListarCiudad.setForeground(new java.awt.Color(0, 0, 0));
         jCListarCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCListarCiudadActionPerformed(evt);
             }
         });
 
+        jBNuevo.setBackground(new java.awt.Color(195, 223, 251));
+        jBNuevo.setFont(new java.awt.Font("Impact", 0, 13)); // NOI18N
+        jBNuevo.setForeground(new java.awt.Color(0, 0, 0));
         jBNuevo.setText("Nuevo");
         jBNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,6 +155,9 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
             }
         });
 
+        jBGuardar.setBackground(new java.awt.Color(195, 223, 251));
+        jBGuardar.setFont(new java.awt.Font("Impact", 0, 13)); // NOI18N
+        jBGuardar.setForeground(new java.awt.Color(0, 0, 0));
         jBGuardar.setText("Guardar");
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,40 +192,34 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCListarCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jREstado)
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCListarCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                        .addComponent(jTCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jREstado))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(jTProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2))
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                        .addComponent(jTProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                        .addComponent(jCPais, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(73, 73, 73)
+                                .addComponent(jCPais, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(63, 63, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addGap(58, 58, 58))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(7, 7, 7)
-                        .addComponent(jBNuevo)
+                        .addComponent(jBNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jBGuardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4)))
                 .addGap(16, 16, 16))
@@ -223,12 +251,12 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3))
                 .addGap(54, 54, 54)
                 .addComponent(jREstado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBGuardar)
-                    .addComponent(jBNuevo)
-                    .addComponent(jBEliminar)
-                    .addComponent(jButton4))
+                    .addComponent(jBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 

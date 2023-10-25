@@ -105,8 +105,13 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         jCListarAlojamiento = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
 
+        jDesktopPane1.setForeground(new java.awt.Color(0, 0, 0));
         jDesktopPane1.setPreferredSize(new java.awt.Dimension(681, 547));
 
+        jCDestino.setBackground(new java.awt.Color(209, 237, 251));
+        jCDestino.setForeground(new java.awt.Color(0, 0, 0));
+
+        jRDesayuno.setForeground(new java.awt.Color(0, 0, 0));
         jRDesayuno.setText("Desayuno");
         jRDesayuno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,12 +120,17 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         });
 
         BGCamas.add(jRCamasSimple);
+        jRCamasSimple.setForeground(new java.awt.Color(0, 0, 0));
         jRCamasSimple.setText("Camas Simple");
 
+        jRCena.setForeground(new java.awt.Color(0, 0, 0));
         jRCena.setText("Cena");
 
+        jRAlmuerzo.setForeground(new java.awt.Color(0, 0, 0));
         jRAlmuerzo.setText("Almuerzo");
 
+        jTImporte.setBackground(new java.awt.Color(209, 237, 251));
+        jTImporte.setForeground(new java.awt.Color(0, 0, 0));
         jTImporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTImporteActionPerformed(evt);
@@ -129,14 +139,24 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Importe Diario");
 
+        jREstado.setForeground(new java.awt.Color(0, 0, 0));
         jREstado.setText("Estado");
 
+        jLabel2.setFont(new java.awt.Font("Sitka Small", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Destino");
 
+        jCTipo.setBackground(new java.awt.Color(209, 237, 251));
+        jCTipo.setForeground(new java.awt.Color(0, 0, 0));
         jCTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hotel", "Hostel", "Motel", "Cabaña" }));
 
+        jLabel3.setFont(new java.awt.Font("Sitka Small", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Tipo de Estadia");
 
+        jBGuardar.setBackground(new java.awt.Color(255, 255, 255));
+        jBGuardar.setFont(new java.awt.Font("Sitka Small", 1, 14)); // NOI18N
+        jBGuardar.setForeground(new java.awt.Color(0, 0, 0));
         jBGuardar.setText("Guardar");
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,6 +164,9 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
             }
         });
 
+        jBEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        jBEliminar.setFont(new java.awt.Font("Sitka Small", 1, 14)); // NOI18N
+        jBEliminar.setForeground(new java.awt.Color(0, 0, 0));
         jBEliminar.setText("Eliminar");
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,6 +174,9 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
             }
         });
 
+        jBNuevo.setBackground(new java.awt.Color(255, 255, 255));
+        jBNuevo.setFont(new java.awt.Font("Sitka Small", 1, 14)); // NOI18N
+        jBNuevo.setForeground(new java.awt.Color(0, 0, 0));
         jBNuevo.setText("Nuevo");
         jBNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,6 +184,9 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
             }
         });
 
+        jBSalir.setBackground(new java.awt.Color(255, 255, 255));
+        jBSalir.setFont(new java.awt.Font("Sitka Small", 0, 14)); // NOI18N
+        jBSalir.setForeground(new java.awt.Color(0, 0, 0));
         jBSalir.setText("Salir");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,33 +195,55 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         });
 
         BGCamas.add(jRCamaDoble);
+        jRCamaDoble.setForeground(new java.awt.Color(0, 0, 0));
         jRCamaDoble.setText("Camas Doble");
 
+        jRWifi.setForeground(new java.awt.Color(0, 0, 0));
         jRWifi.setText("WiFi");
 
+        jRPileta.setForeground(new java.awt.Color(0, 0, 0));
         jRPileta.setText("Pileta");
 
+        jRAire.setForeground(new java.awt.Color(0, 0, 0));
         jRAire.setText("Aire Acondicionado");
 
+        jRBanoPrivado.setForeground(new java.awt.Color(0, 0, 0));
         jRBanoPrivado.setText("Baño Privado");
 
+        jRGimnasio.setForeground(new java.awt.Color(0, 0, 0));
         jRGimnasio.setText("Gimnasio");
 
+        jLabel4.setFont(new java.awt.Font("Sitka Small", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Entrada");
 
+        jLabel5.setFont(new java.awt.Font("Sitka Small", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Salida");
 
+        jRServicioHabitacion.setForeground(new java.awt.Color(0, 0, 0));
         jRServicioHabitacion.setText("Servicio a Habitacion");
 
         BGCamas.add(jRCucheta);
+        jRCucheta.setForeground(new java.awt.Color(0, 0, 0));
         jRCucheta.setText("Cucheta");
 
+        jDEntrada.setBackground(new java.awt.Color(209, 237, 251));
+        jDEntrada.setForeground(new java.awt.Color(0, 0, 0));
+
+        jDSalida.setBackground(new java.awt.Color(209, 237, 251));
+        jDSalida.setForeground(new java.awt.Color(0, 0, 0));
+
+        jCListarAlojamiento.setBackground(new java.awt.Color(209, 237, 251));
+        jCListarAlojamiento.setForeground(new java.awt.Color(0, 0, 0));
         jCListarAlojamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCListarAlojamientoActionPerformed(evt);
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Sitka Small", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Listas de Alojamientos");
 
         jDesktopPane1.setLayer(jCDestino, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -296,7 +347,7 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
                                         .addComponent(jTImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel2))))
@@ -325,7 +376,7 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jDEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRDesayuno)
                     .addComponent(jRCena)
@@ -336,16 +387,16 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
                     .addComponent(jRCamasSimple)
                     .addComponent(jRCamaDoble)
                     .addComponent(jRCucheta))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRAire)
                     .addComponent(jRPileta)
                     .addComponent(jRWifi))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRBanoPrivado)
                     .addComponent(jRGimnasio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jREstado)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
