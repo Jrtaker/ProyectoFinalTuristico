@@ -980,7 +980,7 @@ public class Menu3 extends javax.swing.JFrame {
          if (evt.getSource() == BotonLabelCiudad) {
              PanelCiudad.setBackground(new Color(255,255,255,200));
         PanelCiudad.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2)); 
-      
+     //fhjdhgjdg 
     }
       
         
