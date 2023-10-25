@@ -590,6 +590,7 @@ public class Menu3 extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Contactos:");
 
+        DirectorEjecutivo.setEditable(false);
         DirectorEjecutivo.setBackground(new java.awt.Color(186, 219, 252));
         DirectorEjecutivo.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jScrollPane2.setViewportView(DirectorEjecutivo);
@@ -610,6 +611,7 @@ public class Menu3 extends javax.swing.JFrame {
         DirectorEjecutivo.setEditable(false); // Establece la edición en falso
         jScrollPane2.setViewportView(DirectorEjecutivo);
 
+        RecursosHumanos.setEditable(false);
         RecursosHumanos.setBackground(new java.awt.Color(186, 219, 252));
         RecursosHumanos.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jScrollPane1.setViewportView(RecursosHumanos);
@@ -632,6 +634,7 @@ public class Menu3 extends javax.swing.JFrame {
 
         // Resto del código para aplicar el formato de negritas
 
+        GerenteReservas.setEditable(false);
         GerenteReservas.setBackground(new java.awt.Color(186, 219, 252));
         GerenteReservas.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jScrollPane3.setViewportView(GerenteReservas);
@@ -643,7 +646,8 @@ public class Menu3 extends javax.swing.JFrame {
 
         try {
             styledDocument3.insertString(styledDocument3.getLength(), "Gerente de Reservas:", bold);
-            styledDocument3.insertString(styledDocument3.getLength(), "\n Adrian Sanchez \n+54 351 784 8454", null);
+            styledDocument3.insertString(styledDocument3.getLength(), "\n Ydhira Rebaza \n+54 351 295 4663", null);
+            styledDocument3.insertString(styledDocument3.getLength(), "\n @Yadhi.isa.scz \n", null);
         } catch (BadLocationException ex) {
             ex.printStackTrace();
         }
@@ -654,6 +658,7 @@ public class Menu3 extends javax.swing.JFrame {
 
         // Resto del código para aplicar el formato de negritas
 
+        RespFinanzas.setEditable(false);
         RespFinanzas.setBackground(new java.awt.Color(186, 219, 252));
         RespFinanzas.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jScrollPane4.setViewportView(RespFinanzas);
@@ -665,7 +670,7 @@ public class Menu3 extends javax.swing.JFrame {
 
         try {
             styledDocument4.insertString(styledDocument4.getLength(), "Responzable de Finanzas:", bold);
-            styledDocument4.insertString(styledDocument4.getLength(), "\n Ana Pianetti \n  +54 351 456 8894", null);
+            styledDocument4.insertString(styledDocument4.getLength(), "\n Ana Pianetti \n  +54 11 2751 3577", null);
         } catch (BadLocationException ex) {
             ex.printStackTrace();
         }
@@ -676,8 +681,14 @@ public class Menu3 extends javax.swing.JFrame {
 
         // Resto del código para aplicar el formato de negritas
 
+        jScrollPane5.setMinimumSize(new java.awt.Dimension(62, 20));
+        jScrollPane5.setPreferredSize(new java.awt.Dimension(62, 20));
+
+        RepresentatesVentas.setEditable(false);
         RepresentatesVentas.setBackground(new java.awt.Color(186, 219, 252));
         RepresentatesVentas.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
+        RepresentatesVentas.setMinimumSize(new java.awt.Dimension(62, 20));
+        RepresentatesVentas.setPreferredSize(new java.awt.Dimension(62, 25));
         jScrollPane5.setViewportView(RepresentatesVentas);
         StyledDocument styledDocument5 = RepresentatesVentas.getStyledDocument();
 
@@ -687,7 +698,8 @@ public class Menu3 extends javax.swing.JFrame {
 
         try {
             styledDocument5.insertString(styledDocument5.getLength(), "Representantes de Ventas:", bold);
-            styledDocument5.insertString(styledDocument5.getLength(), "\n Enzo Barvaro \n+54 351 252 8648", null);
+            styledDocument5.insertString(styledDocument5.getLength(), "\n Enzo Barvaro \n+54 381 660 0522", null);
+            styledDocument5.insertString(styledDocument5.getLength(), "\n @enzo_jb135\n ", null);
         } catch (BadLocationException ex) {
             ex.printStackTrace();
         }
@@ -698,6 +710,7 @@ public class Menu3 extends javax.swing.JFrame {
 
         // Resto del código para aplicar el formato de negritas
 
+        SoporteTecnico.setEditable(false);
         SoporteTecnico.setBackground(new java.awt.Color(186, 219, 252));
         SoporteTecnico.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jScrollPane6.setViewportView(SoporteTecnico);
@@ -709,7 +722,7 @@ public class Menu3 extends javax.swing.JFrame {
 
         try {
             styledDocument6.insertString(styledDocument6.getLength(), "Soporte Tecnico Interno ", bold);
-            styledDocument6.insertString(styledDocument6.getLength(), "\n Jonathan Ramirez \n+54 351 285 4893", null);
+            styledDocument6.insertString(styledDocument6.getLength(), "\n Jonathan Ramirez \n+54 351 266 512 7132", null);
         } catch (BadLocationException ex) {
             ex.printStackTrace();
         }
@@ -729,48 +742,52 @@ public class Menu3 extends javax.swing.JFrame {
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addGap(81, 81, 81)
                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelPrincipalLayout.createSequentialGroup()
                                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
+                                    .addComponent(jScrollPane1)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)))))
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(panelPrincipalLayout.createSequentialGroup()
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addGap(157, 157, 157)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addGap(190, 190, 190)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addGap(65, 65, 65)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel15)
                 .addGap(18, 18, 18)
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane5)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62))
         );
 
         jLayeredPane2.setLayer(panelPaquete, javax.swing.JLayeredPane.DEFAULT_LAYER);
