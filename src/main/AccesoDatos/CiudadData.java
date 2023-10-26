@@ -55,7 +55,12 @@ public class CiudadData {
     }
     
     //IMPORTANTE
-    //buscarCiudadRepetida "SELECT * FROM ciudad WHERE pais =? AND provincia =? AND nombre =?" 
+    //buscarCiudadRepetida "SELECT * FROM ciudad WHERE pais =? AND provincia =? AND nombre =?"
+    
+    public void buscarCiudadRepetida (){
+        String sql = "SELECT * FROM ciudad WHERE pais =? AND provincia =? AND nombre =?";
+        
+    }
     
     
     //Nueva Ciudad - Boton Nuevo
