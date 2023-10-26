@@ -174,8 +174,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Turistic World");
 
-        jLabel6.setFont(new java.awt.Font("Sitka Heading", 0, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setForeground(new java.awt.Color(0, 102, 255));
         jLabel6.setText("Administracion >");
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -183,8 +182,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Sitka Heading", 0, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setForeground(new java.awt.Color(0, 102, 255));
         jLabel7.setText("Ciudad");
 
         jDesktopPane1.setLayer(jButton4, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -435,10 +433,8 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        this.dispose();
-        this.setVisible(false);
-      
-// TODO add your handling code here:
+       this.dispose();
+        this.setVisible(false); // TODO add your handling code here:
     }//GEN-LAST:event_jLabel6MouseClicked
 
 

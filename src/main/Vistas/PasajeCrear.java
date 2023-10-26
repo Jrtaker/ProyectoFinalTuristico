@@ -164,7 +164,7 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
         jLabel2.setText("Selecione Pasaje");
 
         jLabel3.setFont(new java.awt.Font("Sitka Text", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(0, 102, 255));
         jLabel3.setText("Administración >");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -173,7 +173,7 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Sitka Text", 0, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setForeground(new java.awt.Color(0, 102, 255));
         jLabel6.setText("Pasajes");
 
         jDesktopPane1.setLayer(jCOrigen, javax.swing.JLayeredPane.DEFAULT_LAYER);

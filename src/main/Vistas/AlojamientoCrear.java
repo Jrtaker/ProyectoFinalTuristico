@@ -261,7 +261,7 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         jLabel6.setText("Listas de Alojamientos");
 
         jLabel7.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setForeground(new java.awt.Color(0, 102, 255));
         jLabel7.setText("Administracion >");
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -270,7 +270,7 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setForeground(new java.awt.Color(0, 102, 255));
         jLabel8.setText("Alojamiento");
 
         jDesktopPane1.setLayer(jCDestino, javax.swing.JLayeredPane.DEFAULT_LAYER);
