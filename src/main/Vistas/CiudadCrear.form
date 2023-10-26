@@ -180,13 +180,14 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="6">
-                <StringItem index="0" value="Brazil"/>
-                <StringItem index="1" value="Argentina"/>
-                <StringItem index="2" value="Estados Unidos"/>
-                <StringItem index="3" value="Colombia"/>
-                <StringItem index="4" value="Chile"/>
-                <StringItem index="5" value=""/>
+              <StringArray count="7">
+                <StringItem index="0" value="Argentina"/>
+                <StringItem index="1" value="Brasil"/>
+                <StringItem index="2" value="Colombia"/>
+                <StringItem index="3" value="Paraguay"/>
+                <StringItem index="4" value="Uruguay"/>
+                <StringItem index="5" value="EstadosUnidos"/>
+                <StringItem index="6" value="chile"/>
               </StringArray>
             </Property>
           </Properties>

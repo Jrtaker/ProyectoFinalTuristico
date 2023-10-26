@@ -94,7 +94,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         jCPais.setBackground(new java.awt.Color(209, 237, 251));
         jCPais.setFont(new java.awt.Font("Sitka Small", 0, 14)); // NOI18N
         jCPais.setForeground(new java.awt.Color(0, 0, 0));
-        jCPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Brazil", "Argentina", "Estados Unidos", "Colombia", "Chile", "" }));
+        jCPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Brasil", "Colombia", "Paraguay", "Uruguay", "EstadosUnidos", "chile" }));
         jCPais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCPaisActionPerformed(evt);

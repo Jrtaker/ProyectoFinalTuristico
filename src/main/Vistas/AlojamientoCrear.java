@@ -44,9 +44,11 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
         cargarCiudad =(List<Ciudad>)cData.listarCiudad();
         for (Ciudad item: cargarCiudad)
             jCDestino.addItem(item);
+        
     }
  private void refrescarListaAlojamiento(){
         jCListarAlojamiento.removeAllItems();
+        
         aData = new AlojamientoData();
         cargarListaAlojamientos = (List<Alojamiento>)aData.listarAlojamiento();
         
@@ -111,6 +113,11 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
 
         jCDestino.setBackground(new java.awt.Color(209, 237, 251));
         jCDestino.setForeground(new java.awt.Color(0, 0, 0));
+        jCDestino.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCDestinoMouseClicked(evt);
+            }
+        });
         jCDestino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCDestinoActionPerformed(evt);
@@ -236,6 +243,11 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
 
         jCListarAlojamiento.setBackground(new java.awt.Color(209, 237, 251));
         jCListarAlojamiento.setForeground(new java.awt.Color(0, 0, 0));
+        jCListarAlojamiento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCListarAlojamientoMouseClicked(evt);
+            }
+        });
         jCListarAlojamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCListarAlojamientoActionPerformed(evt);
@@ -342,14 +354,15 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
                                         .addGap(6, 6, 6)
                                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jDEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jDEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(10, 10, 10)
                                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                                .addGap(78, 78, 78)
+                                                .addGap(144, 144, 144)
                                                 .addComponent(jLabel5))
                                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                                .addGap(70, 70, 70)
-                                                .addComponent(jDSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                .addGap(41, 41, 41)
+                                                .addComponent(jDSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
@@ -688,6 +701,7 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
                    JOptionPane.showMessageDialog(this, "Porfavor ingrese un valor de Importe Diario correcto. Solo numeros.");
                 }
         }
+      
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
@@ -789,12 +803,22 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Porfavor ingrese un valor de Importe Diario correcto. Solo numeros.");
             }
         }
-        
+      
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jCDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCDestinoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jCDestinoActionPerformed
+
+    private void jCDestinoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCDestinoMouseClicked
+        refrescarListaDestino();
+        refrescarListaAlojamiento();
+    }//GEN-LAST:event_jCDestinoMouseClicked
+
+    private void jCListarAlojamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCListarAlojamientoMouseClicked
+       
+       refrescarListaAlojamiento();
+    }//GEN-LAST:event_jCListarAlojamientoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
