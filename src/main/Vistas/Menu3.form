@@ -452,14 +452,14 @@
                   <Group type="103" rootIndex="4" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
-                          <Component id="labelFondoAlojamiento" min="-2" pref="179" max="-2" attributes="0"/>
-                          <EmptySpace pref="204" max="32767" attributes="0"/>
+                          <Component id="labelFondoAlojamiento" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="203" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" rootIndex="5" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="369" max="32767" attributes="0"/>
-                          <Component id="labelFondoPasaje" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="labelFondoPasaje" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -646,7 +646,7 @@
                               <Component id="PanelAlojamiento" min="-2" max="-2" attributes="0"/>
                               <Component id="PanelPasajes" alignment="0" min="-2" pref="281" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="186" max="32767" attributes="0"/>
+                          <EmptySpace pref="202" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -659,7 +659,7 @@
                           <Component id="PanelAlojamiento" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                           <Component id="PanelPasajes" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="116" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -867,7 +867,7 @@
                                       <Component id="jLabel15" min="-2" pref="98" max="-2" attributes="0"/>
                                       <Component id="jScrollPane3" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="82" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jScrollPane5" min="-2" pref="229" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -887,10 +887,10 @@
                                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="0" pref="147" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="69" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1081,7 +1081,7 @@
                         </Property>
                       </Properties>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="StyledDocument styledDocument5 = RepresentatesVentas.getStyledDocument();&#xa;&#xa;// Crear un atributo para aplicar negritas&#xa;SimpleAttributeSet bold5 = new SimpleAttributeSet();&#xa;StyleConstants.setBold(bold, true);&#xa;&#xa;try {&#xa;    styledDocument5.insertString(styledDocument5.getLength(), &quot;Representantes de Ventas:&quot;, bold);&#xa;    styledDocument5.insertString(styledDocument5.getLength(), &quot;\n Enzo Barvaro \n+54 381 660 0522&quot;, null);&#xa;    styledDocument5.insertString(styledDocument5.getLength(), &quot;\n @enzo_jb135\n &quot;, null);&#xa;} catch (BadLocationException ex) {&#xa;    ex.printStackTrace();&#xa;}&#xa;&#xa;//RepresentatesVentas = new javax.swing.JTextPane();&#xa;RepresentatesVentas.setEditable(false); // Establece la edici&#xf3;n en falso&#xa;jScrollPane5.setViewportView(RepresentatesVentas);&#xa;&#xa;// Resto del c&#xf3;digo para aplicar el formato de negritas"/>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="StyledDocument styledDocument5 = RepresentatesVentas.getStyledDocument();&#xa;&#xa;// Crear un atributo para aplicar negritas&#xa;SimpleAttributeSet bold5 = new SimpleAttributeSet();&#xa;StyleConstants.setBold(bold, true);&#xa;&#xa;try {&#xa;    styledDocument5.insertString(styledDocument5.getLength(), &quot;Representantes de Ventas:&quot;, bold);&#xa;    styledDocument5.insertString(styledDocument5.getLength(), &quot;\n Enzo Barvaro \n+54 381 660 0522&quot;, null);&#xa;   // styledDocument5.insertString(styledDocument5.getLength(), &quot;\n @enzo_jb135\n &quot;, null);&#xa;} catch (BadLocationException ex) {&#xa;    ex.printStackTrace();&#xa;}&#xa;&#xa;//RepresentatesVentas = new javax.swing.JTextPane();&#xa;RepresentatesVentas.setEditable(false); // Establece la edici&#xf3;n en falso&#xa;jScrollPane5.setViewportView(RepresentatesVentas);&#xa;&#xa;// Resto del c&#xf3;digo para aplicar el formato de negritas"/>
                       </AuxValues>
                     </Component>
                   </SubComponents>
