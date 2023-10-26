@@ -3,7 +3,7 @@ package main;
 import java.time.LocalDate;
 import java.util.List;
 import Login.Login;
-import Login.Loginnn;
+import Login.registro;
 import main.AccesoDatos.AlojamientoData;
 import main.AccesoDatos.CiudadData;
 import main.AccesoDatos.PasajeData;
@@ -18,7 +18,7 @@ public class ProyectoFinal {
 
     public static void main(String[] args) {
         Login.Login();
-       // Loginnn.login();
+       // registro.login();
         //Menu3.menu3();
 
    
