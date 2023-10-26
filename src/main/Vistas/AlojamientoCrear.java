@@ -793,7 +793,10 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jCDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCDestinoActionPerformed
-        // TODO add your handling code here:
+        /*
+        "Somos un grupo pero no somos un equipo"
+        factos
+        */
     }//GEN-LAST:event_jCDestinoActionPerformed
 
 
