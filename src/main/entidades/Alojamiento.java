@@ -103,11 +103,13 @@ public class Alojamiento {
         this.ciudad = ciudad;
     }
 
+   
+
     @Override
     public String toString() {
-        return "Entrada : "+fechaInicio + "| Salida: " + fechaFin + "| Precio: " + importeDiario + "$| Ciudad: "+ ciudad.getNombre() ;
-        
+        return "ciudad: " + ciudad ;       
     }
+    
 
      
 }

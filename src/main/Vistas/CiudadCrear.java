@@ -292,7 +292,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTProvinciaActionPerformed
 
     private void jCPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCPaisActionPerformed
-        // TODO add your handling code here:
+        limpiarCampos();
     }//GEN-LAST:event_jCPaisActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
@@ -337,12 +337,12 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         jTCiudad.setText(nombre);
         jREstado.setSelected(estado);
        
-        
         refrescarLista();
+        
     }//GEN-LAST:event_jCListarCiudadActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-        
+
         int confirmResult = JOptionPane.showConfirmDialog(
                 this, 
                 "¿Desea borrar la Ciudad?",
@@ -367,7 +367,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
                 refrescarLista();
                 }
         }
-        
+               
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

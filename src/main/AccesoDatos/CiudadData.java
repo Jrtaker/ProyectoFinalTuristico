@@ -25,25 +25,25 @@ public class CiudadData {
     public CiudadData() {
         con = ConexionData.getConexion();
     }
-    public Ciudad buscarCiudad(int id){
-        Ciudad ciudad=null;
+
+    public Ciudad buscarCiudad(int id) {
+        Ciudad ciudad = null;
         String sql = "SELECT * FROM ciudad WHERE idCiudad =?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            
-            if (rs.next()){
-            
-            
-            ciudad=new Ciudad ();
-            ciudad.setIdCiudad(id);
-            ciudad.setNombre(rs.getString("nombre"));
-            ciudad.setPais(rs.getString("pais"));
-            ciudad.setProvincia(rs.getString("provincia"));
-            ciudad.setEstado(rs.getBoolean("estado"));
-            
-            }else {
+
+            if (rs.next()) {
+
+                ciudad = new Ciudad();
+                ciudad.setIdCiudad(id);
+                ciudad.setNombre(rs.getString("nombre"));
+                ciudad.setPais(rs.getString("pais"));
+                ciudad.setProvincia(rs.getString("provincia"));
+                ciudad.setEstado(rs.getBoolean("estado"));
+
+            } else {
                 JOptionPane.showMessageDialog(null, "Ciudad no existe");
             }
             ps.close();
@@ -51,10 +51,11 @@ public class CiudadData {
             JOptionPane.showMessageDialog(null, "Error en (buscarNombre(Ciudad))" + ex.getMessage());
         }
         return ciudad;
-        
+
     }
-    
+
     //IMPORTANTE
+
     //buscarCiudadRepetida "SELECT * FROM ciudad WHERE pais =? AND provincia =? AND nombre =?"
     
     public void buscarCiudadRepetida (){
@@ -63,6 +64,9 @@ public class CiudadData {
     }
     
     
+
+    //buscarCiudadRepetida "SELECT * FROM ciudad WHERE pais =? AND provincia =? AND nombre =?" 
+
     //Nueva Ciudad - Boton Nuevo
     public void agregarCiudad(Ciudad ciudad) {           //OK
         String sql = "INSERT INTO ciudad( nombre, provincia, pais, estado) VALUES (?,?,?,?)";
@@ -85,9 +89,6 @@ public class CiudadData {
     //provincia =/= string
     //pais =/= string
     //estado!=boolean
-    
-    
-    
     //Modificar Ciudad - Boton Guardar
     public void modificarCiudad(Ciudad ciudad) {             //OK
 
@@ -110,7 +111,6 @@ public class CiudadData {
 
     // Listar Ciudad - Uso en pasaje, alojamiento y paquete (Por ahora esperar con esto)
     public List<Ciudad> listarCiudad() {                   //OK
-
 
         List<Ciudad> ciudades = new ArrayList<>();
         try {
@@ -137,7 +137,7 @@ public class CiudadData {
         }
         return ciudades;
     }
-    
+
     //Lista de todas las ciudades- uso para referencias en ciudad-Usado para traer toda la informacion de ciudades activas o no
     public List<Ciudad> listarCiudadTodo() {           //OK
 
@@ -166,14 +166,15 @@ public class CiudadData {
         }
         return ciudades;
     }
+
     //Uso para listar por pais, referencia a todas las provincias en un cierto pais
-      public List<Ciudad> listarCiudadPorPais(String pais) {     //OK
+    public List<Ciudad> listarCiudadPorPais(String pais) {     //OK
 
         List<Ciudad> ciudades = new ArrayList<>();
         try {
             String sql = "SELECT * FROM ciudad WHERE pais=? AND estado=1";
             PreparedStatement ps = con.prepareStatement(sql);
-            
+
             ps.setString(1, pais);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -184,7 +185,7 @@ public class CiudadData {
                 ciudad.setProvincia(rs.getString("provincia"));
                 ciudad.setPais(rs.getString("pais"));
                 ciudad.setEstado(rs.getBoolean("estado"));
-                
+
                 ciudades.add(ciudad);
 
             }
@@ -196,27 +197,25 @@ public class CiudadData {
         return ciudades;
     }
 
-      //Listar todas las ciudades adentro de una cierta provincia
-       public List<Ciudad> listarCiudadPorProvincia(String provincia) {   //OK
+    //Listar todas las ciudades adentro de una cierta provincia
+    public List<Ciudad> listarCiudadPorProvincia(String provincia) {   //OK
 
         List<Ciudad> ciudades = new ArrayList<>();
         try {
             String sql = "SELECT * FROM ciudad WHERE provincia=?";
             PreparedStatement ps = con.prepareStatement(sql);
-            
+
             ps.setString(1, provincia);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Ciudad ciudad = new Ciudad();
-                
-                
-                
+
                 ciudad.setIdCiudad(rs.getInt("idCiudad"));
                 ciudad.setNombre(rs.getString("nombre"));
                 ciudad.setProvincia(rs.getString("provincia"));
                 ciudad.setPais(rs.getString("pais"));
                 ciudad.setEstado(rs.getBoolean("estado"));
-                
+
                 ciudades.add(ciudad);
 
             }
@@ -227,17 +226,17 @@ public class CiudadData {
         }
         return ciudades;
     }
-       //Borrado no logico de ciudades
+    //Borrado no logico de ciudades
+
     public void borrarCiudad(String pais, String provincia, String ciudad) {                   //OK
         String sql = "DELETE FROM ciudad WHERE pais=? AND provincia =? AND nombre =?";
-
         try {
+
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, pais);
             ps.setString(2, provincia);
             ps.setString(3, ciudad);
             ps.executeUpdate();
-            ps.close();
             JOptionPane.showMessageDialog(null, "CIUDAD BORRADA.");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error en (borrarCiudad) " + ex.getMessage());

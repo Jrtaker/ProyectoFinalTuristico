@@ -23,7 +23,7 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 import main.Vistas.Imagenes.MiPanelLateral;
-import static sun.jvm.hotspot.HelloWorld.e;
+//import static sun.jvm.hotspot.HelloWorld.e;
 
 public class Menu3 extends javax.swing.JFrame {
 
