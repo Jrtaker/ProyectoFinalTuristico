@@ -67,7 +67,6 @@ public class Login extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(434, 595));
         setResizable(false);
 
         jDesktopPane1.setPreferredSize(new java.awt.Dimension(434, 595));
