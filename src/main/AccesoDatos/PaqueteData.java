@@ -28,7 +28,7 @@ public class PaqueteData {
     }
     // Nuevo Paquete Crear - Boton Nuevo
     public void agregarPaquete(Paquete paquete){
-         String sql= "INSERT INTO paquete (nombre,idOrigen,idDestino,idAlojamiento,idPasaje) VALUES (?,?,?,?,?)";
+         String sql= "INSERT INTO paquete (idOrigen,idDestino,idAlojamiento,idPasaje,nombre) VALUES (?,?,?,?,?)";
         try{
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1,paquete.getOrigen().getIdCiudad());
@@ -37,7 +37,7 @@ public class PaqueteData {
             ps.setInt(4,paquete.getPasaje().getIdPasaje());
             ps.setString(5, paquete.getNombre());
             ps.executeUpdate();
-            ps.close();
+            
             JOptionPane.showMessageDialog(null, "Agregado con exito");
             
         }catch(SQLException e){
@@ -46,7 +46,7 @@ public class PaqueteData {
     }
     //Paquete modificar - Boton Guardar
      public void modificarPaquete(Paquete paquete) {
-        String sql = "UPDATE paquete SET idOrigen=?,idDestino=?,idAlojamiento=?,idPasaje=? WHERE idPaquete=?";
+        String sql = "UPDATE paquete SET idOrigen=?,idDestino=?,idAlojamiento=?,idPasaje=?,nombre=? WHERE idPaquete=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -54,6 +54,7 @@ public class PaqueteData {
             ps.setInt(2, paquete.getDestino().getIdCiudad());
             ps.setInt(3, paquete.getAlojamiento().getIdAlojamiento());
             ps.setInt(4, paquete.getPasaje().getIdPasaje());
+            ps.setString(5, paquete.getNombre());
             ps.setInt(5, paquete.getIdPaquete());
             ps.executeUpdate();
 
@@ -126,7 +127,8 @@ public class PaqueteData {
         try{
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-             int idPaquete = (rs.getInt("idPaquete"));
+                
+                int idPaquete = (rs.getInt("idPaquete"));
                 int idCiudadOrigen = (rs.getInt("idOrigen"));
                 int idCiudadDestino = (rs.getInt("idDestino"));
                 int idAlojamiento = (rs.getInt("idAlojamiento"));

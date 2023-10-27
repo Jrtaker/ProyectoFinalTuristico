@@ -36,8 +36,8 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
     }    
         private void refrescarListaPasaje(){
             jCListarPasaje.removeAllItems();
-        PasajeData pasajeData =new PasajeData();
-        List <Pasaje> listaPasaje =(List<Pasaje>)pasajeData.PasajesTodo() ;
+            PasajeData pasajeData =new PasajeData();
+            List <Pasaje> listaPasaje =(List<Pasaje>)pasajeData.PasajesTodo() ;
         for (Pasaje pasaje :listaPasaje)
             jCListarPasaje.addItem(pasaje);
     }
@@ -67,6 +67,11 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
 
         jCOrigen.setBackground(new java.awt.Color(209, 237, 251));
         jCOrigen.setForeground(new java.awt.Color(0, 0, 0));
+        jCOrigen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jCOrigenMouseEntered(evt);
+            }
+        });
         jCOrigen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCOrigenActionPerformed(evt);
@@ -153,6 +158,11 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
 
         jCListarPasaje.setBackground(new java.awt.Color(209, 237, 251));
         jCListarPasaje.setForeground(new java.awt.Color(0, 0, 0));
+        jCListarPasaje.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jCListarPasajeMouseEntered(evt);
+            }
+        });
         jCListarPasaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCListarPasajeActionPerformed(evt);
@@ -401,6 +411,14 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
         this.dispose();
         this.setVisible(false); // TODO add your handling code here:
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jCOrigenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCOrigenMouseEntered
+       refrescarLista();
+    }//GEN-LAST:event_jCOrigenMouseEntered
+
+    private void jCListarPasajeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCListarPasajeMouseEntered
+       refrescarListaPasaje();
+    }//GEN-LAST:event_jCListarPasajeMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

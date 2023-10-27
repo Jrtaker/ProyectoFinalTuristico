@@ -1334,7 +1334,8 @@ public class Menu3 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void fijarAbierto() {
-        if (ciudadCrear.isVisible() || Pqt.isVisible() || alojamientoCrear.isVisible() || psjeCrear.isVisible()) {
+        if (ciudadCrear.isVisible() || Pqt.isVisible() || alojamientoCrear.isVisible() || psjeCrear.isVisible() || paqueteCambios.isVisible()) {
+            paqueteCambios.dispose();
             ciudadCrear.dispose();
             Pqt.dispose();
             alojamientoCrear.dispose();
@@ -1347,6 +1348,7 @@ public class Menu3 extends javax.swing.JFrame {
         panelPrincipal.setVisible(false);
         panelPaquete.setVisible(false);
         panelAdmin.setVisible(false);
+        
     }
 
     public static void menu3() {
