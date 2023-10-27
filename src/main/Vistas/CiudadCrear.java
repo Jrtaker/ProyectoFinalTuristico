@@ -302,7 +302,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
     private void refrescarLista(){
         cData =new CiudadData();
-        cargarCiudad =(List<Ciudad>)cData.listarCiudad();
+        cargarCiudad =(List<Ciudad>)cData.listarCiudadTodo();
         jCListarCiudad.removeAllItems();
         for (Ciudad item: cargarCiudad)
             jCListarCiudad.addItem(item);
