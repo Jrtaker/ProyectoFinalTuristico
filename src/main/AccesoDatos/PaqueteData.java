@@ -151,7 +151,7 @@ public class PaqueteData {
                 paquete.setNombre(nombre);
                 
         }catch(SQLException ex){
-            
+            JOptionPane.showMessageDialog(null, "Este usuario ya existe");
         }
         return paquete;
     }

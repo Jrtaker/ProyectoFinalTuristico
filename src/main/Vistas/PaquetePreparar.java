@@ -152,7 +152,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         jDSalida = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTnombreUsuario = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
@@ -266,10 +266,10 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Salida");
 
-        jTextField1.setBackground(new java.awt.Color(209, 237, 251));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTnombreUsuario.setBackground(new java.awt.Color(209, 237, 251));
+        jTnombreUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTnombreUsuarioActionPerformed(evt);
             }
         });
 
@@ -290,7 +290,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jDSalida, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jTextField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jTnombreUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
@@ -337,7 +337,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))))
                         .addGap(34, 34, 34))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTnombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -349,7 +349,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTnombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -463,7 +463,8 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                         paquete.setDestino(ciudadDestino);
                         paquete.setOrigen(ciudadOrigen);
                         paquete.setPasaje(pasaje);
-                        //Crea el paquete en BD
+                        paquete.setNombre(jTnombreUsuario.getText());
+                        //Crea paquete en BD
                         PaqueteData paqueteData = new PaqueteData();
                         paqueteData.agregarPaquete(paquete);
                     }else{
@@ -525,9 +526,9 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         refrescarLista2();
     }//GEN-LAST:event_jCListaCiudadDestinoMouseClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTnombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTnombreUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTnombreUsuarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -552,6 +553,6 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
     private javax.swing.JTextArea jTServicio;
     private javax.swing.JTable jTabla;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTnombreUsuario;
     // End of variables declaration//GEN-END:variables
 }
