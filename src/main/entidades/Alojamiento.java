@@ -107,7 +107,8 @@ public class Alojamiento {
 
     @Override
     public String toString() {
-        return "ciudad: " + ciudad ;       
+        return "Pais: "+ciudad.getPais() + " | Provincia: "+ciudad.getProvincia()+" | Ciudad: " + ciudad.getNombre()+  " | Importe Diario: "+importeDiario ;       
+       
     }
     
 

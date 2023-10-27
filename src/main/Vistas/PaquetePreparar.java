@@ -5,17 +5,20 @@
  */
 package main.Vistas;
 
-import java.awt.Frame;
-import java.awt.TextArea;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 import main.AccesoDatos.AlojamientoData;
 import main.AccesoDatos.CiudadData;
 import main.AccesoDatos.PaqueteData;
 import main.AccesoDatos.PasajeData;
 import main.entidades.Alojamiento;
 import main.entidades.Ciudad;
+import main.entidades.Paquete;
 import main.entidades.Pasaje;
 
 /**
@@ -30,47 +33,71 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
      * Creates new form PaqueteCrear
      */
     public PaquetePreparar() {
-
         initComponents();
         armarCabecera();
         refrescarLista();
         refrescarLista2();
-        cargarNumeros();
+      
     }
-    public void cargarNumeros(){
-        for (int i = 1; i <= 10; i++) {
-            jCcantidadPersonas.addItem(i);
-        }
-    }
+  
     public void limpiarTexto(){
         
         jTServicio.setText("");
     }
     public void refrescarLista() {
-        
         CiudadData cData = new CiudadData();
-
+        PasajeData pasajeData = new PasajeData();
         List<Ciudad> listaCiudad = (List<Ciudad>) cData.listarCiudad();
-
-        //jCListaCiudadOrigen.removeAllItems();
+        jCListaCiudadOrigen.removeAllItems();
 
         for (Ciudad item : listaCiudad) {
-            jCListaCiudadOrigen.addItem(item);
+            try{
+                Pasaje pasaje =pasajeData.buscarPasajeActivoporCiudad(item.getIdCiudad());
+                if(pasaje!=null){
+                    jCListaCiudadOrigen.addItem(item);
+                }
+            }catch(NullPointerException ex){
+                    
+            }
         }
 
     }
     public void refrescarLista2() {
         
         CiudadData cData = new CiudadData();
+        AlojamientoData alojamientoData = new AlojamientoData();
+        List<Ciudad> listaCiudad2 = (List<Ciudad>) cData.listarCiudad();
 
-        List<Ciudad> listaCiudad = (List<Ciudad>) cData.listarCiudad();
+        jCListaCiudadDestino.removeAllItems();
 
-        //jCListaCiudadOrigen.removeAllItems();
-
-        for (Ciudad item : listaCiudad) {
-            jCListaCiudadDestino.addItem(item);
+        for (Ciudad items : listaCiudad2) {
+            try{
+                Alojamiento alojamiento = alojamientoData.buscarAlojamientoActivoporCiudad(items.getIdCiudad());
+                if(alojamiento!=null){
+                    jCListaCiudadDestino.addItem(items);
+                }
+            }catch(NullPointerException ex){
+                
+            }
+            
         }
 
+    }
+       public void cargarTabla(List<Pasaje> pasaje) {
+        model.setRowCount(0);
+
+        for (Pasaje pasajes : pasaje) {
+
+            model.addRow(new Object[]{pasajes.getTipoTransporte(), pasajes.getImporte(), pasajes.getIdPasaje()});
+        }
+    }
+
+    public void armarCabecera() {
+        
+        model.addColumn("Tipo de Transporte");
+        model.addColumn("Importe");
+        model.addColumn("ID");
+        jTabla.setModel(model);
     }
     public void armarAlojamiento(List<Alojamiento> alojamientos){
         jCAlojamiento.removeAllItems();
@@ -107,6 +134,8 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         jTServicio = new javax.swing.JTextArea();
         jCListaCiudadDestino = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        jDEntrada = new com.toedter.calendar.JDateChooser();
+        jDSalida = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -118,6 +147,11 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
 
         jCListaCiudadOrigen.setBackground(new java.awt.Color(209, 237, 251));
         jCListaCiudadOrigen.setForeground(new java.awt.Color(0, 0, 0));
+        jCListaCiudadOrigen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCListaCiudadOrigenMouseClicked(evt);
+            }
+        });
         jCListaCiudadOrigen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCListaCiudadOrigenActionPerformed(evt);
@@ -168,11 +202,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
 
         jCcantidadPersonas.setBackground(new java.awt.Color(209, 237, 251));
         jCcantidadPersonas.setForeground(new java.awt.Color(0, 0, 0));
-        jCcantidadPersonas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCcantidadPersonasActionPerformed(evt);
-            }
-        });
+        jCcantidadPersonas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100" }));
 
         jLabel1.setFont(new java.awt.Font("Sitka Small", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -201,6 +231,11 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
 
         jCListaCiudadDestino.setBackground(new java.awt.Color(209, 237, 251));
         jCListaCiudadDestino.setForeground(new java.awt.Color(0, 0, 0));
+        jCListaCiudadDestino.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCListaCiudadDestinoMouseClicked(evt);
+            }
+        });
         jCListaCiudadDestino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCListaCiudadDestinoActionPerformed(evt);
@@ -211,18 +246,9 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Ciudad de Origen");
 
-        jLabel4.setFont(new java.awt.Font("Sitka Text", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 102, 255));
-        jLabel4.setText("Paquete >");
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-        });
+        jLabel4.setText("Entrada");
 
-        jLabel5.setFont(new java.awt.Font("Sitka Text", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 102, 255));
-        jLabel5.setText("Crear");
+        jLabel5.setText("Salida");
 
         jDesktopPane1.setLayer(jCListaCiudadOrigen, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -235,6 +261,8 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jCListaCiudadDestino, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jDEntrada, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jDSalida, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -246,9 +274,14 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jCListaCiudadDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addComponent(jCListaCiudadDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(28, 28, 28))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,19 +294,23 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jDEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jDSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                 .addComponent(jBnuevoPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(jCListaCiudadOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jCListaCiudadOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(186, Short.MAX_VALUE)))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,24 +323,38 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                     .addComponent(jCListaCiudadOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCListaCiudadDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCListaCiudadDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCcantidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCcantidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addComponent(jCAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBnuevoPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
+            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jCListaCiudadOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(483, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -315,8 +366,9 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -324,55 +376,86 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
 
     private void jCListaCiudadOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCListaCiudadOrigenActionPerformed
         // crea la tabla usa una idCiudad
-        Ciudad ciudad = (Ciudad) jCListaCiudadOrigen.getSelectedItem();
-
-        int idCiudad = ciudad.getIdCiudad();
-        PasajeData pasajeData = new PasajeData();
-        List<Pasaje> pasaje = pasajeData.pasajesActivos(idCiudad);
-        cargarTabla(pasaje);
+            
+            Ciudad ciudad = (Ciudad) jCListaCiudadOrigen.getSelectedItem();    
+            if(ciudad!=null){
+                int idCiudad = ciudad.getIdCiudad();
+                PasajeData pasajeData = new PasajeData();
+                List<Pasaje> pasaje = pasajeData.pasajesActivos(idCiudad);
+                cargarTabla(pasaje);
+            }
+   
     }//GEN-LAST:event_jCListaCiudadOrigenActionPerformed
-    public void cargarTabla(List<Pasaje> pasaje) {
-        model.setRowCount(0);
-
-        for (Pasaje pasajes : pasaje) {
-
-            model.addRow(new Object[]{pasajes.getTipoTransporte(), pasajes.getImporte()});
-        }
-    }
-
-    public void armarCabecera() {
-        // model.setColumnCount(0);
-        model.addColumn("Tipo de Transporte");
-        model.addColumn("Importe");
-        
-        jTabla.setModel(model);
-    }
+ 
     private void jBnuevoPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoPaqueteActionPerformed
-        //
-        
-        
-        
+        Ciudad ciudadOrigen = (Ciudad) jCListaCiudadOrigen.getSelectedItem();
+        Ciudad ciudadDestino = (Ciudad) jCListaCiudadDestino.getSelectedItem();
+        Alojamiento alojamiento = (Alojamiento) jCAlojamiento.getSelectedItem();
+        int codigo = jTabla.getSelectedRow();
+        if(ciudadOrigen==null || ciudadDestino == null || alojamiento == null || codigo == -1){
+            return;
+        }
+        if (codigo != -1){
+            int idPasaje = Integer.parseInt(jTabla.getValueAt(codigo, 2).toString());
+            PasajeData pasajeData = new PasajeData();
+            Pasaje pasaje = pasajeData.buscarPasaje(idPasaje);
+            double totalPara1;
+            int cantidadDePersonas = Integer.parseInt(jCcantidadPersonas.getSelectedItem().toString());
+            //fechas
+                Date fechaEnt = Date.from(alojamiento.getFechaInicio().atStartOfDay(ZoneId.systemDefault()).toInstant());//Done
+                Date fechaSal = Date.from(alojamiento.getFechaFin().atStartOfDay(ZoneId.systemDefault()).toInstant());
+                int comparar = fechaEnt.compareTo(fechaSal);
+            
+            totalPara1 = (-1*alojamiento.getImporteDiario()*comparar*cantidadDePersonas) + (pasaje.getImporte());
+            double totalParaVarios = cantidadDePersonas*totalPara1;
+            
+            int confirmResult = JOptionPane.showConfirmDialog(this,
+                    "                     El total seria de: " + totalPara1 + "  para una persona. \n                                  Desea confirmar la accion? \nTambien se puede reducir la cantidad de dias para abatir costos.",
+                    "Confirmar",
+                    
+                    JOptionPane.YES_NO_OPTION
+                    );
+            if(confirmResult == JOptionPane.YES_OPTION){
+                int confirmResult2 = JOptionPane.showConfirmDialog(this,
+                    "                     El total seria de: " + totalPara1 + "  para "+cantidadDePersonas+" personas. \n                                  Desea confirmar la accion? \nTambien se puede reducir la cantidad de personas para abatir costos.",
+                    "Confirmar",
+                    
+                    JOptionPane.YES_NO_OPTION
+                    );
+                if(confirmResult2 == JOptionPane.YES_OPTION){
+                //Crea paquete en programa
+                Paquete paquete = new Paquete();
+                paquete.setAlojamiento(alojamiento);
+                paquete.setDestino(ciudadDestino);
+                paquete.setOrigen(ciudadOrigen);
+                paquete.setPasaje(pasaje);
+                //Crea el paquete en BD
+                PaqueteData paqueteData = new PaqueteData();
+                paqueteData.agregarPaquete(paquete);
+                }else{
+                    JOptionPane.showMessageDialog(this, "Porfavor ingrese una nueva cantidad de personas para continuar.");
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "Porfavor ingrese una nueva cantidad de dias para continuar.");
+            }
+            
+        }
     }//GEN-LAST:event_jBnuevoPaqueteActionPerformed
-
-    private void jCcantidadPersonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCcantidadPersonasActionPerformed
-       
-        
-        
-    }//GEN-LAST:event_jCcantidadPersonasActionPerformed
 
     private void jCAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCAlojamientoActionPerformed
         limpiarTexto();
-       try{
-           
-        
-        
-        Alojamiento alojamiento = (Alojamiento) jCAlojamiento.getSelectedItem();
-        
-        String Servicio = alojamiento.getServicio();
-        jTServicio.setText(Servicio);
-        
+       
+        try{
+                Alojamiento alojamiento = (Alojamiento) jCAlojamiento.getSelectedItem();
+                Date fechaEnt = Date.from(alojamiento.getFechaInicio().atStartOfDay(ZoneId.systemDefault()).toInstant());//Done
+                Date fechaSal = Date.from(alojamiento.getFechaFin().atStartOfDay(ZoneId.systemDefault()).toInstant());
+                String Servicio = alojamiento.getServicio();
+                
+                jTServicio.setText(Servicio);
+                jDEntrada.setDate(fechaEnt);
+                jDSalida.setDate(fechaSal);
         }catch(NullPointerException ex){
-        return;
+            
         }
         
     }//GEN-LAST:event_jCAlojamientoActionPerformed
@@ -383,11 +466,14 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
 
     private void jCListaCiudadDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCListaCiudadDestinoActionPerformed
         // crea Alojamiento toma AlojamientoPorCiudad(Ciudad)
-         Ciudad ciudad = (Ciudad) jCListaCiudadDestino.getSelectedItem();
-        AlojamientoData alojamientoData=new AlojamientoData();
-        List<Alojamiento> alojamientos= alojamientoData.alojamientosPorCiudad(ciudad);
-        limpiarTexto();
-        armarAlojamiento(alojamientos);
+        
+        Ciudad ciudad = (Ciudad) jCListaCiudadDestino.getSelectedItem();
+        if(ciudad!=null){
+            AlojamientoData alojamientoData=new AlojamientoData();
+            List<Alojamiento> alojamientos= alojamientoData.alojamientosPorCiudad(ciudad);
+            limpiarTexto();
+            armarAlojamiento(alojamientos);
+        }
         
     }//GEN-LAST:event_jCListaCiudadDestinoActionPerformed
 
@@ -395,10 +481,13 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-       this.dispose();
-        this.setVisible(false); 
-    }//GEN-LAST:event_jLabel4MouseClicked
+    private void jCListaCiudadOrigenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCListaCiudadOrigenMouseClicked
+        refrescarLista();
+    }//GEN-LAST:event_jCListaCiudadOrigenMouseClicked
+
+    private void jCListaCiudadDestinoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCListaCiudadDestinoMouseClicked
+        refrescarLista2();
+    }//GEN-LAST:event_jCListaCiudadDestinoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -407,7 +496,9 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<Alojamiento> jCAlojamiento;
     private javax.swing.JComboBox<Ciudad> jCListaCiudadDestino;
     private javax.swing.JComboBox<Ciudad> jCListaCiudadOrigen;
-    private javax.swing.JComboBox<Integer> jCcantidadPersonas;
+    private javax.swing.JComboBox<String> jCcantidadPersonas;
+    private com.toedter.calendar.JDateChooser jDEntrada;
+    private com.toedter.calendar.JDateChooser jDSalida;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

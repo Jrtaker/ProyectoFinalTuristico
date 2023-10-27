@@ -22,14 +22,18 @@ import javax.swing.ImageIcon;
  */
 public class Login extends javax.swing.JFrame {
         public int mostrar = 0;
+        
     /**
      * Creates new form Login
      */
     public Login() {
+        
+       
         initComponents();
         setTitle("Paquete Turistico - Turistic World");
         setLocationRelativeTo(null);
         jPasswordField.setEchoChar((char)0);
+        
     }
 
     /**

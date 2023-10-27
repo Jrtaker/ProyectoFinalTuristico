@@ -18,15 +18,9 @@ public class ProyectoFinal {
 
     public static void main(String[] args) {
 
-        //Login.Login();
-       // registro.login();
+        Login.Login();
+        //registro.login();
         //Menu3.menu3();
-
-        //Login.Login();
-       // Loginnn.login();
-        Menu3.menu3();
-
-   
     }
     
 }

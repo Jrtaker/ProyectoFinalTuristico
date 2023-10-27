@@ -211,5 +211,29 @@ public class PasajeData {
         return pasaje;
     }
 
-
+     public Pasaje buscarPasajeActivoporCiudad (int id){
+        Pasaje pasaje = null;
+        String sql = "SELECT * FROM pasaje WHERE idCiudad = ? AND estado=1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                
+            pasaje = new Pasaje();
+            pasaje.setIdPasaje(id);
+            pasaje.setTipoTransporte(rs.getString("tipoTransporte"));
+            pasaje.setImporte(rs.getDouble("importe"));
+            pasaje.setEstado(rs.getBoolean("estado"));
+            
+            
+            }
+            
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en 'buscarPasaje' "+ex);
+        }
+        return pasaje;
+    }
 }

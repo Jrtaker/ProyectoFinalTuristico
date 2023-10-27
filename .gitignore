@@ -35,3 +35,4 @@ nbproject/private/private.xml
 nbproject/private/private.xml
 src/main/Vistas/CiudadCrear.java
 src/main/Vistas/AlojamientoCrear.form
+src/main/Vistas/PaquetePreparar.form

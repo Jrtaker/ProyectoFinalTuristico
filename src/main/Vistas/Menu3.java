@@ -982,7 +982,7 @@ public class Menu3 extends javax.swing.JFrame {
     }//GEN-LAST:event_labelPaqueteMouseEntered
 
     private void labelPaqueteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelPaqueteMouseClicked
-
+        PaquetePreparar paqt = new PaquetePreparar();
         fijarAbierto();
         PanelLateral.setVisible(true);
         panelPrincipal.setVisible(false);
@@ -1052,7 +1052,7 @@ public class Menu3 extends javax.swing.JFrame {
         PanelCiudad.setBorder(null); // Elimina el borde al salir del ratón de BotonLabelCiudad
     PanelCiudad.setPreferredSize(null);
        }*/
-
+    
     }//GEN-LAST:event_BotonLabelCiudadMouseExited
 
     private void botonLabelAlojamientoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLabelAlojamientoMouseEntered
@@ -1086,14 +1086,18 @@ public class Menu3 extends javax.swing.JFrame {
 
     private void PanelCiudadmouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCiudadmouseEntered
         if (evt.getSource() == BotonLabelCiudad || evt.getSource() == PanelCiudad) {
-            
+            PanelCiudad.setOpaque(true);
             PanelCiudad.setBackground(Color.WHITE);
         }
     }//GEN-LAST:event_PanelCiudadmouseEntered
 
     private void PanelCiudadmouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCiudadmouseExited
-        if (evt.getSource() != BotonLabelCiudad && evt.getSource() != PanelCiudad) {
-            PanelCiudad.setBackground(new Color (255,255,255,110)); // Color  inicial
+        if (evt.getSource() != BotonLabelCiudad || evt.getSource() != PanelCiudad) {
+            Color semi = new Color(255,255,255,110);
+            PanelCiudad.setOpaque(false);
+            PanelCiudad.setBackground(semi); 
+            
+            
         }
     }//GEN-LAST:event_PanelCiudadmouseExited
 
@@ -1167,27 +1171,29 @@ public class Menu3 extends javax.swing.JFrame {
 
     private void PanelAlojamientoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelAlojamientoMouseEntered
         if (evt.getSource() == botonLabelAlojamiento || evt.getSource() == PanelAlojamiento) {
-           
+           PanelAlojamiento.setOpaque(true);
             PanelAlojamiento.setBackground(Color.WHITE);
         } 
     }//GEN-LAST:event_PanelAlojamientoMouseEntered
 
     private void PanelAlojamientoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelAlojamientoMouseExited
         if (evt.getSource() == botonLabelAlojamiento || evt.getSource() == PanelAlojamiento) { 
+            PanelAlojamiento.setOpaque(false);
             PanelAlojamiento.setBackground(new Color(255, 255, 255, 110));//color inical
         } 
     }//GEN-LAST:event_PanelAlojamientoMouseExited
 
     private void PanelPasajesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelPasajesMouseEntered
         if (evt.getSource() == BotonLabelPasajes || evt.getSource() == PanelPasajes) {
-            // Cambia el color de fondo del panel a blanco
+            PanelPasajes.setOpaque(true);
             PanelPasajes.setBackground(Color.WHITE);
         } 
     }//GEN-LAST:event_PanelPasajesMouseEntered
 
     private void PanelPasajesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelPasajesMouseExited
         if (evt.getSource() == BotonLabelPasajes || evt.getSource() == PanelPasajes) {
-         PanelPasajes.setBackground(new Color(255, 255, 255, 110)); // Color inicial
+            PanelPasajes.setOpaque(false);
+            PanelPasajes.setBackground(new Color(255, 255, 255, 110)); // Color inicial
         }
         
     }//GEN-LAST:event_PanelPasajesMouseExited

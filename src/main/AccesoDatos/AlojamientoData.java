@@ -200,4 +200,29 @@ public class AlojamientoData {
         }
         return alojamiento;
     }
+  public Alojamiento buscarAlojamientoActivoporCiudad (int id){
+        Alojamiento alojamiento = null;
+        String sql = "SELECT * FROM alojamiento WHERE idCiudad=? AND estado=1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                
+            alojamiento = new Alojamiento();
+            alojamiento.setIdAlojamiento(id);
+            alojamiento.setFechaInicio(rs.getDate("fechaInicio" ).toLocalDate());
+            alojamiento.setFechaFin(rs.getDate("fechaFin").toLocalDate());
+            alojamiento.setEstado(rs.getBoolean("estado"));
+            alojamiento.setServicio(rs.getString("servicio"));
+            alojamiento.setImporteDiario(rs.getDouble("importeDiario"));
+            
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en 'buscarAlojamiento' "+ex);
+        }
+        return alojamiento;
+    }
 }
