@@ -446,6 +446,20 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         if(ciudadOrigen==null || ciudadDestino == null || alojamiento == null || codigo == -1){
             return;
         }
+        if(ciudadOrigen.equals(ciudadDestino)){
+            int confirm = JOptionPane.showConfirmDialog(this, 
+                    "Las ciudades ingresadas son iguales, esta seguro que quiere continuar?",
+                    "Error",
+                    JOptionPane.YES_NO_OPTION
+                    );
+                    if (confirm != JOptionPane.YES_OPTION) {  
+                        return;
+                    }   
+        }
+        if(jTnombreUsuario.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Porfavor ingrese un nombre de identificacion para el paquete.");
+            return;
+        }
         if (codigo != -1){
             int idPasaje = Integer.parseInt(jTabla.getValueAt(codigo, 2).toString());
             PasajeData pasajeData = new PasajeData();
@@ -488,10 +502,12 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                         paquete.setDestino(ciudadDestino);
                         paquete.setOrigen(ciudadOrigen);
                         paquete.setPasaje(pasaje);
-                        paquete.setNombre(jTnombreUsuario.getText());
-                        //Crea paquete en BD
-                        PaqueteData paqueteData = new PaqueteData();
-                        paqueteData.agregarPaquete(paquete);
+                        
+                        
+                            paquete.setNombre(jTnombreUsuario.getText());
+                            PaqueteData paqueteData = new PaqueteData();
+                            paqueteData.agregarPaquete(paquete);
+                        
                     }else{
                         JOptionPane.showMessageDialog(this, "Porfavor ingrese una nueva cantidad de personas para continuar.");
                     }
