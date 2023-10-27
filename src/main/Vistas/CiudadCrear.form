@@ -71,7 +71,7 @@
                                   <Component id="jLabel3" min="-2" pref="89" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="73" pref="63" max="32767" attributes="0"/>
+                          <EmptySpace min="73" max="32767" attributes="0"/>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                       </Group>

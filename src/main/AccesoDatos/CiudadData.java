@@ -58,9 +58,33 @@ public class CiudadData {
 
     //buscarCiudadRepetida "SELECT * FROM ciudad WHERE pais =? AND provincia =? AND nombre =?"
     
-    public void buscarCiudadRepetida (){
+    public Ciudad buscarCiudadRepetida (String pais, String provincia, String nombre){
         String sql = "SELECT * FROM ciudad WHERE pais =? AND provincia =? AND nombre =?";
-        
+        Ciudad ciudad=null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, pais);
+            ps.setString(2, provincia);
+            ps.setString(3, nombre);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+                ciudad = new Ciudad();
+                
+                ciudad.setNombre(rs.getString("nombre"));
+                ciudad.setPais(rs.getString("pais"));
+                ciudad.setProvincia(rs.getString("provincia"));
+                ciudad.setEstado(rs.getBoolean("estado"));
+
+            } else {
+                
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en (buscarNombre(Ciudad))" + ex.getMessage());
+        }
+        return ciudad;        
     }
     
     

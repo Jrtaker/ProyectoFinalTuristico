@@ -920,46 +920,80 @@ public class Menu3 extends javax.swing.JFrame {
 
     private void labelCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelCrearMouseClicked
         //setFalse();
+        try{
         BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) Pqt.getUI();
         borraVentana.setNorthPane(null);
         Pqt.setResizable(false);
         Pqt.setVisible(true);
         EscritorioPrincipal.add(Pqt);
         EscritorioPrincipal.moveToFront(Pqt);
-
+        }catch(IllegalArgumentException ex){
+            BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) Pqt.getUI();
+            borraVentana.setNorthPane(null);
+            Pqt.setResizable(false);
+            Pqt.setVisible(true);
+            EscritorioPrincipal.add(Pqt);
+            EscritorioPrincipal.moveToFront(Pqt);
+        }
         // mauseAdminPanel = !mauseAdminPanel;///Paquete Preparar
     }//GEN-LAST:event_labelCrearMouseClicked
 
     private void BotonLabelCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonLabelCiudadMouseClicked
-        //setFalse();
+         try{
         BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) ciudadCrear.getUI();
         borraVentana.setNorthPane(null);
         ciudadCrear.setResizable(false);
         ciudadCrear.setVisible(true);
         EscritorioPrincipal.add(ciudadCrear);
-        EscritorioPrincipal.moveToFront(ciudadCrear);
-        // enlazar CiudadCrear
+        EscritorioPrincipal.moveToFront(ciudadCrear); 
+        }catch(IllegalArgumentException ex){
+            BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) ciudadCrear.getUI();
+            borraVentana.setNorthPane(null);
+            ciudadCrear.setResizable(false);
+            ciudadCrear.setVisible(true);
+            EscritorioPrincipal.add(ciudadCrear);
+            EscritorioPrincipal.moveToFront(ciudadCrear); 
+        }// TODO add your handling code here:
+        
     }//GEN-LAST:event_BotonLabelCiudadMouseClicked
 
     private void botonLabelAlojamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLabelAlojamientoMouseClicked
         //setFalse();
+        try{
         BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) alojamientoCrear.getUI();
         borraVentana.setNorthPane(null);
         alojamientoCrear.setResizable(false);
         alojamientoCrear.setVisible(true);
         EscritorioPrincipal.add(alojamientoCrear);
         EscritorioPrincipal.moveToFront(alojamientoCrear);
+        }catch(IllegalArgumentException ex){
+            BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) alojamientoCrear.getUI();
+            borraVentana.setNorthPane(null);
+            alojamientoCrear.setResizable(false);
+            alojamientoCrear.setVisible(true);
+            EscritorioPrincipal.add(alojamientoCrear);
+            EscritorioPrincipal.moveToFront(alojamientoCrear);  
+        }
         //alojamientoCrear -
     }//GEN-LAST:event_botonLabelAlojamientoMouseClicked
 
     private void BotonLabelPasajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonLabelPasajesMouseClicked
         //setFalse();
+        try{
         BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) psjeCrear.getUI();
         borraVentana.setNorthPane(null);
         psjeCrear.setResizable(false);
         psjeCrear.setVisible(true);
         EscritorioPrincipal.add(psjeCrear);
         EscritorioPrincipal.moveToFront(psjeCrear);
+        }catch (IllegalArgumentException ex){
+            BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) alojamientoCrear.getUI();
+            borraVentana.setNorthPane(null);
+            alojamientoCrear.setResizable(false);
+            alojamientoCrear.setVisible(true);
+            EscritorioPrincipal.add(alojamientoCrear);
+            EscritorioPrincipal.moveToFront(alojamientoCrear);
+        }
         // Pasaje Crear         // TODO add your handling code here:
     }//GEN-LAST:event_BotonLabelPasajesMouseClicked
 
@@ -1034,69 +1068,66 @@ public class Menu3 extends javax.swing.JFrame {
 
 
     private void BotonLabelCiudadMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonLabelCiudadMouseEntered
-        /*         if (evt.getSource() == BotonLabelCiudad) {
-             PanelCiudad.setBackground(Color.BLACK);
-             BotonLabelCiudad.setForeground(Color.WHITE);
-        PanelCiudad.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2)); 
-        
-     //fhjdhgjdg 
-    }*/
-
+        if (evt.getSource() == BotonLabelCiudad || evt.getSource() == PanelCiudad) {
+            PanelCiudad.setOpaque(true);
+            PanelCiudad.setBackground(Color.WHITE);
+            
+        }
 
     }//GEN-LAST:event_BotonLabelCiudadMouseEntered
 
     private void BotonLabelCiudadMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonLabelCiudadMouseExited
-        /*       if (evt.getSource() == BotonLabelCiudad) {
-            PanelCiudad.setBackground(Color.WHITE);
-            BotonLabelCiudad.setForeground(Color.BLACK);
-        PanelCiudad.setBorder(null); // Elimina el borde al salir del ratón de BotonLabelCiudad
-    PanelCiudad.setPreferredSize(null);
-       }*/
-    
+    if (evt.getSource() != BotonLabelCiudad) {
+             PanelCiudad.setOpaque(false);
+            Color semi = new Color(255,255,255,110);
+            
+            PanelCiudad.setBackground(semi); 
+           
+        }
     }//GEN-LAST:event_BotonLabelCiudadMouseExited
 
     private void botonLabelAlojamientoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLabelAlojamientoMouseEntered
-        /*        if (evt.getSource() == botonLabelAlojamiento) {
-             PanelAlojamiento.setBackground(new Color(255,255,255,200));
-        PanelAlojamiento.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2)); 
-      
-    }*/
+       if (evt.getSource() == botonLabelAlojamiento || evt.getSource() == PanelAlojamiento) {
+           PanelAlojamiento.setOpaque(true);
+            PanelAlojamiento.setBackground(Color.WHITE);
+        } 
     }//GEN-LAST:event_botonLabelAlojamientoMouseEntered
 
     private void BotonLabelPasajesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonLabelPasajesMouseEntered
-        /*   if (evt.getSource() == BotonLabelPasajes) {
-             PanelPasajes.setBackground(new Color(255,255,255,200));
-        PanelPasajes.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2)); 
-    }*/
+        if (evt.getSource() == BotonLabelPasajes || evt.getSource() == PanelPasajes) {
+            PanelPasajes.setOpaque(true);
+            PanelPasajes.setBackground(Color.WHITE);
+        } 
     }//GEN-LAST:event_BotonLabelPasajesMouseEntered
 
     private void botonLabelAlojamientoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLabelAlojamientoMouseExited
-        /*  if (evt.getSource() == botonLabelAlojamiento) {
-            PanelAlojamiento.setBackground(null);
-        PanelAlojamiento.setBorder(null); // Elimina el borde al salir del ratón de BotonLabelCiudad
-    }*/
+        if (evt.getSource() == botonLabelAlojamiento || evt.getSource() == PanelAlojamiento) { 
+            PanelAlojamiento.setOpaque(false);
+            PanelAlojamiento.setBackground(new Color(255, 255, 255, 110));//color inical
+        } 
     }//GEN-LAST:event_botonLabelAlojamientoMouseExited
 
     private void BotonLabelPasajesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonLabelPasajesMouseExited
-        /* if (evt.getSource() == BotonLabelPasajes) {
-            PanelPasajes.setBackground(null);
-        PanelPasajes.setBorder(null); // Elimina el borde al salir del ratón de BotonLabelCiudad
-    }*/
+        if (evt.getSource() == BotonLabelPasajes || evt.getSource() == PanelPasajes) {
+            PanelPasajes.setOpaque(false);
+            PanelPasajes.setBackground(new Color(255, 255, 255, 110)); // Color inicial
+        }
     }//GEN-LAST:event_BotonLabelPasajesMouseExited
 
     private void PanelCiudadmouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCiudadmouseEntered
         if (evt.getSource() == BotonLabelCiudad || evt.getSource() == PanelCiudad) {
             PanelCiudad.setOpaque(true);
             PanelCiudad.setBackground(Color.WHITE);
+           
         }
     }//GEN-LAST:event_PanelCiudadmouseEntered
 
     private void PanelCiudadmouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCiudadmouseExited
-        if (evt.getSource() != BotonLabelCiudad || evt.getSource() != PanelCiudad) {
-            Color semi = new Color(255,255,255,110);
+        if (evt.getSource() != BotonLabelCiudad) {
             PanelCiudad.setOpaque(false);
-            PanelCiudad.setBackground(semi); 
+            Color semi = new Color(255,255,255,110);
             
+            PanelCiudad.setBackground(semi); 
             
         }
     }//GEN-LAST:event_PanelCiudadmouseExited
@@ -1156,12 +1187,21 @@ public class Menu3 extends javax.swing.JFrame {
     }//GEN-LAST:event_labelCambiosMouseExited
 
     private void labelCambiosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelCambiosMouseClicked
+        try{
         BasicInternalFrameUI borraVentanaa = (BasicInternalFrameUI) paqueteCambios.getUI();
         borraVentanaa.setNorthPane(null);
         paqueteCambios.setResizable(false);
         paqueteCambios.setVisible(true);
         EscritorioPrincipal.add(paqueteCambios);
-        EscritorioPrincipal.moveToFront(paqueteCambios); // TODO add your handling code here:
+        EscritorioPrincipal.moveToFront(paqueteCambios);
+        }catch (IllegalArgumentException ex){
+            BasicInternalFrameUI borraVentanaa = (BasicInternalFrameUI) paqueteCambios.getUI();
+            borraVentanaa.setNorthPane(null);
+            paqueteCambios.setResizable(false);
+            paqueteCambios.setVisible(true);
+            EscritorioPrincipal.add(paqueteCambios);
+            EscritorioPrincipal.moveToFront(paqueteCambios);
+        }
     }//GEN-LAST:event_labelCambiosMouseClicked
 
     private void labelFondoCiudadMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelFondoCiudadMouseEntered
@@ -1199,30 +1239,59 @@ public class Menu3 extends javax.swing.JFrame {
     }//GEN-LAST:event_PanelPasajesMouseExited
 
     private void PanelCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCiudadMouseClicked
-          BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) ciudadCrear.getUI();
+        try{
+        BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) ciudadCrear.getUI();
         borraVentana.setNorthPane(null);
         ciudadCrear.setResizable(false);
         ciudadCrear.setVisible(true);
         EscritorioPrincipal.add(ciudadCrear);
-        EscritorioPrincipal.moveToFront(ciudadCrear); // TODO add your handling code here:
+        EscritorioPrincipal.moveToFront(ciudadCrear); 
+        }catch(IllegalArgumentException ex){
+            BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) ciudadCrear.getUI();
+            borraVentana.setNorthPane(null);
+            ciudadCrear.setResizable(false);
+            ciudadCrear.setVisible(true);
+            EscritorioPrincipal.add(ciudadCrear);
+            EscritorioPrincipal.moveToFront(ciudadCrear); 
+        }// TODO add your handling code here:
+        
     }//GEN-LAST:event_PanelCiudadMouseClicked
 
     private void PanelAlojamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelAlojamientoMouseClicked
+
+        try{
         BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) alojamientoCrear.getUI();
         borraVentana.setNorthPane(null);
         alojamientoCrear.setResizable(false);
         alojamientoCrear.setVisible(true);
         EscritorioPrincipal.add(alojamientoCrear);
-        EscritorioPrincipal.moveToFront(alojamientoCrear);  // TODO add your handling code here:
+        EscritorioPrincipal.moveToFront(alojamientoCrear);
+        }catch(IllegalArgumentException ex){
+            BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) alojamientoCrear.getUI();
+            borraVentana.setNorthPane(null);
+            alojamientoCrear.setResizable(false);
+            alojamientoCrear.setVisible(true);
+            EscritorioPrincipal.add(alojamientoCrear);
+            EscritorioPrincipal.moveToFront(alojamientoCrear);
+        }
     }//GEN-LAST:event_PanelAlojamientoMouseClicked
 
     private void PanelPasajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelPasajesMouseClicked
-     BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) psjeCrear.getUI();
+     try{
+        BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) psjeCrear.getUI();
         borraVentana.setNorthPane(null);
         psjeCrear.setResizable(false);
         psjeCrear.setVisible(true);
         EscritorioPrincipal.add(psjeCrear);
-        EscritorioPrincipal.moveToFront(psjeCrear);   // TODO add your handling code here:
+        EscritorioPrincipal.moveToFront(psjeCrear);
+        }catch (IllegalArgumentException ex){
+            BasicInternalFrameUI borraVentana = (BasicInternalFrameUI) alojamientoCrear.getUI();
+            borraVentana.setNorthPane(null);
+            alojamientoCrear.setResizable(false);
+            alojamientoCrear.setVisible(true);
+            EscritorioPrincipal.add(alojamientoCrear);
+            EscritorioPrincipal.moveToFront(alojamientoCrear);
+        }  // TODO add your handling code here:
     }//GEN-LAST:event_PanelPasajesMouseClicked
 
     public void fijarAbierto() {

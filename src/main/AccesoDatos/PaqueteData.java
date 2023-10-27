@@ -28,13 +28,15 @@ public class PaqueteData {
     }
     // Nuevo Paquete Crear - Boton Nuevo
     public void agregarPaquete(Paquete paquete){
-         String sql= "INSERT INTO paquete (idOrigen,idDestino,idAlojamiento,idPasaje) VALUES (?,?,?,?)";
+         String sql= "INSERT INTO paquete (nombre,idOrigen,idDestino,idAlojamiento,idPasaje) VALUES (?,?,?,?,?)";
         try{
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1,paquete.getOrigen().getIdCiudad());
             ps.setInt(2,paquete.getDestino().getIdCiudad());
             ps.setInt(3,paquete.getAlojamiento().getIdAlojamiento());
             ps.setInt(4,paquete.getPasaje().getIdPasaje());
+            ps.setString(5, paquete.getNombre());
+            ps.executeUpdate();
             ps.close();
             JOptionPane.showMessageDialog(null, "Agregado con exito");
             
@@ -44,7 +46,7 @@ public class PaqueteData {
     }
     //Paquete modificar - Boton Guardar
      public void modificarPaquete(Paquete paquete) {
-        String sql = "UPDATE paquete SET idOrigen=?,idDestino=?,idAlojamiento=?,idPasaje=?,nombre=? WHERE idPaquete=?";
+        String sql = "UPDATE paquete SET idOrigen=?,idDestino=?,idAlojamiento=?,idPasaje=? WHERE idPaquete=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -90,6 +92,7 @@ public class PaqueteData {
                 int idCiudadDestino = (rs.getInt("idDestino"));
                 int idAlojamiento = (rs.getInt("idAlojamiento"));
                 int idPasaje = (rs.getInt("idPasaje"));
+                String nombre = (rs.getString("nombre"));
                 
                 CiudadData ciudadData = new CiudadData();
                 PasajeData pasajeData = new PasajeData();
@@ -106,6 +109,7 @@ public class PaqueteData {
                 paquete.setDestino(ciudadDestino);
                 paquete.setIdPaquete(idPaquete);
                 paquete.setPasaje(pasaje);
+                paquete.setNombre(nombre);
                 paquetes.add(paquete);
                 
             }
@@ -116,4 +120,39 @@ public class PaqueteData {
         return paquetes;
     }
     
+    public Paquete paquetePorNombre(){
+        String sql = "SELECT * FROM paquete WHERE nombre=?";
+        Paquete paquete =null;
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+             int idPaquete = (rs.getInt("idPaquete"));
+                int idCiudadOrigen = (rs.getInt("idOrigen"));
+                int idCiudadDestino = (rs.getInt("idDestino"));
+                int idAlojamiento = (rs.getInt("idAlojamiento"));
+                int idPasaje = (rs.getInt("idPasaje"));
+                String nombre = (rs.getString("nombre"));
+                
+                CiudadData ciudadData = new CiudadData();
+                PasajeData pasajeData = new PasajeData();
+                AlojamientoData alojamientoData = new AlojamientoData();
+                
+                Ciudad ciudadOrigen = ciudadData.buscarCiudad(idCiudadOrigen);
+                Ciudad ciudadDestino = ciudadData.buscarCiudad(idCiudadDestino);
+                Pasaje pasaje = pasajeData.buscarPasaje(idPasaje);
+                Alojamiento alojamiento = alojamientoData.buscarAlojamiento(idAlojamiento);
+                
+                paquete = new Paquete();
+                paquete.setAlojamiento(alojamiento);
+                paquete.setOrigen(ciudadOrigen);
+                paquete.setDestino(ciudadDestino);
+                paquete.setIdPaquete(idPaquete);
+                paquete.setPasaje(pasaje);
+                paquete.setNombre(nombre);
+                
+        }catch(SQLException ex){
+            
+        }
+        return paquete;
+    }
 }

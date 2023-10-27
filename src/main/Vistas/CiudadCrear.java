@@ -226,7 +226,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
                                     .addComponent(jTCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(63, 63, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addGap(58, 58, 58))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
@@ -303,6 +303,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
     private void refrescarLista(){
         cData =new CiudadData();
         cargarCiudad =(List<Ciudad>)cData.listarCiudad();
+        jCListarCiudad.removeAllItems();
         for (Ciudad item: cargarCiudad)
             jCListarCiudad.addItem(item);
     
@@ -327,21 +328,56 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         String pais = jCPais.getSelectedItem().toString();
         String provincia = jTProvincia.getText();
         String ciudad = jTCiudad.getText();
-        
+        for (int i=0;i<provincia.length();i++){
+            String x = provincia.substring(i,i+1);
+            try{
+                int y = Integer.parseInt(x);
+                JOptionPane.showMessageDialog(this, "El nombre de la provincia no debera contener numeros.");
+                return;
+            }catch(NumberFormatException ex){     
+            }
+        }
+        for (int i=0;i<ciudad.length();i++){
+            String x = ciudad.substring(i,i+1);
+            try{
+                int y = Integer.parseInt(x);
+                JOptionPane.showMessageDialog(this, "El nombre de la ciudad no debera contener numeros.");
+                return;
+            }catch(NumberFormatException ex){     
+            }
+        }
+        if(jCListarCiudad==null){
+            return;
+        }
         if (provincia.isEmpty() || ciudad.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Hay campos vacios.Rellenalos para continuar.");
             return;
         }
+        
+        
         boolean estado = jREstado.isSelected();
         Ciudad nuevaciudad = new Ciudad(ciudad, pais, estado, provincia);
         
         CiudadData ciudadData = new CiudadData();
-        //Ciudad nuevaciudad2 = ciudadData.buscarCiudadRepetida(pais,provincia,ciudad);
-        ciudadData.agregarCiudad(nuevaciudad);
+        Ciudad compararCiudad = ciudadData.buscarCiudadRepetida(pais, provincia, ciudad);
         
-        limpiarCampos();
-        refrescarLista();
-        
+        if(compararCiudad==null){
+            ciudadData.agregarCiudad(nuevaciudad);
+            limpiarCampos();
+            refrescarLista();
+        }else{
+            int confirmResult = JOptionPane.showConfirmDialog(this,
+                        "Esta ciudad ya existe, desea agregarla denuevo?",
+                        "Confirmar",
+                    
+                        JOptionPane.YES_NO_OPTION
+                        );
+                if(confirmResult == JOptionPane.YES_OPTION){
+                    ciudadData.agregarCiudad(nuevaciudad);
+                    limpiarCampos();
+                    refrescarLista();
+                }
+        }
         
     }//GEN-LAST:event_jBNuevoActionPerformed
     
@@ -350,22 +386,26 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTCiudadActionPerformed
 
     private void jCListarCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCListarCiudadActionPerformed
+        if(jCListarCiudad==null){
+            return;
+        }else{
+            try{
+                Ciudad ciudad = (Ciudad)jCListarCiudad.getSelectedItem();
         
-        Ciudad ciudad = (Ciudad)jCListarCiudad.getSelectedItem();
-        
-        int idCiudad =ciudad.getIdCiudad();
-        String pais = ciudad.getPais();
-        String provincia = ciudad.getProvincia();
-        String nombre = ciudad.getNombre();
-        boolean estado = ciudad.isEstado();
-        
-        jCPais.setSelectedItem(pais);
-        jTProvincia.setText(provincia);
-        jTCiudad.setText(nombre);
-        jREstado.setSelected(estado);
-       
-        refrescarLista();
-        
+                int idCiudad =ciudad.getIdCiudad();
+                String pais = ciudad.getPais();
+                String provincia = ciudad.getProvincia();
+                String nombre = ciudad.getNombre();
+                boolean estado = ciudad.isEstado();        
+                jCPais.setSelectedItem(pais);
+                jTProvincia.setText(provincia);
+                jTCiudad.setText(nombre);
+                jREstado.setSelected(estado);
+                refrescarLista();
+            }catch(NullPointerException ex){
+                
+            }
+        }
     }//GEN-LAST:event_jCListarCiudadActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
@@ -404,17 +444,36 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        Ciudad listaCiudad = (Ciudad)jCListarCiudad.getSelectedItem();
-        
+            Ciudad listaCiudad = (Ciudad)jCListarCiudad.getSelectedItem();
+        if(listaCiudad==null){
+            return;
+        }
         int idCiudad =listaCiudad.getIdCiudad();
         String pais = jCPais.getSelectedItem().toString();
         String provincia = jTProvincia.getText();
         String nombre = jTCiudad.getText();
         boolean estado = jREstado.isSelected();
-        
+        for (int i=0;i<provincia.length();i++){
+            String x = provincia.substring(i,i+1);
+            try{
+                int y = Integer.parseInt(x);
+                JOptionPane.showMessageDialog(this, "El nombre de la provincia no debera contener numeros.");
+                return;
+            }catch(NumberFormatException ex){     
+            }
+        }
+        for (int i=0;i<nombre.length();i++){
+            String x = nombre.substring(i,i+1);
+            try{
+                int y = Integer.parseInt(x);
+                JOptionPane.showMessageDialog(this, "El nombre de la ciudad no debera contener numeros.");
+                return;
+            }catch(NumberFormatException ex){     
+            }
+        }
         
         Ciudad ciudad =new Ciudad(idCiudad, nombre, pais, estado, provincia);
-        if (ciudad!=null){
+        
             ciudad.setIdCiudad(idCiudad);
             ciudad.setPais(pais);
             ciudad.setProvincia(provincia);
@@ -424,12 +483,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
             cData.modificarCiudad(ciudad);
             limpiarCampos();
             refrescarLista();
-        }
-        
-        
-        
-        
-        
+  
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked

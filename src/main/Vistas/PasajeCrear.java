@@ -26,7 +26,7 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
         refrescarListaPasaje();
     }
     private void refrescarLista(){
-       
+        
         CiudadData ciudadData = new CiudadData();
         List <Ciudad> listaCiudad =(List<Ciudad>)ciudadData.listarCiudad();
         
@@ -75,7 +75,7 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
 
         jCTransporte.setBackground(new java.awt.Color(209, 237, 251));
         jCTransporte.setForeground(new java.awt.Color(0, 0, 0));
-        jCTransporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Avion", "Taxi", "Tren", "Colectivo", " " }));
+        jCTransporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Avion", "Taxi", "Tren", "Colectivo" }));
         jCTransporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCTransporteActionPerformed(evt);
@@ -301,17 +301,25 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         try {
-        Ciudad OrigenidCiudad = (Ciudad) jCOrigen.getSelectedItem();
-        String tipoTransporte = jCTransporte.getSelectedItem().toString();
-        double importe = Double.parseDouble(jTImporte.getText());
-        boolean estado = jREstado.isSelected();
-        
-        PasajeData pData =new PasajeData();
+            Ciudad OrigenidCiudad = (Ciudad) jCOrigen.getSelectedItem();
+            String tipoTransporte = jCTransporte.getSelectedItem().toString();
+            double importe = Double.parseDouble(jTImporte.getText());
+            String importeComparar = jTImporte.getText();
+            for(int i=0;i<importeComparar.length();i++){
+                String x = importeComparar.substring(i, i+1);
+                try{
+                    double y = Double.parseDouble(x);
+                }catch(NumberFormatException ex){
+                    JOptionPane.showMessageDialog(this, "Solo numeros en el importe.");
+                    return;
+                }
+            }
+            boolean estado = jREstado.isSelected();
+            PasajeData pData =new PasajeData();
        
-        Pasaje pasaje = new Pasaje(tipoTransporte, importe, OrigenidCiudad , estado);
-        pData.agregarPasaje(pasaje);
-        jTImporte.setText("");
-        refrescarListaPasaje();
+            Pasaje pasaje = new Pasaje(tipoTransporte, importe, OrigenidCiudad , estado);
+            pData.agregarPasaje(pasaje);
+            refrescarListaPasaje();
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Porfavor ingrese un valor apropiado.");
         }
@@ -340,36 +348,53 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
         if (confirmResult == JOptionPane.YES_OPTION) {
             int idPasaje = jCListarPasaje.getSelectedItem().hashCode();
         
-        PasajeData pData = new PasajeData();
-        if(jCListarPasaje==null){
-            return;
-        }
-        pData.borrarPasaje(idPasaje);
-        refrescarLista();
-        refrescarListaPasaje();
-        jTImporte.setText("");
+            PasajeData pData = new PasajeData();
+            
+            pData.borrarPasaje(idPasaje);
+            refrescarLista();
+            refrescarListaPasaje();
+            jTImporte.setText("");
         }
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        int idPasaje = jCListarPasaje.getSelectedItem().hashCode();
-        Ciudad OrigenidCiudad = (Ciudad) jCOrigen.getSelectedItem();
-        String tipoTransporte = jCTransporte.getSelectedItem().toString();
-        double importe = Double.parseDouble(jTImporte.getText());
-        boolean estado = jREstado.isSelected();
+        try{
+            int idPasaje = jCListarPasaje.getSelectedItem().hashCode();
         
-        PasajeData pData = new PasajeData();
-        Pasaje pasaje =new Pasaje (idPasaje, tipoTransporte, importe, OrigenidCiudad, estado);
-        pasaje.setIdPasaje(idPasaje);
-        pasaje.setTipoTransporte(tipoTransporte);
-        pasaje.setImporte(importe);
-        pasaje.setOrigenCiudad(OrigenidCiudad);
-        pasaje.setEstado(estado);
+            Ciudad OrigenidCiudad = (Ciudad) jCOrigen.getSelectedItem();
+            String tipoTransporte = jCTransporte.getSelectedItem().toString();
+            try{
+                double importe = Double.parseDouble(jTImporte.getText());
+                String importeComparar = jTImporte.getText();
+            for(int i=0;i<importeComparar.length();i++){
+                String x = importeComparar.substring(i, i+1);
+                try{
+                    double y = Double.parseDouble(x);
+                }catch(NumberFormatException ex){
+                    JOptionPane.showMessageDialog(this, "Solo numeros en el importe.");
+                    return;
+                }
+            }
+                boolean estado = jREstado.isSelected();
         
-        pData.modificarPasaje(pasaje);
-        refrescarLista();
-        refrescarListaPasaje();
-        jTImporte.setText("");
+                PasajeData pData = new PasajeData();
+                Pasaje pasaje =new Pasaje (idPasaje, tipoTransporte, importe, OrigenidCiudad, estado);
+                pasaje.setIdPasaje(idPasaje);
+                pasaje.setTipoTransporte(tipoTransporte);
+                pasaje.setImporte(importe);
+                pasaje.setOrigenCiudad(OrigenidCiudad);
+                pasaje.setEstado(estado);
+        
+                pData.modificarPasaje(pasaje);
+                refrescarLista();
+                refrescarListaPasaje();
+                jTImporte.setText("");
+            }catch(NumberFormatException ex){
+                JOptionPane.showMessageDialog(this, "Porfavor ingrese solo numeros en importe.");
+            }
+        }catch(NullPointerException ex){
+            JOptionPane.showMessageDialog(this, "Porfavor cree unas ciudades");
+        }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
