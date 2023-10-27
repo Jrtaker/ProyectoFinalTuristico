@@ -5,8 +5,11 @@
  */
 package main.Vistas;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import main.AccesoDatos.CiudadData;
 import main.AccesoDatos.PasajeData;
@@ -46,7 +49,16 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/main/Vistas/Imagenes/fondoPaqueteCambio1.jpg"));
+        Image img=icon.getImage();
+        jDesktopPane1 = new javax.swing.JDesktopPane(){
+
+            public void paintComponent(Graphics g)
+            {
+                g.drawImage(img,0,0,getWidth(),
+                    getHeight(),this);
+            }
+        };
         jCOrigen = new javax.swing.JComboBox<>();
         jCTransporte = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();

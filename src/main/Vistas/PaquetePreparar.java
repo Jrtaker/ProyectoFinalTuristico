@@ -8,6 +8,8 @@ package main.Vistas;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.Month;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
@@ -33,6 +35,7 @@ import main.entidades.Pasaje;
 public class PaquetePreparar extends javax.swing.JInternalFrame {
 
     private DefaultTableModel model = new DefaultTableModel();
+    private String temporada="";
  
     /**
      * Creates new form PaqueteCrear
@@ -156,6 +159,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jTTemporada = new javax.swing.JTextField();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -290,6 +294,9 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         jLabel8.setForeground(new java.awt.Color(0, 102, 255));
         jLabel8.setText("Crear");
 
+        jTTemporada.setEditable(false);
+        jTTemporada.setText("Temporada");
+
         jDesktopPane1.setLayer(jCListaCiudadOrigen, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jBnuevoPaquete, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -309,6 +316,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jTTemporada, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -331,17 +339,20 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jDEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jDEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel5)
-                                            .addComponent(jDSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                                .addComponent(jDSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jTTemporada, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                         .addComponent(jCcantidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel1)))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 89, Short.MAX_VALUE))
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jCListaCiudadDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -372,7 +383,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTnombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
@@ -399,7 +410,8 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jDEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTTemporada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -460,6 +472,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Porfavor ingrese un nombre de identificacion para el paquete.");
             return;
         }
+        
         if (codigo != -1){
             int idPasaje = Integer.parseInt(jTabla.getValueAt(codigo, 2).toString());
             PasajeData pasajeData = new PasajeData();
@@ -471,7 +484,10 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                 Date fechaSal = Date.from(jDSalida.getDate().toInstant());
                 Instant instantFechaEnt = fechaEnt.toInstant();
                 Instant instantFechaSal = fechaSal.toInstant();
-
+                
+                //Temporada
+                
+                
 
                 long daysDifference = ChronoUnit.DAYS.between(
                     instantFechaEnt.atZone(ZoneId.systemDefault()),
@@ -479,11 +495,19 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                     );
                 int comparar = fechaEnt.compareTo(fechaSal);
             if(comparar<0){
-                totalPara1 = (alojamiento.getImporteDiario()*daysDifference) + (pasaje.getImporte()*2);
+                temporadas(instantFechaEnt.atZone(ZoneId.systemDefault()).toLocalDate(),instantFechaSal.atZone(ZoneId.systemDefault()).toLocalDate());
+                jTTemporada.setText(temporada);
+                double multiplicador=1;
+                if(temporada.equals("Alta")){
+                    multiplicador+= 0.3;
+                }else if(temporada.equals("Media")){
+                    multiplicador+=0.15;
+                }
+                totalPara1 = ((alojamiento.getImporteDiario()*daysDifference) + (pasaje.getImporte()*2))*multiplicador;
                 double totalParaVarios = cantidadDePersonas*totalPara1;
             
                 int confirmResult = JOptionPane.showConfirmDialog(this,
-                        "                El total seria de: " + totalPara1 + "$  para una persona por "+ daysDifference+" dias \n                                  Desea confirmar la accion? \nTambien se puede reducir la cantidad de dias para abatir costos.",
+                        "                El total seria de: " + totalPara1 + "$  para una persona por "+ daysDifference+" dias \n                                  Desea confirmar la accion? \nTambien se puede reducir la cantidad de dias para abatir costos\n                                       La Temporada es "+temporada,
                         "Confirmar",
                     
                         JOptionPane.YES_NO_OPTION
@@ -520,6 +544,54 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jBnuevoPaqueteActionPerformed
 
+    private boolean isWithinDateRange(LocalDate date, LocalDate rangeStart, LocalDate rangeEnd) {
+        return date.isEqual(rangeStart) || (date.isAfter(rangeStart) && date.isBefore(rangeEnd));
+    }
+ 
+    private void temporadas(LocalDate fechaEnt, LocalDate fechaSal) {
+        int year = fechaEnt.getYear();
+        int year2 = fechaSal.getYear();
+    
+    
+    if (year != year2) {
+       year+=1;
+    }
+
+    // Define the predefined date ranges for the specified year
+    LocalDate temporadaAltaInicioPrimera = LocalDate.of(year, 1, 1);
+    LocalDate temporadaAltaFinPrimera = LocalDate.of(year, 2, 1);
+    LocalDate temporadaAltaInicioSegunda = LocalDate.of(year, 6, 1);
+    LocalDate temporadaAltaFinSegunda = LocalDate.of(year, 7, 1);
+    LocalDate temporadaMediaInicio = LocalDate.of(year, 2, 2);
+    LocalDate temporadaMediaFin = LocalDate.of(year, 3, 1);
+    LocalDate temporadaMediaInicioSegunda = LocalDate.of(year, 7, 2);
+    LocalDate temporadaMediaFinSegunda = LocalDate.of(year, 8, 1);
+
+    
+    boolean isFechaEntInTemporadaAlta = isWithinDateRange(fechaEnt, temporadaAltaInicioPrimera, temporadaAltaFinPrimera)
+            || isWithinDateRange(fechaEnt, temporadaAltaInicioSegunda, temporadaAltaFinSegunda);
+
+    boolean isFechaSalInTemporadaAlta = isWithinDateRange(fechaSal, temporadaAltaInicioPrimera, temporadaAltaFinPrimera)
+            || isWithinDateRange(fechaSal, temporadaAltaInicioSegunda, temporadaAltaFinSegunda);
+
+    
+    boolean isFechaEntInTemporadaMedia = isWithinDateRange(fechaEnt, temporadaMediaInicio, temporadaMediaFin)
+            || isWithinDateRange(fechaEnt, temporadaMediaInicioSegunda, temporadaMediaFinSegunda);
+
+    boolean isFechaSalInTemporadaMedia = isWithinDateRange(fechaSal, temporadaMediaInicio, temporadaMediaFin)
+            || isWithinDateRange(fechaSal, temporadaMediaInicioSegunda, temporadaMediaFinSegunda);
+
+    if (isFechaEntInTemporadaAlta || isFechaSalInTemporadaAlta) {
+        temporada="Alta";
+    } else if(isFechaEntInTemporadaMedia || isFechaSalInTemporadaMedia) {
+        temporada="Media";
+    }else{
+        temporada = "Baja";
+    }
+
+    
+}
+    
     private void jCAlojamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCAlojamientoActionPerformed
         limpiarTexto();
        
@@ -532,6 +604,12 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                 jTServicio.setText(Servicio);
                 jDEntrada.setDate(fechaEnt);
                 jDSalida.setDate(fechaSal);
+                
+                temporadas(alojamiento.getFechaInicio(),alojamiento.getFechaFin());
+                jTTemporada.setText(temporada);
+                
+                    
+                
         }catch(NullPointerException ex){
             
         }
@@ -599,6 +677,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTServicio;
+    private javax.swing.JTextField jTTemporada;
     private javax.swing.JTable jTabla;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTnombreUsuario;

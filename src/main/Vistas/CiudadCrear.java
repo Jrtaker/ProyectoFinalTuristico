@@ -141,6 +141,11 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         jCListarCiudad.setBackground(new java.awt.Color(209, 237, 251));
         jCListarCiudad.setFont(new java.awt.Font("Sitka Small", 0, 14)); // NOI18N
         jCListarCiudad.setForeground(new java.awt.Color(0, 0, 0));
+        jCListarCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jCListarCiudadMouseEntered(evt);
+            }
+        });
         jCListarCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCListarCiudadActionPerformed(evt);
@@ -302,7 +307,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
     private void refrescarLista(){
         cData =new CiudadData();
-        cargarCiudad =(List<Ciudad>)cData.listarCiudad();
+        cargarCiudad =(List<Ciudad>)cData.listarCiudadTodo();
         jCListarCiudad.removeAllItems();
         for (Ciudad item: cargarCiudad)
             jCListarCiudad.addItem(item);
@@ -401,7 +406,6 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
                 jTProvincia.setText(provincia);
                 jTCiudad.setText(nombre);
                 jREstado.setSelected(estado);
-                refrescarLista();
             }catch(NullPointerException ex){
                 
             }
@@ -420,7 +424,7 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
         //Confirmo Selección
                 int confirmResult2 = JOptionPane.showConfirmDialog(
                 this, 
-                "Borrar una ciudad no puede ser desecho",
+                "Borrar una ciudad no puede ser desecho \n Esto borrara todas las ciudades iguales.",
                 "Quiere proceder?",
                 JOptionPane.YES_NO_OPTION
                 );
@@ -490,6 +494,10 @@ public class CiudadCrear extends javax.swing.JInternalFrame {
        this.dispose();
         this.setVisible(false); // TODO add your handling code here:
     }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jCListarCiudadMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCListarCiudadMouseEntered
+        refrescarLista();
+    }//GEN-LAST:event_jCListarCiudadMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
