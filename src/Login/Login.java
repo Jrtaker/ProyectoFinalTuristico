@@ -11,6 +11,7 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 
 
@@ -89,11 +90,13 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setOpaque(false);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setVisible(false);
         jLabel3.setFont(jLabel3.getFont().deriveFont(jLabel3.getFont().getStyle() | java.awt.Font.BOLD, jLabel3.getFont().getSize()+4));
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Olvide mi contraseña");
 
         NuevoUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        NuevoUsuario.setVisible(false);
         NuevoUsuario.setFont(NuevoUsuario.getFont().deriveFont(NuevoUsuario.getFont().getStyle() | java.awt.Font.BOLD, NuevoUsuario.getFont().getSize()+4));
         NuevoUsuario.setForeground(new java.awt.Color(0, 0, 0));
         NuevoUsuario.setText("Crear Nuevo Usuario");
@@ -147,6 +150,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox1.setVisible(false);
         jCheckBox1.setFont(jCheckBox1.getFont().deriveFont(jCheckBox1.getFont().getStyle() | java.awt.Font.BOLD, jCheckBox1.getFont().getSize()+4));
         jCheckBox1.setForeground(new java.awt.Color(0, 0, 0));
         jCheckBox1.setText("Mantener conectado");
@@ -176,9 +180,9 @@ public class Login extends javax.swing.JFrame {
                             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jPasswordField, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE))
+                                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jPasswordField))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jCheckBox2)))))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
@@ -187,7 +191,7 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(99, 99, 99)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGap(39, 39, 39))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +212,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(BotonAccerder)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -226,10 +230,13 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonAccerderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAccerderActionPerformed
-        this.dispose();
+        if (jTextField1.getText().equals("admin") && jPasswordField.getText().equals("admin")) {
+           this.dispose();
         main.Vistas.Menu3.menu3();
-        System.out.println(jPasswordField.getText());
-        System.out.println(jTextField1.getText());
+        }else{
+            JOptionPane.showMessageDialog(this, "     Usuario o Contraseña incorrecta. \nRevise los datos e intente nuevamente.");
+        }
+        
         
     }//GEN-LAST:event_BotonAccerderActionPerformed
 

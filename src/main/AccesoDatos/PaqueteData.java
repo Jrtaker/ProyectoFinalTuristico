@@ -55,21 +55,22 @@ public class PaqueteData {
             ps.setInt(3, paquete.getAlojamiento().getIdAlojamiento());
             ps.setInt(4, paquete.getPasaje().getIdPasaje());
             ps.setString(5, paquete.getNombre());
-            ps.setInt(5, paquete.getIdPaquete());
+            ps.setInt(6, paquete.getIdPaquete());
             ps.executeUpdate();
 
-            JOptionPane.showConfirmDialog(null, "Se ha modificado una Estadia.");
+            JOptionPane.showMessageDialog(null, "Se ha modificado un paquete.");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error en (modificarEstadia)" + e.getMessage());
         }
     }
      //Eliminado no logico de paquete - Boton Eliminar
     public void borrarPaquete(int idPaquete){
-    String sql="DELETE FROM ciudad WHERE idPaquete=?";
+    String sql="DELETE FROM paquete WHERE idPaquete=?";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1,idPaquete);
+            ps.executeUpdate();
             ps.close();
             JOptionPane.showMessageDialog(null, "Borrado con exito");
         } catch (SQLException ex) {

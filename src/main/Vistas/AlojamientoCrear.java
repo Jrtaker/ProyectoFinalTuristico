@@ -648,13 +648,18 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
             String importeComparar = jTImporte.getText();
                
             for(int i=0;i<importeComparar.length();i++){
+                
                String x = importeComparar.substring(i, i+1);
-                try{
-                    double y = Double.parseDouble(x);
-                }catch(NumberFormatException ex){
+               if(x.equals(".")){
+               
+               }else{
+                    try{
+                        double y = Double.parseDouble(x);
+                    }catch(NumberFormatException ex){
                     JOptionPane.showMessageDialog(this, "Solo numeros en el importe.");
                     return;
                 }
+               }
             }
         
             String aire = "";
@@ -718,7 +723,9 @@ public class AlojamientoCrear extends javax.swing.JInternalFrame {
                     AlojamientoData alojamientoData = new AlojamientoData();
                     alojamientoData.agregarAlojamiento(alojamiento);
                 
+                    JOptionPane.showMessageDialog(this, "Alojamiento agregado con exito!");
                     refrescarListaAlojamiento();
+                    
                 }else{
                     JOptionPane.showMessageDialog(this, "Porfavor elija un estilo de cama. No se puede dormir en el piso!");
                 }

@@ -40,7 +40,7 @@ public class AlojamientoData {
             ps.setInt(6, alojamiento.getCiudad().getIdCiudad());
             ps.executeUpdate();
             ps.close();
-            JOptionPane.showMessageDialog(null, "Alojamiento agregado con exito.");
+            
             
         }catch(SQLException e){
              JOptionPane.showMessageDialog(null, "Error en (agregarAlojamiento) " + e.getMessage());
