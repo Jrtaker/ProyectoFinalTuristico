@@ -21,7 +21,7 @@ import main.entidades.Pasaje;
  * @author Joni
  */
 public class PasajeCrear extends javax.swing.JInternalFrame {
-    
+        private List<Ciudad> listaCiudad;
     
     public PasajeCrear() {
         initComponents();
@@ -29,9 +29,9 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
         refrescarListaPasaje();
     }
     private void refrescarLista(){
-        
+        jCOrigen.removeAllItems();
         CiudadData ciudadData = new CiudadData();
-        List <Ciudad> listaCiudad =(List<Ciudad>)ciudadData.listarCiudad();
+        listaCiudad =(List<Ciudad>)ciudadData.listarCiudad();
         
         for (Ciudad ciudad : listaCiudad) {
             jCOrigen.addItem(ciudad);
@@ -353,7 +353,25 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jCListarPasajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCListarPasajeActionPerformed
-        // TODO add your handling code here:
+        if (jCListarPasaje==null){
+            return;
+        }
+        try{
+        Pasaje pasaje = (Pasaje) jCListarPasaje.getSelectedItem();
+        Ciudad ciudad = pasaje.getOrigenCiudad();
+        for (Ciudad item : listaCiudad) {
+                    if (item.getIdCiudad() == ciudad.getIdCiudad()) {
+                        jCOrigen.setSelectedItem(item);
+                        break;
+                    }
+                }
+        jCTransporte.setSelectedItem(pasaje.getTipoTransporte());
+        jTImporte.setText(String.valueOf(pasaje.getImporte()));
+        jREstado.setSelected(pasaje.isEstado());
+        }catch(NullPointerException ex){
+            
+        }
+        
     }//GEN-LAST:event_jCListarPasajeActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
@@ -425,11 +443,12 @@ public class PasajeCrear extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jCOrigenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCOrigenMouseEntered
-       refrescarLista();
+
     }//GEN-LAST:event_jCOrigenMouseEntered
 
     private void jCListarPasajeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCListarPasajeMouseEntered
        refrescarListaPasaje();
+       refrescarLista();
     }//GEN-LAST:event_jCListarPasajeMouseEntered
 
 

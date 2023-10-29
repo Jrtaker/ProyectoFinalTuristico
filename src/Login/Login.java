@@ -230,6 +230,13 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonAccerderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAccerderActionPerformed
+        if(jTextField1.getText().isEmpty()){
+            jTextField1.setText("USUARIO");
+        }
+        if(jPasswordField.getText().isEmpty()){
+            jPasswordField.setText("CONTRASEÑA");
+           jPasswordField.setEchoChar((char)0);
+        }
         if (jTextField1.getText().equals("admin") && jPasswordField.getText().equals("admin")) {
            this.dispose();
         main.Vistas.Menu3.menu3();
@@ -244,12 +251,19 @@ public class Login extends javax.swing.JFrame {
        if(jTextField1.getText().equals("USUARIO")){
            jTextField1.setText("");
        }
+       if(jPasswordField.getText().isEmpty()){
+           jPasswordField.setText("CONTRASEÑA");
+           jPasswordField.setEchoChar((char)0);
+       }
     }//GEN-LAST:event_jTextField1MouseClicked
 
     private void jPasswordFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordFieldMouseClicked
         if(jPasswordField.getText().equals("CONTRASEÑA")){
             jPasswordField.setText("");
             jPasswordField.setEchoChar('*');
+        }
+        if(jTextField1.getText().isEmpty()){
+            jTextField1.setText("USUARIO");
         }
     }//GEN-LAST:event_jPasswordFieldMouseClicked
 
