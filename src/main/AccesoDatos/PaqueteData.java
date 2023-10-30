@@ -41,7 +41,7 @@ public class PaqueteData {
             JOptionPane.showMessageDialog(null, "Agregado con exito");
             
         }catch(SQLException e){
-             JOptionPane.showMessageDialog(null, "Error en (agregarPaquete) " + e.getMessage());
+             JOptionPane.showMessageDialog(null, "Error al agregar un paquete nuevo, El nombre debera ser diferente a los otros.");
         }
     }
     //Paquete modificar - Boton Guardar
