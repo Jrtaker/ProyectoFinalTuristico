@@ -760,7 +760,7 @@ public class PaqueteModificar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCNombreMouseEntered
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        try {
             jROrigen.setSelected(false);
             jRNombre.setSelected(false);
             jRAlojamiento.setSelected(false);
@@ -794,6 +794,9 @@ public class PaqueteModificar extends javax.swing.JInternalFrame {
             jTPasaje.setText(pasaje);
             //Nombre
             jTNombre.setText(paquete.getNombre());
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "Por favor cree un paquete", "Casilla vacía", 0);
+        }
             
     }//GEN-LAST:event_jButton1ActionPerformed
 
