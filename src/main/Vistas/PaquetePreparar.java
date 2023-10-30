@@ -486,6 +486,8 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
             PasajeData pasajeData = new PasajeData();
             Pasaje pasaje = pasajeData.buscarPasaje(idPasaje);
             double totalPara1;
+            String personas="";
+            String cantidad="";
             int cantidadDePersonas = Integer.parseInt(jCcantidadPersonas.getSelectedItem().toString());
             //fechas
                 Date fechaEnt = Date.from(jDEntrada.getDate().toInstant());
@@ -517,6 +519,12 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                 }else if(temporada.equals("Media")){
                     multiplicador+=0.15;
                 }
+                if (cantidadDePersonas==1){
+                    personas="";
+                }else{
+                    personas="s";
+                    cantidad="Tambien se puede reducir la cantidad de personas para abatir costos.";
+                }
                 totalPara1 = ((alojamiento.getImporteDiario()*daysDifference) + (pasaje.getImporte()*2))*multiplicador;
                 double totalParaVarios = cantidadDePersonas*totalPara1;
             
@@ -528,7 +536,7 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                         );
                 if(confirmResult == JOptionPane.YES_OPTION){
                     int confirmResult2 = JOptionPane.showConfirmDialog(this,
-                        "                     El total seria de: " + totalParaVarios + "  para "+cantidadDePersonas+" personas. \n                                  Desea confirmar la accion? \nTambien se puede reducir la cantidad de personas para abatir costos.",
+                        "                     El total seria de: " + totalParaVarios + "  para "+cantidadDePersonas+" persona"+personas +".\n                                  Desea confirmar la accion? \n"+cantidad,
                         "Confirmar",
                     
                         JOptionPane.YES_NO_OPTION
