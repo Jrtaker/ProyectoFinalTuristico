@@ -26,6 +26,7 @@ import main.entidades.Pasaje;
  *
  * @author Joni
  */
+
 public class PaqueteModificar extends javax.swing.JInternalFrame {
         private LocalDate fechaEntOriginal=null;
         private LocalDate fechaSalOriginal=null;
