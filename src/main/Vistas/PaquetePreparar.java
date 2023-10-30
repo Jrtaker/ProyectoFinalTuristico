@@ -36,7 +36,8 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
 
     private DefaultTableModel model = new DefaultTableModel();
     private String temporada="";
- 
+    private LocalDate fechaEntOriginal=null;
+    private LocalDate fechaSalOriginal=null;
     /**
      * Creates new form PaqueteCrear
      */
@@ -455,10 +456,13 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
         Ciudad ciudadDestino = (Ciudad) jCListaCiudadDestino.getSelectedItem();
         Alojamiento alojamiento = (Alojamiento) jCAlojamiento.getSelectedItem();
         int codigo = jTabla.getSelectedRow();
-        if(ciudadOrigen==null || ciudadDestino == null || alojamiento == null || codigo == -1){
+        if(ciudadOrigen==null || ciudadDestino == null || alojamiento == null ){
+            return;
+        }else if(codigo==-1){
+            JOptionPane.showMessageDialog(this, "Porfavor elija un pasaje.");
             return;
         }
-        if(ciudadOrigen.equals(ciudadDestino)){
+        if(ciudadOrigen.getIdCiudad() == ciudadDestino.getIdCiudad()){
             int confirm = JOptionPane.showConfirmDialog(this, 
                     "Las ciudades ingresadas son iguales, esta seguro que quiere continuar?",
                     "Error",
@@ -472,6 +476,10 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Porfavor ingrese un nombre de identificacion para el paquete.");
             return;
         }
+        
+            
+        
+        
         
         if (codigo != -1){
             int idPasaje = Integer.parseInt(jTabla.getValueAt(codigo, 2).toString());
@@ -494,6 +502,12 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                     instantFechaSal.atZone(ZoneId.systemDefault())
                     );
                 int comparar = fechaEnt.compareTo(fechaSal);
+                
+                
+            int compararFechaEnt = fechaEntOriginal.compareTo(fechaEnt.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            int compararFechaSal = fechaSal.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().compareTo(fechaSalOriginal);
+            if(comparar<=0 && compararFechaEnt<=0 && compararFechaSal<=0){
+            
             if(comparar<0){
                 temporadas(instantFechaEnt.atZone(ZoneId.systemDefault()).toLocalDate(),instantFechaSal.atZone(ZoneId.systemDefault()).toLocalDate());
                 jTTemporada.setText(temporada);
@@ -540,6 +554,9 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                 }
             }else{
                 JOptionPane.showMessageDialog(this, "Porfavor ingrese una fecha de salida posterior a la de entrada.");
+            }
+            }else{
+                JOptionPane.showMessageDialog(this, "Fecha de ingreso o salida fuera de rango.");
             }
         }
     }//GEN-LAST:event_jBnuevoPaqueteActionPerformed
@@ -604,9 +621,11 @@ public class PaquetePreparar extends javax.swing.JInternalFrame {
                 jTServicio.setText(Servicio);
                 jDEntrada.setDate(fechaEnt);
                 jDSalida.setDate(fechaSal);
-                
+                fechaSalOriginal = alojamiento.getFechaFin();
+                fechaEntOriginal = alojamiento.getFechaInicio();
                 temporadas(alojamiento.getFechaInicio(),alojamiento.getFechaFin());
                 jTTemporada.setText(temporada);
+                
                 
                     
                 
