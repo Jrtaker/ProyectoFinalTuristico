@@ -714,6 +714,7 @@ public class PaqueteModificar extends javax.swing.JInternalFrame {
             alojamientoNuevo.setFechaInicio(fechaEnt);
             alojamientoData.agregarAlojamiento(alojamientoNuevo);
         }
+        paquete.setNombre(jTNombre.getText());
         paqueteData.modificarPaquete(paquete);
     }//GEN-LAST:event_jBGuardarCambiosActionPerformed
 
